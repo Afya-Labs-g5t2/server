@@ -3,7 +3,7 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || 3000
 
-const UserController = require('./controllers/UserController');
+const UserController = require('./app/controllers/UserController');
 
 app.get('/', (req, res) => {                         //sendfile('./pasta/index.html') foi descontinuado, 
   res.sendFile(path.join(__dirname, 'index.html'))   //deve-se utilizar sendFile() com o path                                                    
@@ -14,7 +14,7 @@ app.post('/users', UserController.store);
 
 
 app.get('/clients',(req,res) => {
-    res.send({'message':'clientes'});
+    res.send({'message':'Clientes'});
 })
 
 app.get('/addresses',(req,res) => {
