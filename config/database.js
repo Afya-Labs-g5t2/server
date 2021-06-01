@@ -7,10 +7,10 @@ module.exports = {
           rejectUnauthorized: false //corrigido com essas duas linhas
         }
     },  
-    host: "ec2-23-21-229-200.compute-1.amazonaws.com",//process.env.HOST,
-    username: "bdlwweevrljiqx",//process.env.USER,
-    password:  "1bbdac1e1dcdd4efa746bd6114d672d328a46ce17ae172209ab309569365ad93",//process.env.PASS,
-    database: "ddvkv5irs3dhs1",//process.env.DATABASE,
+    host: process.env.HOST, //"ec2-23-21-229-200.compute-1.amazonaws.com",//
+    username: process.env.USER, //"bdlwweevrljiqx",//
+    password:  process.env.PASS, //"1bbdac1e1dcdd4efa746bd6114d672d328a46ce17ae172209ab309569365ad93",//
+    database: process.env.DATABASE, //"ddvkv5irs3dhs1",//
     //port: '5432',
     define: {
         timestamps: true,  //
