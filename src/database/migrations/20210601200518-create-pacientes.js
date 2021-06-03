@@ -18,6 +18,10 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false
       },
+      data_nascimento: {
+        type: Sequelize.DATEONLY,
+        allowNull: false
+      },
       telefone: {
         type: Sequelize.STRING,
         allowNull: true

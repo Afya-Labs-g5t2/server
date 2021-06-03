@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path')
 
-const UserController = require('./app/controllers/UserController');
+// const UserController = require('./app/controllers/UserController'); // descontinuado
 
 const routes = express.Router();
 
@@ -9,8 +9,8 @@ const routes = express.Router();
     res.sendFile(path.join(__dirname, 'index.html'))        //deve-se utilizar sendFile() com o path                                                    
   })
   
-  routes.get('/users', UserController.index);
-  routes.post('/users', UserController.store);
+  // routes.get('/users', UserController.index);
+  // routes.post('/users', UserController.store);
   
   
   routes.get('/clients',(req,res) => {
