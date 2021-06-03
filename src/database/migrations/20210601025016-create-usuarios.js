@@ -9,6 +9,11 @@ module.exports = {
         allowNull: false,
         primaryKey: true
       },
+      login: {
+        type: Sequelize.STRING(16),
+        allowNull: false,
+        unique: true
+      },
       nome: {
         type: Sequelize.STRING(150),
         allowNull: false,
