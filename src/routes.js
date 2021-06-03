@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path')
 
-// const UserController = require('./app/controllers/UserController'); <- descontinuado
+// const UserController = require('./app/controllers/UserController'); // descontinuado
 
 const routes = express.Router();
 
