@@ -28,8 +28,7 @@ module.exports = {
       },
       celular: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       email: {
         type: Sequelize.STRING,
@@ -44,7 +43,7 @@ module.exports = {
         references: { model: 'enderecos', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false
+        allowNull: true
       },
       createdAt: {
         type: Sequelize.DATE,
