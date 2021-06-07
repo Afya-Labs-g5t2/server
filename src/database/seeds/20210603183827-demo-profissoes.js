@@ -5,71 +5,71 @@ module.exports = {
     return queryInterface.bulkInsert('profissoes', [
     {
       profissao: 'Cardiologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Cirurgia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Clínica Médica',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Dermatologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Endocrinologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Gastroentrologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Geriatria',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Ginegologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Nefrologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Neurologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Oftalmologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Ortopedia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Otorrinolaringologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Pediatria',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Pneumologia',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Psiquiatria',
-      createdAt: new Date()
+      created_at: new Date()
     },
     {
       profissao: 'Radiologia',
-      createdAt: new Date()
+      created_at: new Date()
     }
     ]);
   },
