@@ -14,5 +14,7 @@ module.exports = {
   database: process.env.DATABASE,
   define: {
       timestamps: true,  //
+      underscored: true,  // snake_case
+      underscoredAll: true
   }
 }
