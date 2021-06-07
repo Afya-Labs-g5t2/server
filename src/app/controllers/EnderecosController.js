@@ -1,6 +1,5 @@
 const { Enderecos } = require('../models/Enderecos');
 
-// meu c
 
 class EnderecosController {
   async index(req, res) {
