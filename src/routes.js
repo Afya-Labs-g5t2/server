@@ -5,12 +5,17 @@ const path = require('path')
 const PacientesController = require('./app/controllers/PacientesController');
 const EnderecosController= require('./app/controllers/EnderecosController');
 const ProfissoesController= require('./app/controllers/ProfissoesController');
+const app = require('./app');
   
+
 
 const routes = express.Router();
 
-  routes.get('/', (req, res) => {                         //sendfile('./pasta/index.html') foi descontinuado, 
-    res.sendFile(path.join(__dirname, 'index.html'))        //deve-se utilizar sendFile() com o path                                                    
+  routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
+
+  routes.get('/', (req, res) => {                                       //sendfile('./pasta/index.html') foi descontinuado, 
+    res.sendFile(path.join(__dirname,'./public/','index.html'))        //deve-se utilizar sendFile() com o path  
+                                                      
   })
   
   // routes.get('/users', UserController.index);
