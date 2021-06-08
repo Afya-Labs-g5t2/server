@@ -17,6 +17,8 @@ class Usuario extends Model {
         user.senha_hash = await bcrypt.hash(user.senha, 15);
       }
     })
+
+    return this;
   }
 }
 

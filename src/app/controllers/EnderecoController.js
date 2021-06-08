@@ -2,11 +2,12 @@ const Endereco = require('../models/Endereco');
 
 class EnderecoController {
 
-  async index(req, res) {
-    return res.json(Endereco.findAll());
+  async testGet(req, res) {
+    const enderecos = await Endereco.findAll()
+    return res.json(enderecos);
   }
 
-  async store(req, res) {
+  async testPost(req, res) {
     const {
       cep,
       logradouro,
