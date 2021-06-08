@@ -11,9 +11,10 @@ class Endereco extends Model {
       uf: Sequelize.CHAR(2)
     }, {
       sequelize,
-      createAt: 'created_at',
-      updatedAt: 'updated_at'
+      tableName: 'enderecos'
     })
+
+    return this;
   }
 }
 

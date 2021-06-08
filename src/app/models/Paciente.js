@@ -13,9 +13,10 @@ class Paciente extends Model {
       id_endereco: Sequelize.INTEGER
     }, {
       sequelize,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      tableName: 'pacientes'
     })
+
+    return this;
   }
 }
 
