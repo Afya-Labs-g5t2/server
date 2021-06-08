@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface) => {
     await queryInterface.bulkInsert('enderecos', [
       {
-        cep: '00000-000',
+        cep: '00000000',
         logradouro: 'Rua 1',
         numero: 11,
         bairro: 'Bairro Estrela',
@@ -14,7 +14,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        cep: '11111-111',
+        cep: '11111111',
         logradouro: 'Rua 2',
         numero: 22,
         bairro: 'Bairro Lua',
@@ -24,7 +24,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        cep: '22222-222',
+        cep: '22222222',
         logradouro: 'Rua 3',
         numero: 33,
         bairro: 'Bairro Sol',
@@ -34,7 +34,7 @@ module.exports = {
         updated_at: new Date()
       },
       {
-        cep: '33333-333',
+        cep: '33333333',
         logradouro: 'Rua 4',
         numero: 44,
         bairro: 'Bairro Terra',

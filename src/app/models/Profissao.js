@@ -1,9 +1,9 @@
 const { Model, Sequelize } = require('sequelize');
 
-class Profissao extends Model {
+class Profissoes extends Model {
   static init(sequelize) {
     super.init({
-      profissao: Sequelize.STRING,
+      profissao: Sequelize.STRING
     }, {
       sequelize,
       updatedAt: false,
@@ -14,4 +14,4 @@ class Profissao extends Model {
   }
 }
 
-module.exports = Profissao;
+module.exports = Profissoes;

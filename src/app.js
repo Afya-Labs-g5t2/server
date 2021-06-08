@@ -1,7 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 
-require('./database');
+
 
 class App {
   constructor() {
@@ -9,7 +9,7 @@ class App {
     this.route();
   }
 
-  routes() {
+  route() {
     this.server.use(express.json());
     this.server.use(routes);
   }

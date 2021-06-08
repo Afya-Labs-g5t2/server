@@ -1,4 +1,4 @@
-const Sequelize = require('sequelize');
+const Sequelize =  require('sequelize');
 const dbConfig = require('../config/database');
 
 const Endereco = require('../app/models/Endereco');
@@ -7,7 +7,6 @@ const Profissao = require('../app/models/Profissao');
 
 const models = [Endereco, Paciente, Profissao];
 
-
 class Database {
   constructor() {
     this.init();
@@ -15,8 +14,13 @@ class Database {
 
   init() {
     this.connection = new Sequelize(dbConfig);
+
+    // Associações entre tabelas
+    Paciente.associate(this.connection.models);
+    Endereco.associate(this.connection.models);
+
     models.map( (model) => { model.init(this.connection) })
   }
 }
 
-module.exports = new Database();
+module.exports = new Database;

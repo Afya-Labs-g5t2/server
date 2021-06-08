@@ -7,7 +7,7 @@ module.exports = {
         require: true,            //segundo erro
         rejectUnauthorized: false //corrigido com essas duas linhas
       }
-  },  
+  },
   host: process.env.HOST, 
   username: process.env.USER, 
   password:  process.env.PASSWORD, 

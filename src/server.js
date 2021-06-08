@@ -1,6 +1,7 @@
+const express = require('express');
 const app = require('./app');
 
-//const bodyParser = require('body-parser')
+require('./database');
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {

@@ -7,17 +7,50 @@ const ProfissaoController = require('./app/controllers/ProfissaoController');
 
 const routes = express.Router();
 
+// rotas de endereços
 routes.get('/enderecos', EnderecoController.testGet);
 
 routes.post('/enderecos', EnderecoController.testPost);
 
+routes.get('/enderecos', EnderecoController.index);
+
+routes.get('/enderecos/:id', EnderecoController.show);
+
+routes.post('/enderecos', EnderecoController.store);
+
+routes.put('/enderecos/:id', EnderecoController.update);
+
+routes.delete('/enderecos/:id', EnderecoController.destroy);
+
+// rotas de pacientes
 routes.get('/pacientes', PacienteController.testGet);
 
 routes.post('/pacientes', PacienteController.testPost);
 
+routes.get('/pacientes', PacienteController.index);          //todo paciente tem um endereco associado
+
+routes.get('/pacientes/:id', PacienteController.show);  
+
+routes.post('/pacientes', PacienteController.store);         //quando cria um paciente associa ela a um endereço
+
+routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o pac, atualiza o end
+
+routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
+
+
+// rotas da profissoes
 routes.get('/profissoes', ProfissaoController.testGet);
 
 routes.post('/profissoes', ProfissaoController.testPost);
 
+routes.get('/profissoes', ProfissaoController.index);
+
+routes.get('/profissoes/:id', ProfissaoController.show);
+
+routes.post('/profissoes', ProfissaoController.store);
+
+routes.put('/profissoes/:id', ProfissaoController.update);
+
+routes.delete('/profissoes/:id', ProfissaoController.destroy);
 
 module.exports = routes;
