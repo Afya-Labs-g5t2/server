@@ -1,6 +1,6 @@
 const { Model, Sequelize } = require('sequelize');
 
-class Pacientes extends Model {
+class Paciente extends Model {
   static init(sequelize) {
     super.init({
       cpf: Sequelize.STRING,
@@ -20,8 +20,8 @@ class Pacientes extends Model {
   }
   
   static associate(models) {
-      this.belongsTo(models.Enderecos, { foreignKey: 'id_endereco', as: 'endereco'});
+      this.belongsTo(models.Endereco, { foreignKey: 'id_endereco', as: 'endereco'});
   }
 }
 
-module.exports = Pacientes;
+module.exports = Paciente;

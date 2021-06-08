@@ -1,10 +1,10 @@
-const Pacientes = require('../models/Pacientes');
-const Enderecos = require('../models/Enderecos');
+const Paciente = require('../models/Paciente');
+const Endereco = require('../models/Endereco');
 
-class PacientesController {
+class PacienteController {
   async index(req, res) {
     try {
-      const temp = await Pacientes.findAll();
+      const temp = await Paciente.findAll();
 
       return res.json(temp);
     } catch (err) {
@@ -14,7 +14,7 @@ class PacientesController {
 
   async show(req, res) {
     try {
-      const temp = await Pacientes.findByPk(req.params.id,{
+      const temp = await Paciente.findByPk(req.params.id,{
         include: { association: 'endereco'}
       });
 
@@ -26,7 +26,7 @@ class PacientesController {
 
   async store(req, res) {                      //quando cria um paciente associa ela a um endereço
       try {
-      const temp = await Pacientes.create(req.body);
+      const temp = await Paciente.create(req.body);
 
       return res.json(temp);
     } catch (err) {
@@ -36,7 +36,7 @@ class PacientesController {
 
   async update(req, res) {
     try {
-      const temp = await Pacientes.findByPk(req.params.id);
+      const temp = await Paciente.findByPk(req.params.id);
 
       await temp.update(req.body);
 
@@ -48,7 +48,7 @@ class PacientesController {
 
   async destroy(req, res) {
     try {
-      const temp = await Pacientes.findByPk(req.params.id);
+      const temp = await Paciente.findByPk(req.params.id);
 
       await temp.destroy();
 
@@ -59,4 +59,4 @@ class PacientesController {
   }
 }
 
-module.exports = new PacientesController();
+module.exports = new PacienteController();
