@@ -43,13 +43,13 @@ module.exports = {
         references: { model: 'enderecos', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false
+        allowNull: true
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       }

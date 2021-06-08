@@ -18,14 +18,17 @@ module.exports = {
         type: Sequelize.STRING(150),
         allowNull: false
       },
+      data_nascimento: {
+        type: Sequelize.DATEONLY,
+        allowNull: false
+      },
       telefone: {
         type: Sequelize.STRING,
         allowNull: true
       },
       celular: {
         type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       email: {
         type: Sequelize.STRING,
@@ -40,13 +43,13 @@ module.exports = {
         references: { model: 'enderecos', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
-        allowNull: false
+        allowNull: true
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       }
