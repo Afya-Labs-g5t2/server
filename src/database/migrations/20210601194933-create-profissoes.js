@@ -13,7 +13,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      createdAt: {
+      created_at: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updated_at: {             //com a time stamps true deve ter update_at 
         type: Sequelize.DATE,
         allowNull: false
       }

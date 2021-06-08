@@ -1,20 +1,18 @@
-const Sequelize = require('sequelize');
+const Sequelize =  require('sequelize');
 const dbConfig = require('../config/database');
 
-const User = require('../app/models/User');
+const Profissoes = require('../app/models/Profissoes');
+const Enderecos = require('../app/models/Enderecos');
+const Pacientes = require('../app/models/Pacientes');
 
-const models = [User];
+const connection = new Sequelize(dbConfig);
 
 
-class Database {
-  constructor() {
-    this.init();
-  }
+Profissoes.init(connection);
+Enderecos.init(connection);
+Pacientes.init(connection);
 
-  init() {
-    this.connection = new Sequelize(dbConfig);
-    models.map( (model) => { model.init(this.connection) })
-  }
-}
+Pacientes.associate(connection.models);
+Enderecos.associate(connection.models);
 
-module.exports = new Database();
+module.exports = connection;
