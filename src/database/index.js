@@ -15,11 +15,11 @@ class Database {
   init() {
     this.connection = new Sequelize(dbConfig);
 
+    models.map( (model) => { model.init(this.connection) })
+
     // Associações entre tabelas
     Paciente.associate(this.connection.models);
     Endereco.associate(this.connection.models);
-
-    models.map( (model) => { model.init(this.connection) })
   }
 }
 
