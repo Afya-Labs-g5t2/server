@@ -12,7 +12,8 @@ class Paciente extends Model {
       tipo_sangue: Sequelize.STRING(3),
       id_endereco: Sequelize.INTEGER
     }, {
-      sequelize
+      sequelize,
+      tableName: 'pacientes'
     })
 
     return this;

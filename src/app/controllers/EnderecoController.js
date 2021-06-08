@@ -19,6 +19,7 @@ class EnderecoController {
 
     return res.json({ cep, logradouro, numero, bairro, cidade, uf });
   }
+
 }
 
 module.exports = new EnderecoController();

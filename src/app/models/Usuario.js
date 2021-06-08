@@ -9,7 +9,8 @@ class Usuario extends Model {
       senha: Sequelize.VIRTUAL,
       senha_hash: Sequelize.STRING
     }, {
-      sequelize
+      sequelize,
+      tableName: 'usuarios'
     })
 
     this.addHook('beforeSave', async user => {

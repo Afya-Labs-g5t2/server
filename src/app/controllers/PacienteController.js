@@ -1,7 +1,7 @@
 const Paciente = require('../models/Paciente');
 
 class PacienteController {
-
+  
   async testGet(req, res) {
     const pacientes = await Paciente.findAll();
     return res.json(pacientes);
