@@ -1,4 +1,4 @@
-const { Enderecos } = require('../models/Enderecos');
+const Enderecos = require('../models/Enderecos');
 
 class EnderecosController {
   async index(req, res) {
@@ -13,7 +13,9 @@ class EnderecosController {
 
   async show(req, res) {
     try {
-      const temp = await Enderecos.findByPk(req.params.id);
+      const temp = await Enderecos.findByPk(req.params.id,{
+        include: { association: 'moradores'}
+      });
 
       return res.json(temp);
     } catch (err) {

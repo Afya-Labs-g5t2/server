@@ -24,12 +24,13 @@ const routes = express.Router();
   routes.delete('/enderecos/:id', EnderecosController.destroy);
 
   // rotas da tabela pacientes
-  routes.get('/enderecos/pacientes', PacientesController.index);
-  routes.get('/enderecos/pacientes/:id', PacientesController.show);
-  routes.post('/enderecos/pacientes', PacientesController.store);
-  routes.put('/enderecos/pacientes/:id', PacientesController.update);
-  routes.delete('/enderecos/pacientes/:id', PacientesController.destroy);
+  routes.get('/pacientes', PacientesController.index);          //todo paciente tem um endereco associado
+  routes.get('/pacientes/:id', PacientesController.show);       
+  routes.post('/pacientes', PacientesController.store);         //quando cria um paciente associa ela a um endereço
+  routes.put('/pacientes/:id', PacientesController.update);     //quando atualiza o pac, atualiza o end
+  routes.delete('/pacientes/:id', PacientesController.destroy); //quando deleta o pac, NÂO deleta o end
 
+  // rotas da tabela profissoes
   routes.get('/profissoes', ProfissoesController.index);
   routes.get('/profissoes/:id', ProfissoesController.show);
   routes.post('/profissoes', ProfissoesController.store);

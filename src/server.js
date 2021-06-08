@@ -1,5 +1,7 @@
 const app = require('./app');
 
+require('./database');
+
 //const bodyParser = require('body-parser')
 
 const port = process.env.PORT || 3000

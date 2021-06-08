@@ -1,4 +1,5 @@
-const { Pacientes } = require('../models/Pacientes');
+const Pacientes = require('../models/Pacientes');
+const Enderecos = require('../models/Enderecos');
 
 class PacientesController {
   async index(req, res) {
@@ -13,7 +14,9 @@ class PacientesController {
 
   async show(req, res) {
     try {
-      const temp = await Pacientes.findByPk(req.params.id);
+      const temp = await Pacientes.findByPk(req.params.id,{
+        include: { association: 'endereco'}
+      });
 
       return res.json(temp);
     } catch (err) {
@@ -21,8 +24,8 @@ class PacientesController {
     }
   }
 
-  async store(req, res) {
-    try {
+  async store(req, res) {                      //quando cria um paciente associa ela a um endereço
+      try {
       const temp = await Pacientes.create(req.body);
 
       return res.json(temp);
