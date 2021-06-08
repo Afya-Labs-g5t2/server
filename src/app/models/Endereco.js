@@ -8,7 +8,7 @@ class Endereco extends Model {
       numero: Sequelize.INTEGER,
       bairro: Sequelize.STRING,
       cidade: Sequelize.STRING,
-      uf: Sequelize.CHAR(2)
+      uf: Sequelize.CHAR(2),
     }, {
       sequelize,
       tableName: 'enderecos'
@@ -16,6 +16,10 @@ class Endereco extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Paciente, { foreignKey: 'id_endereco', as: 'moradores'});
+}
 }
 
 module.exports = Endereco;

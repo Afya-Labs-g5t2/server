@@ -1,25 +1,62 @@
-const Endereco = require('../models/Endereco');
+const Enderecos = require('../models/Enderecos');
 
-class EnderecoController {
 
-  async testGet(req, res) {
-    const enderecos = await Endereco.findAll()
-    return res.json(enderecos);
+class EnderecosController {
+  async index(req, res) {
+    try {
+      const temp = await Enderecos.findAll();
+
+      return res.json(temp);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
-  async testPost(req, res) {
-    const {
-      cep,
-      logradouro,
-      numero,
-      bairro,
-      cidade,
-      uf
-    } = await Endereco.create(req.body);
+  async show(req, res) {
+    try {
+      const temp = await Enderecos.findByPk(req.params.id,{
+        include: { association: 'moradores'}
+      });
 
-    return res.json({ cep, logradouro, numero, bairro, cidade, uf });
+      return res.json(temp);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
   }
 
+  async store(req, res) {
+    try {
+      const temp = await Enderecos.create(req.body);
+
+      return res.json(temp);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
+  async update(req, res) {
+    try {
+      const temp = await Enderecos.findByPk(req.params.id);
+
+      await temp.update(req.body);
+
+      return res.json({ temp });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
+
+  async destroy(req, res) {
+    try {
+      const temp = await Enderecos.findByPk(req.params.id);
+
+      await temp.destroy();
+
+      return res.json();
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
 }
 
-module.exports = new EnderecoController();
+module.exports = new EnderecosController();
