@@ -1,10 +1,10 @@
-const Enderecos = require('../models/Enderecos');
+const Endereco = require('../models/Endereco');
 
 
-class EnderecosController {
+class EnderecoController {
   async index(req, res) {
     try {
-      const temp = await Enderecos.findAll();
+      const temp = await Endereco.findAll();
 
       return res.json(temp);
     } catch (err) {
@@ -14,7 +14,7 @@ class EnderecosController {
 
   async show(req, res) {
     try {
-      const temp = await Enderecos.findByPk(req.params.id,{
+      const temp = await Endereco.findByPk(req.params.id,{
         include: { association: 'moradores'}
       });
 
@@ -26,7 +26,7 @@ class EnderecosController {
 
   async store(req, res) {
     try {
-      const temp = await Enderecos.create(req.body);
+      const temp = await Endereco.create(req.body);
 
       return res.json(temp);
     } catch (err) {
@@ -36,7 +36,7 @@ class EnderecosController {
 
   async update(req, res) {
     try {
-      const temp = await Enderecos.findByPk(req.params.id);
+      const temp = await Endereco.findByPk(req.params.id);
 
       await temp.update(req.body);
 
@@ -48,7 +48,7 @@ class EnderecosController {
 
   async destroy(req, res) {
     try {
-      const temp = await Enderecos.findByPk(req.params.id);
+      const temp = await Endereco.findByPk(req.params.id);
 
       await temp.destroy();
 
@@ -59,4 +59,4 @@ class EnderecosController {
   }
 }
 
-module.exports = new EnderecosController();
+module.exports = new EnderecoController();

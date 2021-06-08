@@ -1,9 +1,9 @@
-const Profissoes = require('../models/Profissoes');
+const Profissao = require('../models/Profissao');
 
-class ProfissoesController {
+class ProfissaoController {
   async index(req, res) {
     try {
-      const temp = await Profissoes.findAll();
+      const temp = await Profissao.findAll();
 
       return res.json(temp);
     } catch (err) {
@@ -13,7 +13,7 @@ class ProfissoesController {
 
   async show(req, res) {
     try {
-      const temp = await Profissoes.findByPk(req.params.id);
+      const temp = await Profissao.findByPk(req.params.id);
 
       return res.json(temp);
     } catch (err) {
@@ -23,7 +23,7 @@ class ProfissoesController {
 
   async store(req, res) {
     try {
-      const temp = await Profissoes.create(req.body);
+      const temp = await Profissao.create(req.body);
 
       return res.json(temp);
     } catch (err) {
@@ -33,7 +33,7 @@ class ProfissoesController {
 
   async update(req, res) {
     try {
-      const temp = await Profissoes.findByPk(req.params.id);
+      const temp = await Profissao.findByPk(req.params.id);
 
       await temp.update(req.body);
 
@@ -45,7 +45,7 @@ class ProfissoesController {
 
   async destroy(req, res) {
     try {
-      const temp = await Profissoes.findByPk(req.params.id);
+      const temp = await Profissao.findByPk(req.params.id);
 
       await temp.destroy();
 
@@ -56,4 +56,4 @@ class ProfissoesController {
   }
 }
 
-module.exports = new ProfissoesController();
+module.exports = new ProfissaoController();
