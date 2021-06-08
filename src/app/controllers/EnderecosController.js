@@ -1,5 +1,6 @@
 const Enderecos = require('../models/Enderecos');
 
+
 class EnderecosController {
   async index(req, res) {
     try {
