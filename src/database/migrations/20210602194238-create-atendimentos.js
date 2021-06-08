@@ -14,7 +14,7 @@ module.exports = {
         allowNull: false
       },
       data_atendimento: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false
       },
       hora_atendimento: {

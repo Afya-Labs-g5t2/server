@@ -28,7 +28,7 @@ module.exports = {
         telefone: '(11)1111-1111',
         celular: '(11)91111-1111',
         email: 'robertosilva@email.com',
-        tipo_sangue: '+O',
+        tipo_sangue: 'O+',
         id_endereco: enderecosRows[1].id,
         created_at: new Date(),
         updated_at: new Date()

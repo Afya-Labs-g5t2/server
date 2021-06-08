@@ -12,10 +12,10 @@ class Paciente extends Model {
       tipo_sangue: Sequelize.STRING(3),
       id_endereco: Sequelize.INTEGER
     }, {
-      sequelize,
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      sequelize
     })
+
+    return this;
   }
 }
 

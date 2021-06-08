@@ -10,10 +10,10 @@ class Endereco extends Model {
       cidade: Sequelize.STRING,
       uf: Sequelize.CHAR(2)
     }, {
-      sequelize,
-      createAt: 'created_at',
-      updatedAt: 'updated_at'
+      sequelize
     })
+
+    return this;
   }
 }
 
