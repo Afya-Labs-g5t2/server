@@ -6,8 +6,8 @@ class Usuario extends Model {
     super.init({
       login: Sequelize.STRING(16),
       nome: Sequelize.STRING(150),
-      senha: Sequelize.VIRTUAL,
-      senha_hash: Sequelize.STRING
+      senha_raw: Sequelize.VIRTUAL,
+      senha: Sequelize.STRING
     }, {
       sequelize,
       tableName: 'usuarios'
@@ -15,11 +15,15 @@ class Usuario extends Model {
 
     this.addHook('beforeSave', async user => {
       if (user.senha) {
-        user.senha_hash = await bcrypt.hash(user.senha, 15);
+        user.senha = await bcrypt.hash(user.senha_raw, 15);
       }
     })
 
     return this;
+  }
+
+  checkPassword(senhaRaw) {
+    return bcrypt.compare(senhaRaw, this.senha);
   }
 }
 
