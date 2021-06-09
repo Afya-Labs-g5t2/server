@@ -1,62 +1,39 @@
 const express = require('express');
 const path = require('path')
 
-// const UserController = require('./app/controllers/UserController'); // descontinuado
-const PacientesController = require('./app/controllers/PacientesController');
-const EnderecosController= require('./app/controllers/EnderecosController');
-const ProfissoesController= require('./app/controllers/ProfissoesController');
-const app = require('./app');
-  
-
+const EnderecoController = require('./app/controllers/EnderecoController');
+const PacienteController = require('./app/controllers/PacienteController');
+const ProfissaoController = require('./app/controllers/ProfissaoController');
 
 const routes = express.Router();
 
-  routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
+routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
-  routes.get('/', (req, res) => {                                       //sendfile('./pasta/index.html') foi descontinuado, 
-    res.sendFile(path.join(__dirname,'./public/','index.html'))        //deve-se utilizar sendFile() com o path  
-                                                      
-  })
-  
-  // routes.get('/users', UserController.index);
-  // routes.post('/users', UserController.store);
+routes.get('/', (req, res) => {                //sendfile('./pasta/index.html') foi descontinuado, 
+  res.sendFile(path.join(__dirname,'./public/','index.html'))        //deve-se utilizar sendFile() com o path  
 
-  // rotas da tabela Endereços
-  routes.get('/enderecos', EnderecosController.index);
-  routes.get('/enderecos/:id', EnderecosController.show);
-  routes.post('/enderecos', EnderecosController.store);
-  routes.put('/enderecos/:id', EnderecosController.update);
-  routes.delete('/enderecos/:id', EnderecosController.destroy);
+})
 
-  // rotas da tabela pacientes
-  routes.get('/pacientes', PacientesController.index);          //todo paciente tem um endereco associado
-  routes.get('/pacientes/:id', PacientesController.show);       
-  routes.post('/pacientes', PacientesController.store);         //quando cria um paciente associa ela a um endereço
-  routes.put('/pacientes/:id', PacientesController.update);     //quando atualiza o pac, atualiza o end
-  routes.delete('/pacientes/:id', PacientesController.destroy); //quando deleta o pac, NÂO deleta o end
+// rotas de endereços
+routes.get('/enderecos', EnderecoController.index);
+routes.get('/enderecos/:id', EnderecoController.show);
+routes.post('/enderecos', EnderecoController.store);
+routes.put('/enderecos/:id', EnderecoController.update);
+routes.delete('/enderecos/:id', EnderecoController.destroy);
 
-  // rotas da tabela profissoes
-  routes.get('/profissoes', ProfissoesController.index);
-  routes.get('/profissoes/:id', ProfissoesController.show);
-  routes.post('/profissoes', ProfissoesController.store);
-  routes.put('/profissoes/:id', ProfissoesController.update);
-  routes.delete('/profissoes/:id', ProfissoesController.destroy);
+// rotas de pacientes
+routes.get('/pacientes', PacienteController.index);          //todo paciente tem um endereco associado
+routes.get('/pacientes/:id', PacienteController.show);
+routes.post('/pacientes', PacienteController.store);         //quando cria um paciente associa ela a um endereço
+routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o pac, atualiza o end
+routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
 
-  //rotas testes
-  routes.get('/clients',(req,res) => {
-      res.send({'message':'clientes'});
-  })
-  
-  routes.get('/addresses',(req,res) => {
-      res.send({'message':'Endereços'});
-  })
-  
-  routes.get('/specialists',(req,res) => {
-      res.send({'message':'Especialistas'});
-  })
-  
-  routes.get('/schedules',(req,res) => {
-      res.send({'message':'Atendimentos ou agendamentos'});
-  })
 
-  module.exports = routes;
+// rotas da profissoes
+routes.get('/profissoes', ProfissaoController.index);
+routes.get('/profissoes/:id', ProfissaoController.show);
+routes.post('/profissoes', ProfissaoController.store);
+routes.put('/profissoes/:id', ProfissaoController.update);
+routes.delete('/profissoes/:id', ProfissaoController.destroy);
+
+module.exports = routes;
