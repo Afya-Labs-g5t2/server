@@ -243,6 +243,7 @@ pre code {
 }
 
 code {
+  background-color: #000;
   font-size: 0.875em;
   color: #d63384;
   word-wrap: break-word;
