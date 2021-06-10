@@ -13,7 +13,9 @@ class ProfissaoController {
 
   async show(req, res) {
     try {
-      const temp = await Profissao.findByPk(req.params.id);
+      const temp = await Profissao.findByPk(req.params.id,{
+        include: { association: 'profissionais'}
+      });
 
       return res.json(temp);
     } catch (err) {
