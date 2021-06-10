@@ -12,6 +12,9 @@ class Profissao extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.hasMany(models.Especialista, { foreignKey: 'id_profissao', as: 'profissionais'});
+  }
 }
 
 module.exports = Profissao;
