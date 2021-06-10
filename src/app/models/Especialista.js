@@ -17,6 +17,12 @@ class Especialista extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.Endereco, { foreignKey: 'id_endereco', as: 'endereco'});
+  }
+  static associate(models) {
+    this.belongsTo(models.Profissao, { foreignKey: 'id_profissao', as: 'profissao'});
+  }
 }
 
 module.exports = Especialista;

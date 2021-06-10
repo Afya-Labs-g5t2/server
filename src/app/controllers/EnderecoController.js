@@ -15,7 +15,7 @@ class EnderecoController {
   async show(req, res) {
     try {
       const temp = await Endereco.findByPk(req.params.id,{
-        include: { association: 'moradores'}
+        include: { association: ['moradores','doutores']}
       });
 
       return res.json(temp);

@@ -1,9 +1,9 @@
-const Profissao = require('../models/Profissao');
+const Especialista = require('../models/Especialista');
 
-class ProfissaoController {
+class EspecialistaController {
   async index(req, res) {
     try {
-      const temp = await Profissao.findAll();
+      const temp = await Especialista.findAll();
 
       return res.json(temp);
     } catch (err) {
@@ -13,8 +13,8 @@ class ProfissaoController {
 
   async show(req, res) {
     try {
-      const temp = await Profissao.findByPk(req.params.id,{
-        include: { association: 'profissionais'}
+      const temp = await Especialista.findByPk(req.params.id,{
+        include: { association: ['endereco','profissao']}
       });
 
       return res.json(temp);
@@ -25,7 +25,7 @@ class ProfissaoController {
 
   async store(req, res) {
     try {
-      const temp = await Profissao.create(req.body);
+      const temp = await Especialista.create(req.body);
 
       return res.json(temp);
     } catch (err) {
@@ -35,7 +35,7 @@ class ProfissaoController {
 
   async update(req, res) {
     try {
-      const temp = await Profissao.findByPk(req.params.id);
+      const temp = await Especialista.findByPk(req.params.id);
 
       await temp.update(req.body);
 
@@ -47,7 +47,7 @@ class ProfissaoController {
 
   async destroy(req, res) {
     try {
-      const temp = await Profissao.findByPk(req.params.id);
+      const temp = await Especialista.findByPk(req.params.id);
 
       await temp.destroy();
 
@@ -58,4 +58,4 @@ class ProfissaoController {
   }
 }
 
-module.exports = new ProfissaoController();
+module.exports = new EspecialistaController();

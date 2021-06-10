@@ -1,11 +1,16 @@
 const express = require('express');
 const path = require('path')
+const cors = require('cors')
 
 const EnderecoController = require('./app/controllers/EnderecoController');
 const PacienteController = require('./app/controllers/PacienteController');
 const ProfissaoController = require('./app/controllers/ProfissaoController');
+const EspecialistaController = require('./app/controllers/EspecialistaController');
+
 
 const routes = express.Router();
+
+routes.use(cors())                                                    //para liberar o axios no cliente
 
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
@@ -35,5 +40,14 @@ routes.get('/profissoes/:id', ProfissaoController.show);
 routes.post('/profissoes', ProfissaoController.store);
 routes.put('/profissoes/:id', ProfissaoController.update);
 routes.delete('/profissoes/:id', ProfissaoController.destroy);
+
+
+// rotas de especilaistas
+routes.get('/especialistas', EspecialistaController.index);
+routes.get('/especialistas/:id', EspecialistaController.show);
+routes.post('/especialistas', EspecialistaController.store);
+routes.put('/especialistas/:id', EspecialistaController.update);
+routes.delete('/especialistas/:id', EspecialistaController.destroy);
+
 
 module.exports = routes;
