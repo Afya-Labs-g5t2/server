@@ -14,7 +14,7 @@ class EspecialistaController {
   async show(req, res) {
     try {
       const temp = await Especialista.findByPk(req.params.id,{
-        include: { association: ['endereco','profissao']}
+        include: [{ association:'endereco'},{ association:'profissao'}]
       });
 
       return res.json(temp);
