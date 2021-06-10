@@ -25,10 +25,15 @@ class Database {
     this.connection = new Sequelize(dbConfig);
 
     models.map( (model) => { model.init(this.connection) })
-    
+
+    //substituir quando tiver prontas todas as associações das tabelas
+    //models.map( (model) => {model.associate(this.connection.models) }) 
+
     // Associações entre tabelas
     Paciente.associate(this.connection.models);
     Endereco.associate(this.connection.models);
+    Profissao.associate(this.connection.models);
+    Especialista.associate(this.connection.models);
   }
 }
 

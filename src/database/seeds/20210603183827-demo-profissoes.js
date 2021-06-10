@@ -70,6 +70,10 @@ module.exports = {
     {
       profissao: 'Radiologia',
       created_at: new Date()
+    },
+    {
+      profissao: 'Infectologia',
+      created_at: new Date()      
     }
     ]);
   },

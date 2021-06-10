@@ -2,12 +2,12 @@ require('dotenv/config');
 
 module.exports = {
   dialect: 'postgres',
-  dialectOptions: {
-      ssl: {              //primeiro erro - ssl:true
-        require: true,            //segundo erro
-        rejectUnauthorized: false //corrigido com essas duas linhas
-      }
-  },
+  dialectOptions: {              //necessário para rodar no heroku
+      ssl: {                        //necessário para rodar no heroku
+        require: true,              //necessário para rodar no heroku
+        rejectUnauthorized: false   //necessário para rodar no heroku
+      }                             //necessário para rodar no heroku
+  },                                //necessário para rodar no heroku*/
   host: process.env.HOST, 
   username: process.env.USER, 
   password:  process.env.PASSWORD, 

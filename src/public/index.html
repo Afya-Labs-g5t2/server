@@ -90,38 +90,38 @@
                     <div class="col-lg-8">
                         <h2>POST</h2><br> 
                         <h4>/enderecos</h4>
-                        <p class="lead">Cria um novo endereço através de um body json:</p>
-                        <code>        
+                        <p class="lead">Cria um novo endereço através de um body json:</p>                        
+                        <pre>        
                             { <br>
-                            "cep":"36000-011", <br>
-                            "logradouro":"Rua dos bobos", <br>
-                            "numero":"0", <br>
-                            "bairro":"A casa", <br>
-                            "cidade":"Galinha pintadinha", <br>
-                            "uf":"MG" <br>
+                                "cep":"36000-011", <br>
+                                "logradouro":"Rua dos bobos", <br>
+                                "numero":"0", <br>
+                                "bairro":"A casa", <br>
+                                "cidade":"Galinha pintadinha", <br>
+                                "uf":"MG" <br>
                             }  <br>     <br>  
-                        </code>
+                        </pre>
                         <h4>/pacientes</h4>
                         <p class="lead">Cria um novo paciente associado a um endereço existente como no exemplo abaixo:</p>
-                        <code> 
+                        <pre> 
                             { <br>
-                            "cpf": "951", <br>
-                            "nome": "renato", <br>
-                            "data_nascimento": "1987-06-30", <br>
-                            "telefone": "3421 1234", <br>
-                            "celular": "999 888 777", <br>
-                            "email": "email@gmail.com", <br>
-                            "tipo_sangue": "O-", <br>
-                            "id_endereco":"2"  <br>
+                                "cpf": "951", <br>
+                                "nome": "renato", <br>
+                                "data_nascimento": "1987-06-30", <br>
+                                "telefone": "3421 1234", <br>
+                                "celular": "999 888 777", <br>
+                                "email": "email@gmail.com", <br>
+                                "tipo_sangue": "O-", <br>
+                                "id_endereco":"2"  <br>
                             } <br><br>
-                        </code>
+                        </pre>
                         <h4>/profissoes</h4>                       
                         <p class="lead">Cria uma nova profissão através de um body json:</p>  
-                        <code> 
+                        <pre> 
                             { <br>
-                            "profissao":"Dentista" <br>
+                                "profissao":"Dentista" <br>
                             }    <br><br>
-                        </code> 
+                        </pre> 
                     </div>
                 </div>
             </div>
@@ -134,11 +134,38 @@
                     <div class="col-lg-8">                        
                         <h2>PUT</h2><br> 
                         <h4>/enderecos/id</h4>
-                        <p class="lead">Update em um endereço de id específico</p>
+                        <p class="lead">Update em um endereço de id específico a partir de body JSON</p>
+                        <pre>        
+                            { <br>
+                                "cep":"36000-011", <br>
+                                "logradouro":"Rua dos bobos", <br>
+                                "numero":"0", <br>
+                                "bairro":"A casa", <br>
+                                "cidade":"Galinha pintadinha", <br>
+                                "uf":"MG" <br>
+                            }  <br>     <br>  
+                        </pre>
                         <h4>/pacientes/id</h4>
-                        <p class="lead">Update em um paciente de id específico</p>
+                        <p class="lead">Update em um paciente de id específico a partir de body JSON</p>
+                        <pre> 
+                            { <br>
+                                "cpf": "951", <br>
+                                "nome": "renato", <br>
+                                "data_nascimento": "1987-06-30", <br>
+                                "telefone": "3421 1234", <br>
+                                "celular": "999 888 777", <br>
+                                "email": "email@gmail.com", <br>
+                                "tipo_sangue": "O-", <br>
+                                "id_endereco":"2"  <br>
+                            } <br><br>
+                        </pre>
                         <h4>/profissoes/id</h4>
-                        <p class="lead">Update em uma profissão de id específico</p>                           
+                        <p class="lead">Update em uma profissão de id específico a partir de body JSON</p> 
+                        <pre> 
+                            { <br>
+                                "profissao":"Dentista" <br>
+                            }    <br><br>
+                        </pre>                           
                     </div>
                 </div>
             </div>
