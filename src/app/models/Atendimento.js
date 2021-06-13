@@ -19,6 +19,10 @@ class Atendimento extends Model {
 
     return this;
   }
+  static associate(models) {
+    this.belongsTo(models.Paciente, { foreignKey: 'id_paciente', as: 'paciente'});
+    this.belongsTo(models.Especialista, { foreignKey: 'id_especialista', as: 'especialista'});
+  };
 }
 
 module.exports = Atendimento;

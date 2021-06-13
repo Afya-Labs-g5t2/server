@@ -33,7 +33,8 @@ class Database {
     Paciente.associate(this.connection.models);
     Endereco.associate(this.connection.models);
     Profissao.associate(this.connection.models);
-    Especialista.associate(this.connection.models);
+    Especialista.associate(this.connection.models);    
+    Atendimento.associate(this.connection.models);
   }
 }
 
