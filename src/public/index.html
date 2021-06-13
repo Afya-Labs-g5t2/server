@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Scrolling Nav - Start Bootstrap Template</title>
+        <title>Prontuário Digital</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
@@ -15,7 +15,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-4">
-                <a class="navbar-brand" href="#page-top">G5T2-API</a>
+                <a class="navbar-brand" href="#page-top">Topo</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">  
@@ -32,9 +32,11 @@
         <!-- Header-->
         <header class="bg-primary bg-gradient text-white">
             <div class="container px-4 text-center">
+                <img height="200px" src="./assets/logo-api.svg" alt="LogoMarca">
                 <h1 class="fw-bolder">Prontuário Digital</h1>
-                <p class="lead">Uma API desenvolvida em node.js, Sequelize e Postgres para o desafio Gama/Afya</p>
-                <a class="btn btn-lg btn-light" href="#rotas">Bora conhecer?!</a>
+                <p class="lead">Uma API desenvolvida em node.js, Sequelize e Postgres para 
+                                o desafio da Gama Academy em conjunto com a Afya Educacional</p>
+                <a class="btn btn-lg btn-light" href="#rotas">Bora começar?!</a>
             </div>
         </header>
 
@@ -49,7 +51,7 @@
                                                 <li><a href="/enderecos">/enderecos</a></li>
                                                 <li><a href="/pacientes">/pacientes</a></li>
                                                 <li><a href="/profissoes">/profissoes</a></li>
-                                                <li><a href="#routes">/especialistas</a> (em breve)</li>                                                
+                                                <li><a href="/especialistas">/especialistas</a></li>                                                
                                                 <li><a href="#routes">/agendamentos</a> (em breve)</li>
                                             </ul>
                     </div>
@@ -67,7 +69,7 @@
                         <p class="lead">retorna uma lista só com endereços</p>
                         <h4>/enderecos/id</h4>
                         <p class="lead">retorna o endereços de id específico e com a lista de 
-                                        pacientes que moram no mesmo endereço</p>
+                                        pacientes e especialistas que moram no mesmo endereço</p>
                         <h4>/pacientes</h4>
                         <p class="lead">retorna uma lista só com pacientes</p>
                         <h4>/pacientes/id</h4>
@@ -75,8 +77,11 @@
                         <h4>/profissoes</h4>
                         <p class="lead">retorna uma lista só com profissoes</p>
                         <h4>/profissoes/id</h4>
-                        <p class="lead">retorna a profissão de id específico</p>
-                        
+                        <p class="lead">retorna a profissão de id específico com a lista de profissionais da área</p>
+                        <h4>/especialistas</h4>
+                        <p class="lead">retorna uma lista só com os especilistas</p>
+                        <h4>/especialistas/id</h4>
+                        <p class="lead">retorna o especialista de id específico com profissão e endereço</p>                        
                                         
                     </div>
                 </div>
@@ -92,35 +97,49 @@
                         <h4>/enderecos</h4>
                         <p class="lead">Cria um novo endereço através de um body json:</p>                        
                         <pre>        
-                            { <br>
-                                "cep":"36000-011", <br>
-                                "logradouro":"Rua dos bobos", <br>
-                                "numero":"0", <br>
-                                "bairro":"A casa", <br>
-                                "cidade":"Galinha pintadinha", <br>
-                                "uf":"MG" <br>
-                            }  <br>     <br>  
+                            { 
+                                "cep":"36000-011", 
+                                "logradouro":"Rua dos bobos", 
+                                "numero":"0", 
+                                "bairro":"A casa", 
+                                "cidade":"Galinha pintadinha", 
+                                "uf":"MG" 
+                            }  
                         </pre>
                         <h4>/pacientes</h4>
                         <p class="lead">Cria um novo paciente associado a um endereço existente como no exemplo abaixo:</p>
                         <pre> 
-                            { <br>
-                                "cpf": "951", <br>
-                                "nome": "renato", <br>
-                                "data_nascimento": "1987-06-30", <br>
-                                "telefone": "3421 1234", <br>
-                                "celular": "999 888 777", <br>
-                                "email": "email@gmail.com", <br>
-                                "tipo_sangue": "O-", <br>
-                                "id_endereco":"2"  <br>
-                            } <br><br>
+                            { 
+                                "cpf": "951", 
+                                "nome": "renato", 
+                                "data_nascimento": "1987-06-30", 
+                                "telefone": "3421 1234", 
+                                "celular": "999 888 777", 
+                                "email": "email@gmail.com", 
+                                "tipo_sangue": "O-", 
+                                "id_endereco":"2" 
+                            } 
                         </pre>
                         <h4>/profissoes</h4>                       
                         <p class="lead">Cria uma nova profissão através de um body json:</p>  
                         <pre> 
-                            { <br>
-                                "profissao":"Dentista" <br>
-                            }    <br><br>
+                            { 
+                                "profissao":"Dentista" 
+                            }    
+                        </pre> 
+                        <h4>/especialistas</h4>                       
+                        <p class="lead">Cria um novo especilasita através de um body json:</p>  
+                        <pre> 
+                            {
+                                "id": 1,
+                                "registro": "194528-SP",
+                                "nome": "Aarao Andrade Napoleao Lima",
+                                "telefone": "11922234567",
+                                "celular": "11922334459",
+                                "email": "araoo@example.com",
+                                "id_profissao": 4,
+                                "id_endereco": 10
+                            }  
                         </pre> 
                     </div>
                 </div>
@@ -136,36 +155,50 @@
                         <h4>/enderecos/id</h4>
                         <p class="lead">Update em um endereço de id específico a partir de body JSON</p>
                         <pre>        
-                            { <br>
-                                "cep":"36000-011", <br>
-                                "logradouro":"Rua dos bobos", <br>
-                                "numero":"0", <br>
-                                "bairro":"A casa", <br>
-                                "cidade":"Galinha pintadinha", <br>
-                                "uf":"MG" <br>
-                            }  <br>     <br>  
+                            { 
+                                "cep":"36000-011", 
+                                "logradouro":"Rua dos bobos", 
+                                "numero":"0", 
+                                "bairro":"A casa",
+                                "cidade":"Galinha pintadinha", 
+                                "uf":"MG" 
+                            }  
                         </pre>
                         <h4>/pacientes/id</h4>
                         <p class="lead">Update em um paciente de id específico a partir de body JSON</p>
                         <pre> 
-                            { <br>
-                                "cpf": "951", <br>
-                                "nome": "renato", <br>
-                                "data_nascimento": "1987-06-30", <br>
-                                "telefone": "3421 1234", <br>
-                                "celular": "999 888 777", <br>
-                                "email": "email@gmail.com", <br>
-                                "tipo_sangue": "O-", <br>
-                                "id_endereco":"2"  <br>
-                            } <br><br>
+                            { 
+                                "cpf": "951", 
+                                "nome": "renato", 
+                                "data_nascimento": "1987-06-30", 
+                                "telefone": "3421 1234", 
+                                "celular": "999 888 777",
+                                "email": "email@gmail.com",
+                                "tipo_sangue": "O-", 
+                                "id_endereco":"2" 
+                            } 
                         </pre>
                         <h4>/profissoes/id</h4>
                         <p class="lead">Update em uma profissão de id específico a partir de body JSON</p> 
                         <pre> 
-                            { <br>
-                                "profissao":"Dentista" <br>
-                            }    <br><br>
-                        </pre>                           
+                            {
+                                "profissao":"Dentista"
+                            }    
+                        </pre>
+                        <h4>/especialistas/id</h4>                       
+                        <p class="lead">Update em um especilasita  de id específico a partir de body JSON</p> 
+                        <pre> 
+                            {
+                                "id": 1,
+                                "registro": "194528-SP",
+                                "nome": "Aarao Andrade Napoleao Lima",
+                                "telefone": "11922234567",
+                                "celular": "11922334459",
+                                "email": "araoo@example.com",
+                                "id_profissao": 4,
+                                "id_endereco": 10
+                            }
+                        </pre>                                               
                     </div>
                 </div>
             </div>
@@ -182,7 +215,9 @@
                         <h4>/pacientes/id</h4>
                         <p class="lead">deleta um paciente de id específico</p>
                         <h4>/profissoes/id</h4>
-                        <p class="lead">deleta uma profissão de id específico</p>                        
+                        <p class="lead">deleta uma profissão de id específico</p> 
+                        <h4>/especialistas/id</h4>
+                        <p class="lead">deleta um especialista de id específico</p>                        
                     </div>
                 </div>
             </div>
