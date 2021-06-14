@@ -1,16 +1,22 @@
 const express = require('express');
 const path = require('path')
+const cors = require('cors')
 
 const EnderecoController = require('./app/controllers/EnderecoController');
 const PacienteController = require('./app/controllers/PacienteController');
 const ProfissaoController = require('./app/controllers/ProfissaoController');
+const EspecialistaController = require('./app/controllers/EspecialistaController');
+const AtendimentoController = require('./app/controllers/AtendimentoController');
+
 
 const routes = express.Router();
 
+routes.use(cors())                                                    //para liberar o axios no cliente
+
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
-routes.get('/', (req, res) => {                //sendfile('./pasta/index.html') foi descontinuado, 
-  res.sendFile(path.join(__dirname,'./public/','index.html'))        //deve-se utilizar sendFile() com o path  
+routes.get('/', (req, res) => {               
+  res.sendFile(path.join(__dirname,'./public/','index.html'))         //pagina inicial da API 
 
 })
 
@@ -35,5 +41,21 @@ routes.get('/profissoes/:id', ProfissaoController.show);
 routes.post('/profissoes', ProfissaoController.store);
 routes.put('/profissoes/:id', ProfissaoController.update);
 routes.delete('/profissoes/:id', ProfissaoController.destroy);
+
+
+// rotas de especialistas
+routes.get('/especialistas', EspecialistaController.index);
+routes.get('/especialistas/:id', EspecialistaController.show);
+routes.post('/especialistas', EspecialistaController.store);
+routes.put('/especialistas/:id', EspecialistaController.update);
+routes.delete('/especialistas/:id', EspecialistaController.destroy);
+
+// rotas de Atendimentos
+routes.get('/atendimentos', AtendimentoController.index);
+routes.get('/atendimentos/:id', AtendimentoController.show);
+routes.get('/atendimentos/data/:data', AtendimentoController.index); //consulta por data
+routes.post('/atendimentos', AtendimentoController.store);
+routes.patch('/atendimentos/:id', AtendimentoController.status); //modificar o status
+//routes.delete atendimentos não possuem delete, deve se mudar o status para cancelado
 
 module.exports = routes;

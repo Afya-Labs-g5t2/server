@@ -15,7 +15,7 @@ class PacienteController {
   async show(req, res) {
     try {
       const temp = await Paciente.findByPk(req.params.id,{
-        include: { association: 'endereco'}
+        include: [{ association: 'endereco'},{association: 'consulta'}]
       });
 
       return res.json(temp);

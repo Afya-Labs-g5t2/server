@@ -1,10 +1,9 @@
-const Endereco = require('../models/Endereco');
+const Especialista = require('../models/Especialista');
 
-
-class EnderecoController {
+class EspecialistaController {
   async index(req, res) {
     try {
-      const temp = await Endereco.findAll();
+      const temp = await Especialista.findAll();
 
       return res.json(temp);
     } catch (err) {
@@ -14,8 +13,8 @@ class EnderecoController {
 
   async show(req, res) {
     try {
-      const temp = await Endereco.findByPk(req.params.id,{
-        include: [{ association:'moradores'},{ association:'doutores'}]
+      const temp = await Especialista.findByPk(req.params.id,{
+        include: [{ association:'endereco'},{ association:'profissao'},{ association:'agenda'}]
       });
 
       return res.json(temp);
@@ -26,7 +25,7 @@ class EnderecoController {
 
   async store(req, res) {
     try {
-      const temp = await Endereco.create(req.body);
+      const temp = await Especialista.create(req.body);
 
       return res.json(temp);
     } catch (err) {
@@ -36,7 +35,7 @@ class EnderecoController {
 
   async update(req, res) {
     try {
-      const temp = await Endereco.findByPk(req.params.id);
+      const temp = await Especialista.findByPk(req.params.id);
 
       await temp.update(req.body);
 
@@ -48,7 +47,7 @@ class EnderecoController {
 
   async destroy(req, res) {
     try {
-      const temp = await Endereco.findByPk(req.params.id);
+      const temp = await Especialista.findByPk(req.params.id);
 
       await temp.destroy();
 
@@ -59,4 +58,4 @@ class EnderecoController {
   }
 }
 
-module.exports = new EnderecoController();
+module.exports = new EspecialistaController();

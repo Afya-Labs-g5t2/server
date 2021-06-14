@@ -15,11 +15,12 @@ class Endereco extends Model {
     })
 
     return this;
-  }
+  };
 
   static associate(models) {
     this.hasMany(models.Paciente, { foreignKey: 'id_endereco', as: 'moradores'});
-}
+    this.hasMany(models.Especialista, { foreignKey: 'id_endereco', as: 'doutores'});
+  };
 }
 
 module.exports = Endereco;

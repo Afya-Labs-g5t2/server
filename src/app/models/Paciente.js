@@ -21,6 +21,7 @@ class Paciente extends Model {
   
   static associate(models) {
       this.belongsTo(models.Endereco, { foreignKey: 'id_endereco', as: 'endereco'});
+      this.hasMany(models.Atendimento, { foreignKey: 'id_paciente', as: 'consulta'});
   }
 }
 
