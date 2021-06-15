@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "populate":"npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "remove":"npx sequelize-cli db:migrate:undo:all"
   },
   "keywords": [
     "server",
