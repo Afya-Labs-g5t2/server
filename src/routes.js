@@ -1,24 +1,53 @@
 const express = require('express');
-const path = require('path')
-const cors = require('cors')
+const path = require('path');
+const cors = require('cors');
 
-const EnderecoController = require('./app/controllers/EnderecoController');
-const PacienteController = require('./app/controllers/PacienteController');
-const ProfissaoController = require('./app/controllers/ProfissaoController');
-const EspecialistaController = require('./app/controllers/EspecialistaController');
-const AtendimentoController = require('./app/controllers/AtendimentoController');
+const swaggerUI = require("swagger-ui-express")
+const swaggerJsDoc = require("swagger-jsdoc")
+
+const options = {
+	definition: {
+		openapi: "3.0.0",
+		info: {
+			title: "Prontuário Digital",
+			version: "0.1.0",
+			description: "Uma API desenvolvida em node.js, Sequelize e Postgres para o desafio da Gama Academy em conjunto com a Afya Educacional"
+		},
+		server: [
+			{
+			url:"http://localhost:3000"
+			}
+		],
+		
+	},
+	apis: ["./routes.js"]
+} //options do swagger
+
+const specs = swaggerJsDoc(options);
+
+const EnderecoController      = require('./app/controllers/EnderecoController');
+const PacienteController      = require('./app/controllers/PacienteController');
+const ProfissaoController     = require('./app/controllers/ProfissaoController');
+const EspecialistaController  = require('./app/controllers/EspecialistaController');
+const AtendimentoController   = require('./app/controllers/AtendimentoController');
 
 
 const routes = express.Router();
 
-routes.use(cors())                                                    //para liberar o axios no cliente
-
+routes.use("/docs", swaggerUI.serve, swaggerUI.setup(specs))      //ativar o swagger
+routes.use(cors())                                                    //para liberar a comunicação entre domínios diferentes
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
 routes.get('/', (req, res) => {               
-  res.sendFile(path.join(__dirname,'./public/','index.html'))         //pagina inicial da API 
+  res.sendFile(path.join(__dirname,'./public/','index.html'))         
+}) //pagina inicial da API 
 
-})
+/**
+ * 
+ * 
+ * 
+ * 
+ */
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
