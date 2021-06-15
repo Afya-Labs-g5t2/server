@@ -2,29 +2,10 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 
+const options = require('./config/options');
 const swaggerUI = require("swagger-ui-express")
 const swaggerJsDoc = require("swagger-jsdoc")
-
-const options = {
-	definition: {
-		openapi: "3.0.0",
-		info: {
-			title: "Prontuário Digital",
-			version: "0.1.0",
-			description: "Uma API desenvolvida em node.js, Sequelize e Postgres para o desafio da Gama Academy em conjunto com a Afya Educacional"
-		},
-		server: [
-			{
-			url:"http://localhost:3000"
-			}
-		],
-		
-	},
-	apis: ["./routes.js"]
-} //options do swagger
-
 const specs = swaggerJsDoc(options);
-
 
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
@@ -107,6 +88,17 @@ routes.post('/profissoes', ProfissaoController.store);
 routes.put('/profissoes/:id', ProfissaoController.update);
 routes.delete('/profissoes/:id', ProfissaoController.destroy);
 
+/**
+ * @swagger
+ * /especialistas
+ * 	get:
+ * 		description: retorna os especilaistas
+ * 		responses:
+ * 			'200':
+ * 				description: A Suscessful response
+ * 	
+ * 
+ */
 
 // rotas de especialistas
 routes.get('/especialistas', EspecialistaController.index);
