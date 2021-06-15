@@ -1,11 +1,11 @@
-![](https://img.shields.io/badge/g5t2-server-green)
+![imagem link ](https://img.shields.io/badge/g5t2-server-green)
 
 # Desafio Afya labs
 
 ### Preview 
 
 ---
-![Alt text](./src/public/assets/api-logo.png)
+[![Logo API](./src/public/assets/api-logo.png)](https://g5t2-api.herokuapp.com/)
 
 Esse projeto faz parte do treinamento do [Gama Academy](https://www.gama.academy/) e [Afya](https://afya.com.br/).
 
@@ -66,11 +66,27 @@ cd server
   ```bash
   yarn start
   ```
-- Execute as migrations das tabelas
-  
+- Execute as migrations e as seeds das tabelas com o script
+  - npm  
   ```bash
-  npx sequelize db:migrate
+  npm run populate
   ``` 
+  - yarn  
+  ```bash
+  yarn populate
+  ``` 
+- Caso queira reverter de desvazer as migrations
+  
+  - npm  
+  ```bash
+  npm run remove
+  ``` 
+  - yarn 
+  ```bash
+  yarn remove
+  ``` 
+
+
 - Para acessar a API diretamente no seu browser, acesse https://g5t2-api.herokuapp.com/
 
 ### Estruturação das páginas
