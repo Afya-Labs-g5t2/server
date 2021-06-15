@@ -7,7 +7,7 @@ let db = {};
 if (process.env.NODE_ENV === "test") {
   db = {
     dialect: process.env.DB_DIALECT,
-    storage: './__tests__/database.sqlite',
+    storage: './__tests/database.sqlite',
     retry: {
       max: 10,
       match: [
