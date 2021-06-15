@@ -3,10 +3,11 @@ const path = require('path');
 const cors = require('cors');
 const authMiddleware = require('./app/middlewares/auth');
 
-const options = require('./config/options');
-const swaggerUI = require("swagger-ui-express")
-const swaggerJsDoc = require("swagger-jsdoc")
-const specs = swaggerJsDoc(options);
+//const options = require('./config/options');
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require('../swagger.json');
+//const swaggerJsDoc = require("swagger-jsdoc")
+//const specs = swaggerJsDoc(options);
 
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
@@ -18,7 +19,7 @@ const SessionController 	  = require('./app/controllers/SessionController');
 
 const routes = express.Router();
 
-routes.use("/docs", swaggerUI.serve, swaggerUI.setup(specs))      	  //ativar o swagger
+routes.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDocument))      	  //ativar o swagger
 routes.use(cors())                                                    //para liberar a comunicação entre domínios diferentes
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
