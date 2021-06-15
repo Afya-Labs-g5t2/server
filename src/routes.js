@@ -25,11 +25,16 @@ const options = {
 
 const specs = swaggerJsDoc(options);
 
+
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
 const ProfissaoController     = require('./app/controllers/ProfissaoController');
 const EspecialistaController  = require('./app/controllers/EspecialistaController');
 const AtendimentoController   = require('./app/controllers/AtendimentoController');
+const UsuarioController 	  = require('./app/controllers/UsuarioController');
+
+const SessionController 	  = require('./app/controllers/SessionController');
+const authMiddleware 		  = require('./app/middlewares/auth');
 
 
 const routes = express.Router();
@@ -48,6 +53,16 @@ routes.get('/', (req, res) => {
  * 
  * 
  */
+
+// Criar usuário
+routes.get('/usuarios', UsuarioController.index);
+routes.post('/usuarios', UsuarioController.store);
+
+// Logar
+routes.post('/session', SessionController.store);
+
+// Autenticação
+routes.use(authMiddleware);
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
