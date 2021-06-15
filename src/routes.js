@@ -43,12 +43,19 @@ routes.use("/docs", swaggerUI.serve, swaggerUI.setup(specs))      //ativar o swa
 routes.use(cors())                                                    //para liberar a comunicação entre domínios diferentes
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
+routes.use(function(req, res, next) {
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
+  });//retorna 404 para as rotas que não existem
+
+
 routes.get('/', (req, res) => {               
   res.sendFile(path.join(__dirname,'./public/','index.html'))         
 }) //pagina inicial da API 
 
 /**
- * 
+ * @swagger
  * 
  * 
  * 
