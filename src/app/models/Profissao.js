@@ -3,7 +3,12 @@ const { Model, Sequelize } = require('sequelize');
 class Profissao extends Model {
   static init(sequelize) {
     super.init({
-      profissao: Sequelize.STRING
+      profissao: {
+        type: Sequelize.STRING,
+        validate: {
+          isAlpha: true,
+        }
+      }
     }, {
       sequelize,
       updatedAt: false,
