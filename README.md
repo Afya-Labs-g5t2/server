@@ -1,4 +1,6 @@
-[![imagem link ](https://img.shields.io/badge/g5t2-server-green)](https://g5t2-api.herokuapp.com/)
+![imagem link ](https://img.shields.io/badge/g5t2-server-green)
+
+<a href="https://g5t2-api.herokuapp.com/"><img src="https://img.shields.io/badge/g5t2-server-green" alt="logo da API" style="width:42px;height:42px;"></a>
 
 # Desafio Afya labs
 
