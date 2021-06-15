@@ -1,15 +1,19 @@
+![](https://img.shields.io/badge/g5t2-server-green)
+
 # Desafio Afya labs
+
+### Preview 
+
+---
+![Alt text](./src/public/assets/api-logo.png)
 
 Esse projeto faz parte do treinamento do [Gama Academy](https://www.gama.academy/) e [Afya](https://afya.com.br/).
 
 O objetivo é criar um sistema para um consultório controlar o cadastro de seus clientes, atendimentos e prontuário dos pacientes.
 
-Nosso time decidiu dividir o projeto em duas partes, um **client-side** e um **server-side**. Esse repositório é a parte Server do projeto. O **client-side** pode ser encontrado [aqui](https://github.com/Afya-Labs-g5t2/client).
+Nosso time decidiu dividir o projeto em duas partes, um **client-side** e um **server-side**. Esse repositório é a parte **Server** do projeto. 
 
-
-### Preview
-
----
+O **client-side** pode ser encontrado [aqui](https://github.com/Afya-Labs-g5t2/client).
 
 ## Resumo
 
@@ -24,10 +28,16 @@ Nosso time decidiu dividir o projeto em duas partes, um **client-side** e um **s
 
 ## Projeto
 
-O projeto foi feito utilizando [Node.js](https://nodejs.org/) e base de dados [PostgreSQL](https://www.postgresql.org/), junto com ORM [Sequelize](https://sequelize.org/). As principais bibliotecas utilizadas foram:
 
-- [express](https://expressjs.com/)
-- [nodemon](https://nodemon.io/)
+O projeto foi feito utilizando as tecnologias:
+
+- [Node.js](https://nodejs.org/) 
+- [PostgreSQL](https://www.postgresql.org/)
+- [Sequelize](https://sequelize.org/)
+- [Express.js](https://expressjs.com/)
+- [Nodemon](https://nodemon.io/)
+- [JWT](https://jwt.io/)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 
 ### Install
@@ -35,7 +45,7 @@ O projeto foi feito utilizando [Node.js](https://nodejs.org/) e base de dados [P
 - para iniciar a instalação, clone o repositório em sua pasta local ou faça o download 
 ```bash
 git clone https://github.com/Afya-Labs-g5t2/server.git
-cd client
+cd server
 ```
 - instale as dependências do projeto
 
@@ -56,38 +66,23 @@ cd client
   ```bash
   yarn start
   ```
+- Execute as migrations das tabelas
   
+  ```bash
+  npx sequelize db:migrate
+  ``` 
+- Para acessar a API diretamente no seu browser, acesse https://g5t2-api.herokuapp.com/
+
 ### Estruturação das páginas
   
 ### Trabalhando no projeto
 
+- [Thais Hoshii](https://github.com/Thais-Hoshii)
+- [Renato Lobo](https://github.com/renatolobojr)
+- [Renata Kanezaki](https://github.com/RenataMie)
+- [Marcos Alves](https://github.com/mlamarques)
+- [Michele Coelho](https://github.com/micheleset7)
+- [Vinicius Carvalho](https://github.com/vinicius-carvalho)
+
+
 ### Boas práticas
-
-
-
-
-#passo a passo de como fiz a api
-
-npm init
-
-npm i esxpress
-
-npm i nodemom -D
-
- - criei os scripts para start e dev
-
- - primeiro eu criei um versãominima de um servidor express
-
- - substitui o send da requsição get por sendFile e inclui o path no require.
-
- - criei um index.html para ser a pagina inicial da api
-
-npm i sequelize pg pg-hstore
-
-npm i sequelize-cli -D 
-
-npx sequelize init
-
-npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
-
-npx sequeize db:migrate
