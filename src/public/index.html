@@ -19,11 +19,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">  
-                        <li class="nav-item"><a class="nav-link" href="#rotas">Rotas</a></li>                      
-                        <li class="nav-item"><a class="nav-link" href="#get">GET</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#post">POST</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#put">PUT</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#delete">DELETE</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#rotas">Rotas</a></li>                        
+                        <li class="nav-item"><a class="nav-link" href="#post">Create</a></li>                      
+                        <li class="nav-item"><a class="nav-link" href="#get">Read</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#put">Update</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#delete">Delete</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                                                 <li><a href="/pacientes">/pacientes</a></li>
                                                 <li><a href="/profissoes">/profissoes</a></li>
                                                 <li><a href="/especialistas">/especialistas</a></li>                                                
-                                                <li><a href="#routes">/agendamentos</a> (em breve)</li>
+                                                <li><a href="/atendimentos">/atendimentos</a></li>
                                             </ul>
                     </div>
                 </div>
@@ -81,7 +81,13 @@
                         <h4>/especialistas</h4>
                         <p class="lead">retorna uma lista só com os especilistas</p>
                         <h4>/especialistas/id</h4>
-                        <p class="lead">retorna o especialista de id específico com profissão e endereço</p>                        
+                        <p class="lead">retorna o especialista de id específico com profissão e endereço</p>
+                        <h4>/atendimentos</h4>
+                        <p class="lead">retorna uma lista só dos atendimentos</p>
+                        <h4>/atendimentos/id</h4>
+                        <p class="lead">retorna um agendamento de id específico com especilista e paciente detalhado</p> 
+                        <h4>/atendimentos/data/2021-05-02</h4>
+                        <p class="lead">retorna os atendimentos da data especificada</p>                        
                                         
                     </div>
                 </div>
@@ -128,7 +134,7 @@
                             }    
                         </pre> 
                         <h4>/especialistas</h4>                       
-                        <p class="lead">Cria um novo especilasita através de um body json:</p>  
+                        <p class="lead">Cria um novo especialista através de um body json:</p>  
                         <pre> 
                             {
                                 "id": 1,
@@ -140,6 +146,18 @@
                                 "id_profissao": 4,
                                 "id_endereco": 10
                             }  
+                        </pre> 
+                        <h4>/atendimentos</h4>                       
+                        <p class="lead">Cria um novo agendamento através de um body json:</p>  
+                        <pre> 
+                            {          
+                                "data_atendimento": "2021-06-15",
+                                "hora_atendimento": "13:00",
+                                "valor": "230.50",
+                                "id_especialista":2,
+                                "id_paciente": 299,
+                                "status": "AGENDADO"
+                            } 
                         </pre> 
                     </div>
                 </div>
@@ -198,6 +216,14 @@
                                 "id_profissao": 4,
                                 "id_endereco": 10
                             }
+                        </pre>
+                        <h2>PATCH</h2><br> 
+                        <h4>/atendimentos/id</h4>
+                        <p class="lead">Alteração no campo Status de um atendimento de id específico a partir de body JSON</p>
+                        <pre>        
+                            {          
+                                "status": "REALIZADO"
+                            } 
                         </pre>                                               
                     </div>
                 </div>
@@ -217,7 +243,9 @@
                         <h4>/profissoes/id</h4>
                         <p class="lead">deleta uma profissão de id específico</p> 
                         <h4>/especialistas/id</h4>
-                        <p class="lead">deleta um especialista de id específico</p>                        
+                        <p class="lead">deleta um especialista de id específico</p>
+                        <h4>/atendimentos/id</h4>
+                        <p class="lead">delete NÃO é permitido na tabela atendimentos</p>                        
                     </div>
                 </div>
             </div>

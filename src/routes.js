@@ -7,7 +7,10 @@ const PacienteController = require('./app/controllers/PacienteController');
 const ProfissaoController = require('./app/controllers/ProfissaoController');
 const EspecialistaController = require('./app/controllers/EspecialistaController');
 const AtendimentoController = require('./app/controllers/AtendimentoController');
+const UsuarioController = require('./app/controllers/UsuarioController');
 
+const SessionController = require('./app/controllers/SessionController');
+const authMiddleware = require('./app/middlewares/auth');
 
 const routes = express.Router();
 
@@ -19,6 +22,15 @@ routes.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'./public/','index.html'))         //pagina inicial da API 
 
 })
+
+// Criar usuário
+routes.post('/usuarios', UsuarioController.store);
+
+// Logar
+routes.post('/session', SessionController.store);
+
+// Autenticação
+routes.use(authMiddleware);
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
