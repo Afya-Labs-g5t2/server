@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     });
   }
 
-  const [token] = authHeaders.split(" ");
+  const [,token] = authHeaders.split(" ");
 
   try {    
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
