@@ -43,7 +43,7 @@ routes.use("/docs", swaggerUI.serve, swaggerUI.setup(specs))      //ativar o swa
 routes.use(cors())                                                    //para liberar a comunicação entre domínios diferentes
 routes.use(express.static(path.join(__dirname,'./public/')));         //utilizado para o express carregar toda a pasta public
 
-routes.use(function(req, res, next) {
+routes.use((req, res, next) => {
 	var err = new Error('Not Found');
 	err.status = 404;
 	next(err);
@@ -56,9 +56,23 @@ routes.get('/', (req, res) => {
 
 /**
  * @swagger
- * 
- * 
- * 
+ * components:
+ * 	schemas:
+ * 		Pacientes:
+ * 			tupe: objeect
+ * 			required:
+ * 				- obritagtor
+ * 				- sdfadsf
+ * 			properties:
+ * 				id:
+ * 					type: string
+ * 					description: id de pacientes
+ * 				nome:
+ * 					type: string
+ * 					description: o nome do paciente
+ * 			example:
+ * 				id: 1
+ * 				nome: Renato	
  */
 
 // Criar usuário
