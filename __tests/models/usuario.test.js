@@ -2,7 +2,11 @@ const Usuario = require('../../src/app/models/Usuario');
 require('../../src/database/index');
 
 describe("Testando modelo Usuario", () => {
-  
+
+  afterAll(async () => {
+    return await Usuario.destroy({truncate: true});
+  });
+
   test("Inserir valores válidos no modelo Usuario", async () => {
     let novoUsuario = await Usuario.create({
       login: "exemplo",
@@ -19,7 +23,7 @@ describe("Testando modelo Usuario", () => {
   });
 
   test("Valor da senha é equivalente ao hash", async () => {
-    let usuario = await Usuario.findOne({ where: { id: 1 }});
+    let usuario = await Usuario.findOne({ where: { login: "exemplo" }});
     let resultado = await usuario.checkPassword("12345");
     expect(resultado).toBe(true);
   });
