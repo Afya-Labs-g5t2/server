@@ -4,7 +4,7 @@ const authConfig = require("../../config/auth");
 
 module.exports = async (req, res, next) => {
 
-  const authHeaders = red.headers.authorizations;
+  const authHeaders = req.headers.authorizations;
 
   if (!authHeaders) {
     return res.status(401).json({

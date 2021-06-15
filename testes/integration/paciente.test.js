@@ -2,13 +2,41 @@ const request = require('supertest');
 const app = require("../../src/app");
 require("../../src/database");
 
+let token;
 
 describe("Paciente", () => {
+
+    beforeAll(async() => {
+        await request(app)
+          .post('/usuarios')
+          .send({
+            login: "Afya1",
+            senha: "afyasenha1",
+            nome: "afya1"
+        })
+        
+        });
+    
+      beforeEach( (done) => {
+       request(app)
+          .post('/session')
+          .send({
+            login: "Afya1",
+            senha: "afyasenha1",
+            nome: "afya1"
+        })
+          .end((err, response) => {
+            token = response.body.token; // save the token!
+            done();
+          });
+      });
+
     
     it("post novo paciente", async() => {
 
         const response = await request(app)
             .post("/pacientes")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cpf: '101.111.111-12',
                 nome: 'Roberto da Silva',
@@ -29,6 +57,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .post("/pacientes")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cpf: null,
                 nome: null,
@@ -49,6 +78,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .get("/pacientes")
+            .set("Authorizations", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body[0].nome).not.toBe(undefined);
@@ -60,6 +90,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .get("/pacientes/1")
+            .set("Authorizations", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('endereco');
@@ -81,6 +112,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .put("/pacientes/1")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cpf: '101.111.111-12',
                 nome: 'Roberto da Silva',
@@ -100,6 +132,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .put("/pacientes/1")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cpf: null,
                 nome: null,
@@ -120,6 +153,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .del("/pacientes/1")
+            .set("Authorizations", `Bearer ${token}`)
                
             expect(response.statusCode).toEqual(200);
             expect(response.ok).toBeTruthy();
@@ -130,6 +164,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .del("/pacientes/0")
+            .set("Authorizations", `Bearer ${token}`)
                
             expect(response.statusCode).toEqual(400);
             expect(response.body).toHaveProperty("error");

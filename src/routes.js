@@ -32,6 +32,10 @@ routes.post('/session', SessionController.store);
 // Autenticação
 routes.use(authMiddleware);
 
+
+
+routes.get('/usuarios', UsuarioController.index);
+
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
 routes.get('/enderecos/:id', EnderecoController.show);

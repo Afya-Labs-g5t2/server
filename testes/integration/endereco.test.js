@@ -2,13 +2,41 @@ const request = require('supertest');
 const app = require("../../src/app");
 require("../../src/database");
 
+let token;
 
 describe("Endereco", () => {
+
+    beforeAll(async() => {
+        await request(app)
+          .post('/usuarios')
+          .send({
+            login: "testesAfya",
+            senha: "123testes",
+            nome: "testes"
+        })
+        
+        });
+    
+      beforeEach( (done) => {
+       request(app)
+          .post('/session')
+          .send({
+            login: "testesAfya",
+            senha: "123testes",
+            nome: "testes"
+        })
+          .end((err, response) => {
+            token = response.body.token; // save the token!
+            done();
+          });
+      });
+
 
     it("post novo endereco", async() => {
 
         const response = await request(app)
             .post("/enderecos")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cep: 544,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -27,6 +55,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .post("/enderecos")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cep: null,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -45,6 +74,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .get("/enderecos")
+            .set("Authorizations", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body[0].cidade).toEqual("João Pessoa");
@@ -67,6 +97,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .get("/enderecos/1")
+            .set("Authorizations", `Bearer ${token}`)
         
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('moradores');
@@ -89,6 +120,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .put("/enderecos/1")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cep: 500,
                 logradouro: "Vila das Neves",
@@ -108,6 +140,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .put("/enderecos/1")
+            .set("Authorizations", `Bearer ${token}`)
             .send({
                 cep: 544,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -127,6 +160,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .del("/enderecos/1")
+            .set("Authorizations", `Bearer ${token}`)
            
             expect(response.statusCode).toEqual(200);
             expect(response.ok).toBeTruthy();
@@ -138,6 +172,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .del("/enderecos/0")
+            .set("Authorizations", `Bearer ${token}`)
         
        
         expect(response.statusCode).toEqual(400);
