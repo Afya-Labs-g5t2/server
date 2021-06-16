@@ -7,7 +7,9 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore __tests__",
     "test": "set NODE_ENV=test&&jest",
-    "pretest": "set NODE_ENV=test&&sequelize db:migrate"
+    "pretest": "set NODE_ENV=test&&sequelize db:migrate:undo:all&&sequelize db:migrate",
+    "populate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "remove": "npx sequelize-cli db:migrate:undo:all"
   },
   "keywords": [
     "server",
@@ -27,7 +29,9 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "jest": "^27.0.4",

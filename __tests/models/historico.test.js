@@ -4,7 +4,7 @@ require('../../src/database/index');
 describe("Testando modelo ", () => {
 
   afterAll(async () => {
-    return await Historico.destroy({truncate: true});
+    await Historico.destroy({truncate: true});
   });
 
   test("Inserir valores válidos no modelo ", () => {

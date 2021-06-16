@@ -4,7 +4,7 @@ require('../../src/database/index');
 describe("Testando model Profissao", () => {
 
   afterAll(async () => {
-    return await Profissao.destroy({truncate: true});
+    await Profissao.destroy({truncate: true});
   });
 
   test("Inserir valores válidos no modelo Profissao", async () => {

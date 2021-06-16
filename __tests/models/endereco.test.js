@@ -4,7 +4,7 @@ require('../../src/database/index');
 describe("Testando modelo Endereco", () => {
 
   afterAll(async () => {
-    return await Endereco.destroy({truncate: true});
+    await Endereco.destroy({truncate: true});
   });
 
   test("Inserir valores válidos no modelo Endereco", async () => {
@@ -17,6 +17,14 @@ describe("Testando modelo Endereco", () => {
       uf: "sp"
     });
     expect(novoEndereco.id).not.toBe(undefined);
+    expect(novoEndereco.cep.length <= 9).toBe(true);
+    expect(typeof novoEndereco.logradouro).toBe("string");
+    expect(typeof novoEndereco.numero).toBe("number");
+    expect(typeof novoEndereco.bairro).toBe("string");
+    expect(typeof novoEndereco.cidade).toBe("string");
+    expect(novoEndereco.uf.length).toBe(2);
+    expect(novoEndereco.createdAt).not.toBe(undefined);
+    expect(novoEndereco.updatedAt).not.toBe(undefined);
   });
 
   test("Inserir dado inválido no campo cep do modelo Endereco", async () => {
