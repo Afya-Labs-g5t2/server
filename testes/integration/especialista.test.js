@@ -8,9 +8,9 @@ beforeAll(async() => {
     await request(app)
       .post('/usuarios')
       .send({
-        login: "Afya3",
-        senha: "afyasenha3",
-        nome: "afya3"
+        login: "Afya30",
+        senha: "afyasenha30",
+        nome: "afya30"
     })
     
     });
@@ -19,9 +19,9 @@ beforeAll(async() => {
    request(app)
       .post('/session')
       .send({
-        login: "Afya3",
-        senha: "afyasenha3",
-        nome: "afya3"
+        login: "Afya30",
+        senha: "afyasenha30",
+        nome: "afya30"
     })
       .end((err, response) => {
         token = response.body.token; // save the token!
@@ -34,7 +34,7 @@ beforeAll(async() => {
 
     const response = await request(app)
         .get("/especialistas")
-        .set("Authorizations", `Bearer ${token}`)
+        .set("Authorization", `Bearer ${token}`)
        
     expect(response.statusCode).toEqual(200);
 
@@ -46,8 +46,9 @@ describe("Especialista", () => {
       beforeAll(async() => {
         await request(app)
          .post("/profissoes")
-         .set("Authorizations", `Bearer ${token}`)
+         .set("Authorization", `Bearer ${token}`)
          .send({
+             id: 2,
              profissao: 'clinico geral'
          });
        });
@@ -55,8 +56,8 @@ describe("Especialista", () => {
       
     afterAll(async() => {
         await request(app)
-         .del("/profissoes/1")
-         .set("Authorizations", `Bearer ${token}`)
+         .del("/profissoes/2")
+         .set("Authorization", `Bearer ${token}`)
     });
    
 
@@ -65,15 +66,15 @@ describe("Especialista", () => {
         const response = await request(app)
         
             .post('/especialistas')
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
+                id:1,
                 registro: '194527-SP',
                 nome: 'Aarao Andrade Napoleao Lima',
                 celular: '11922334458',
                 telefone: '11922234567',
                 email: 'araoo@example.com',
-                id_profissao: 1
-                
+                id_profissao: 2   
             });
         console.log(response.error)
         expect(response.ok).toBeTruthy();
@@ -84,7 +85,7 @@ describe("Especialista", () => {
 
         const response = await request(app)
             .post("/especialistas")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 registro: null,
                 nome: null,
@@ -102,7 +103,7 @@ describe("Especialista", () => {
 
         const response = await request(app)
             .get("/especialistas/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         })
@@ -124,14 +125,14 @@ describe("Especialista", () => {
 
             const response = await request(app)
                 .put("/especialistas/1")
-                .set("Authorizations", `Bearer ${token}`)
+                .set("Authorization", `Bearer ${token}`)
                 .send({
                     registro: '194527-SP',
                     nome: 'Aarao Andrade Napoleao Lima',
                     celular: '11922335555',
                     telefone: '11922234567',
                     email: 'araoo@example.com',
-                    id_profissao: 1
+                    id_profissao: 2
                 });
     
             expect(response.ok).toBeTruthy();
@@ -144,7 +145,7 @@ describe("Especialista", () => {
 
             const response = await request(app)
                 .put("/especialistas/1")
-                .set("Authorizations", `Bearer ${token}`)
+                .set("Authorization", `Bearer ${token}`)
                 .send({
                     registro: null,
                     nome: null,
@@ -165,7 +166,7 @@ describe("Especialista", () => {
 
             const response = await request(app)
                 .del("/especialistas/1")
-                .set("Authorizations", `Bearer ${token}`)
+                .set("Authorization", `Bearer ${token}`)
                
                 expect(response.statusCode).toEqual(200);
                 expect(response.ok).toBeTruthy();
@@ -176,7 +177,7 @@ describe("Especialista", () => {
 
             const response = await request(app)
                 .del("/especialistas/0")
-                .set("Authorizations", `Bearer ${token}`)
+                .set("Authorization", `Bearer ${token}`)
                
                 expect(response.statusCode).toEqual(400);
                 expect(response.body).toHaveProperty("error");

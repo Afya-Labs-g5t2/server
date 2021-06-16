@@ -10,9 +10,9 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/usuarios")
             .send({
-                login: "adminii",
-                senha: "adminii",
-                nome: "adminii"
+                login: "admini",
+                senha: "admini",
+                nome: "admini"
             })
 
         expect(response.ok).toBeTruthy();
@@ -42,9 +42,9 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/session")
             .send({
-                login: "adminii",
+                login: "admini",
                 senha: "123123",
-                nome: "adminii"
+                nome: "admini"
             })
 
         // console.log(response.error)
@@ -76,9 +76,9 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/session")
             .send({
-                login: "adminii",
-                senha: "adminii",
-                nome: "adminii"
+                login: "admini",
+                senha: "admini",
+                nome: "admini"
             })
 
         expect(response.ok).toBeTruthy();
@@ -90,15 +90,15 @@ describe("Usuario", () => {
         const user = await request(app)
             .post("/session")
             .send({
-                login: "adminii",
-                senha: "adminii",
-                nome: "adminii"
+                login: "admini",
+                senha: "admini",
+                nome: "admini"
             })
         // console.log(user)
 
         const response = await request(app)
             .get("/usuarios")
-            .set("Authorizations", `Bearer ${user.body.token}`)
+            .set("Authorization", `Bearer ${user.body.token}`)
         
         // console.log(response)
         expect(response.statusCode).toEqual(200);

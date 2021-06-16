@@ -36,7 +36,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .post("/enderecos")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cep: 544,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -55,7 +55,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .post("/enderecos")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cep: null,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -74,7 +74,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .get("/enderecos")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body[0].cidade).toEqual("João Pessoa");
@@ -84,11 +84,11 @@ describe("Endereco", () => {
     //  it("ERROR get endereco", async() => {
 
     //     const response = await request(app)
-    //         .get("/%enderecos")
+    //         .get("/enderecos")
         
     //     // console.log(response)
-    //     expect(response.statusCode).toEqual(400);
-    //     expect(response.body).toHaveProperty("error");
+    //     expect(response.statusCode).toEqual(401);
+    //     expect(response.body.message).toEqual("Ocorreu um problema na autenticação");
         
     // })
     
@@ -97,7 +97,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .get("/enderecos/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
         
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('moradores');
@@ -108,19 +108,18 @@ describe("Endereco", () => {
     // it("ERROR get endereco pelo ID", async() => {
 
     //     const response = await request(app)
-    //         .get("/enderecos/0")
+    //         .get("/enderecos/1")
         
-        
-    //     expect(response.statusCode).toEqual(400);
-    //     expect(response.body).toHaveProperty("error");
-        
+    //     expect(response.statusCode).toEqual(401);
+    //     expect(response.body.message).toEqual("Ocorreu um problema na autenticação");
     // })
+    
 
     it("update endereco", async() => {
 
         const response = await request(app)
             .put("/enderecos/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cep: 500,
                 logradouro: "Vila das Neves",
@@ -140,7 +139,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .put("/enderecos/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cep: 544,
                 logradouro: "Vila Nossa Senhora das Neves",
@@ -160,7 +159,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .del("/enderecos/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
             expect(response.statusCode).toEqual(200);
             expect(response.ok).toBeTruthy();
@@ -172,7 +171,7 @@ describe("Endereco", () => {
 
         const response = await request(app)
             .del("/enderecos/0")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
         
        
         expect(response.statusCode).toEqual(400);

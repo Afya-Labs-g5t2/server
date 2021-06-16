@@ -10,9 +10,9 @@ describe("Profissao", () => {
         await request(app)
           .post('/usuarios')
           .send({
-            login: "Afya2",
-            senha: "afyasenha2",
-            nome: "afya2"
+            login: "renata100",
+            senha: "afya1",
+            nome: "renata100"
         })
         
         });
@@ -21,9 +21,9 @@ describe("Profissao", () => {
        request(app)
           .post('/session')
           .send({
-            login: "Afya2",
-            senha: "afyasenha2",
-            nome: "afya2"
+            login: "renata100",
+            senha: "afya1",
+            nome: "renata100"
         })
           .end((err, response) => {
             token = response.body.token; // save the token!
@@ -37,7 +37,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .post("/profissoes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 id:1,
                 profissao: 'dentista'
@@ -52,7 +52,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .post("/profissoes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 profissao: null
             });
@@ -67,7 +67,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .get("/profissoes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         // expect(response.body[0].profissao).toEqual('dentista');
@@ -79,7 +79,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .get("/profissoes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('profissionais')
@@ -99,7 +99,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .put("/profissoes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 profissao: "cardiologista"
             });
@@ -115,7 +115,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .put("/profissoes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                  profissao: null,
             });
@@ -131,7 +131,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .del("/profissoes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
                
             console.log(response.error)
             expect(response.statusCode).toEqual(200);
@@ -143,7 +143,7 @@ describe("Profissao", () => {
 
         const response = await request(app)
             .del("/profissoes/0")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             
         
             expect(response.statusCode).toEqual(400);

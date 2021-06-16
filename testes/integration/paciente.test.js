@@ -36,8 +36,9 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .post("/pacientes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
+                id:1,
                 cpf: '101.111.111-12',
                 nome: 'Roberto da Silva',
                 data_nascimento: '1999-02-02',
@@ -57,7 +58,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .post("/pacientes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cpf: null,
                 nome: null,
@@ -78,7 +79,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .get("/pacientes")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body[0].nome).not.toBe(undefined);
@@ -90,7 +91,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .get("/pacientes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('endereco');
@@ -112,7 +113,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .put("/pacientes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cpf: '101.111.111-12',
                 nome: 'Roberto da Silva',
@@ -132,7 +133,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .put("/pacientes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
             .send({
                 cpf: null,
                 nome: null,
@@ -153,7 +154,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .del("/pacientes/1")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
                
             expect(response.statusCode).toEqual(200);
             expect(response.ok).toBeTruthy();
@@ -164,7 +165,7 @@ describe("Paciente", () => {
 
         const response = await request(app)
             .del("/pacientes/0")
-            .set("Authorizations", `Bearer ${token}`)
+            .set("Authorization", `Bearer ${token}`)
                
             expect(response.statusCode).toEqual(400);
             expect(response.body).toHaveProperty("error");
