@@ -1,4 +1,6 @@
 const Endereco = require('../models/Endereco');
+const Especialista = require('../models/Especialista');
+const Paciente = require('../models/Paciente');
 
 
 class EnderecoController {
@@ -27,7 +29,19 @@ class EnderecoController {
 
   async store(req, res) {
     try {
-      const temp = await Endereco.create(req.body);
+      let temp = await Endereco.create(req.body);
+      const {id} = temp;
+      const id_endereco = id;
+
+      if(req.body.registro) {   
+        let {registro, nome, telefone, celular, email, id_profissao} = req.body; 
+        temp = await Especialista.create({registro, nome, telefone, celular, email, id_profissao, id_endereco});
+
+      }
+      else if (req.body.cpf) {
+        let {cpf, nome, data_nascimento, telefone, celular, email, tipo_sangue} = req.body;
+        temp = await Paciente.create({cpf, nome, data_nascimento, telefone, celular, email, tipo_sangue, id_endereco});
+      }
 
       return res.json(temp);
     } catch (err) {
