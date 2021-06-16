@@ -4,13 +4,17 @@ class AtendimentoController {
   async index(req, res) {
     try {
 
+      let temp
+
       if(req.params.data) {
-        var filtro = await Atendimento.findAll({where : {'data_atendimento': req.params.data}});
+      temp = await Atendimento.findAll({where : {'data_atendimento': req.params.data}});
       }else{
-        var filtro = await Atendimento.findAll();
+      temp = await Atendimento.findAll();
       }
+
       
-      return res.json(filtro);
+      
+      return res.json(temp);
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
