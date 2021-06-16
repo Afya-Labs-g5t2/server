@@ -1,14 +1,13 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "description": "servidor simplificado",
+  "description": "api CRUD",
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "NODE_ENV=test jest",
-    "pretest": "NODE_ENV=test sequelize db:migrate",
-    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
+    "populate":"npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+    "remove":"npx sequelize-cli db:migrate:undo:all"
   },
   "keywords": [
     "server",
@@ -16,9 +15,11 @@
     "swagger",
     "express",
     "sequelize",
+    "jwt",
+    "bcrypt",
     "postgres"
   ],
-  "author": "Renato - 52team",
+  "author": "g5t2team",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -28,7 +29,9 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",

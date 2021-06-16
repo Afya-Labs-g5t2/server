@@ -11,7 +11,8 @@ class EnderecoController {
       return res.status(400).json({ error: err.message });
     }
   }
-
+ 
+  
   async show(req, res) {
     try {
       const temp = await Endereco.findByPk(req.params.id,{
@@ -22,7 +23,7 @@ class EnderecoController {
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  }
+  }//  */
 
   async store(req, res) {
     try {
@@ -32,7 +33,23 @@ class EnderecoController {
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
-  }
+  }// */
+
+  /**async store(req, res) {
+    try {
+      const { cep } = req.body;
+
+      const [temp, Created ] = await Endereco.findOrCreate({
+        where : { cep } //[{ cep },{numero}]
+      });
+
+      
+      
+      return res.json(temp);
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }// */
 
   async update(req, res) {
     try {
