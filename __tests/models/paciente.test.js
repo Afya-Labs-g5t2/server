@@ -182,9 +182,4 @@ describe("Testando modelo Paciente", () => {
     });
     expect(novoPaciente).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
   });
-
-  test("Banco de dados só aceita valores válidos", async () => {
-    let pacientes = await Paciente.findAll();
-    expect(pacientes.length).toBe(1);
-  });
 });
