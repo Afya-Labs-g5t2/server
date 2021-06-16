@@ -5,9 +5,9 @@ require('../../src/database/index');
 describe("Testando modelo Paciente", () => {
   let endereco = {};
 
-  beforeAll(() => {
-    endereco = Endereco.build({
-      cep: "00000-000",
+  beforeAll(async () => {
+    endereco = await Endereco.create({
+      cep: "11111-111",
       logradouro: "Rua 25 de Março",
       numero: 404,
       bairro: "Bairro Alegria",
@@ -15,11 +15,6 @@ describe("Testando modelo Paciente", () => {
       uf: "sp"
     });
   });
-
-  afterAll(async () => {
-    // await Endereco.destroy({truncate: true});
-    await Paciente.destroy({truncate: true});
-  })
 
   test("Inserir valores válidos no modelo Paciente", async () => {
     let novoPaciente = await Paciente.create({

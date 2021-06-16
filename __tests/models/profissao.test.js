@@ -3,10 +3,6 @@ require('../../src/database/index');
 
 describe("Testando model Profissao", () => {
 
-  afterAll(async () => {
-    await Profissao.destroy({truncate: true});
-  });
-
   test("Inserir valores válidos no modelo Profissao", async () => {
     let novaProfissao = await Profissao.create({
       profissao: "Cardiologia"
@@ -22,10 +18,5 @@ describe("Testando model Profissao", () => {
       return err.message;
     });
     expect(profissaoInvalida).toBe("Validation error: Validation isAlpha on profissao failed");
-  });
-
-  test("Base de dados só aceita valores válidos", async () => {
-    let profissoes = await Profissao.findAll();
-    expect(profissoes.length).toBe(1);
   });
 });

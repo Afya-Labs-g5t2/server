@@ -3,11 +3,10 @@ require('../../src/database/index');
 
 describe("Testando modelo Prontuario", () => {
 
-  afterAll(async () => {
-    await Prontuario.destroy({truncate: true});
-  });
-
-  test("Inserir valores válidos no modelo ", () => {
-    expect("hello").toBe("hello");
+  test("Inserir valores válidos no modelo Prontuario", async () => {
+    let novoProntuario = await Prontuario.create({
+      id_paciente: 1,
+    });
+    expect(novoProntuario.id).not.toBe(undefined);
   });
 });

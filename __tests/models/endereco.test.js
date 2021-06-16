@@ -3,10 +3,6 @@ require('../../src/database/index');
 
 describe("Testando modelo Endereco", () => {
 
-  afterAll(async () => {
-    await Endereco.destroy({truncate: true});
-  });
-
   test("Inserir valores válidos no modelo Endereco", async () => {
     let novoEndereco = await Endereco.create({
       cep: "00000-000",
@@ -109,10 +105,5 @@ describe("Testando modelo Endereco", () => {
       return err.message;
     });
     expect(novoEndereco).toBe("Validation error: Validation isIn on uf failed");
-  });
-
-  test("Banco de dados só aceita valores", async () => {    
-    let enderecos = await Endereco.findAll();
-    expect(enderecos.length).toBe(1);
   });
 });
