@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "0.0.1",
-  "description": "servidor simplificado",
+  "description": "api CRUD",
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -17,9 +17,11 @@
     "swagger",
     "express",
     "sequelize",
+    "jwt",
+    "bcrypt",
     "postgres"
   ],
-  "author": "Renato - 52team",
+  "author": "g5t2team",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.0.1",
