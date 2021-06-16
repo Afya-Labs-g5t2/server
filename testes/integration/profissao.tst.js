@@ -39,6 +39,7 @@ describe("Profissao", () => {
             .post("/profissoes")
             .set("Authorizations", `Bearer ${token}`)
             .send({
+                id:1,
                 profissao: 'dentista'
             });
 

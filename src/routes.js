@@ -36,10 +36,6 @@ routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);		// Sem autenticação, todas as rotas abaixo são bloqueadas
 
-
-
-routes.get('/usuarios', UsuarioController.index);
-
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
 routes.get('/enderecos/:id', EnderecoController.show);
