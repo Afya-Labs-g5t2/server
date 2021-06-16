@@ -35,4 +35,13 @@ describe("Testando modelo Prontuario", () => {
     expect(novoProntuario.id_paciente).not.toBe(undefined);
     expect(novoProntuario.data_abertura).not.toBe(undefined);
   });
+
+  test("Inserir dado inválido no campo id_paciente do modelo Prontuario", async () => {
+    let novoProntuario = await Prontuario.create({
+      id_paciente: 0
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoProntuario).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
+  });
 });
