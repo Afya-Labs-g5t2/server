@@ -34,7 +34,14 @@ class EnderecoController {
 
   async store(req, res) {
     try {
-      let temp = await Endereco.create(req.body);
+
+      const { cep, numero } = req.body;
+      let [temp, Created ] = await Endereco.findOrCreate({
+        where: { cep, numero }, 
+        defaults: req.body
+      });
+
+      //let temp = await Endereco.create(req.body);
       const {id} = temp;
       const id_endereco = id;
 
@@ -54,15 +61,13 @@ class EnderecoController {
     }
   }// */
 
-  /**async store(req, res) {
+  async find_or_create(req, res) {
     try {
-      const { cep } = req.body;
-
-      const [temp, Created ] = await Endereco.findOrCreate({
-        where : { cep } //[{ cep },{numero}]
-      });
-
-      
+      const { cep, numero } = req.body;
+      let [temp, Created ] = await Endereco.findOrCreate({
+        where: { cep, numero }, 
+        defaults: req.body
+      });      
       
       return res.json(temp);
     } catch (err) {
