@@ -52,7 +52,95 @@ describe("Testando modelo Especialista", () => {
       id_especialista: especialista.id
     });
     expect(novoAtendimento.id).not.toBe(undefined);
+    expect(novoAtendimento.data_atendimento).toBe("2021-07-12");
+    expect(novoAtendimento.hora_atendimento).toBe("15:00:00");
+    expect(typeof novoAtendimento.valor).toBe("number");
+    expect(typeof novoAtendimento.status).toBe("string");
     expect(novoAtendimento.id_paciente).not.toBe(undefined);
     expect(novoAtendimento.id_especialista).not.toBe(undefined);
+  });
+
+  test("Inserir valores inválidos no campo data_atendimento do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-32",
+      hora_atendimento: "15:00:00",
+      valor: 200.50,
+      status: "AGENDADO",
+      id_paciente: paciente.id,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("Validation error: Validation isDate on data_atendimento failed");
+  });
+
+  test("Inserir valores inválidos no campo hora_atendimento do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "25:00:00",
+      valor: 200.50,
+      status: "AGENDADO",
+      id_paciente: paciente.id,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("Validation error: Validation is on hora_atendimento failed");
+  });
+
+  test("Inserir valores inválidos no campo valor do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "15:00:00",
+      valor: "grátis",
+      status: "AGENDADO",
+      id_paciente: paciente.id,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("Validation error: Validation isDecimal on valor failed");
+  });
+
+  test("Inserir valores inválidos no campo status do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "15:00:00",
+      valor: 200.50,
+      status: "foi cancelado",
+      id_paciente: paciente.id,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("Validation error: Validation isIn on status failed");
+  });
+
+  test("Inserir valores inválidos no campo id_paciente do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "15:00:00",
+      valor: 200.50,
+      status: "AGENDADO",
+      id_paciente: 0,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
+  });
+
+  test("Inserir valores inválidos no campo id_especialista do modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "15:00:00",
+      valor: 200.50,
+      status: "AGENDADO",
+      id_paciente: paciente.id,
+      id_especialista: 0
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoAtendimento).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
   });
 });
