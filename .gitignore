@@ -2,3 +2,6 @@ node_modules
 .env
 .DS_Store
 *.txt
+coverage
+database.sqlite
+database.sqlite-journal
