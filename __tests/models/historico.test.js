@@ -46,8 +46,54 @@ describe("Testando modelo ", () => {
     });
   });
 
-  test("Inserir valores válidos no modelo Historico", () => {
-    let novoHistorico = 
-    expect("hello").toBe("hello");
+  test("Inserir valores válidos no modelo Historico", async () => {
+    let novoHistorico = await Historico.create({
+      hora_consulta: "12:30:00",
+      descricao: "Paciente está com febre e calafrios",
+      id_prontuario: prontuario.id,
+      id_especialista: especialista.id
+    });
+    expect(novoHistorico.id).not.toBe(undefined);
+    expect(novoHistorico.data_consulta).not.toBe(undefined);
+    expect(novoHistorico.hora_consulta).toBe("12:30:00");
+    expect(novoHistorico.descricao).not.toBe(undefined);
+    expect(novoHistorico.id_prontuario).not.toBe(null);
+    expect(novoHistorico.id_especialista).not.toBe(null);
+  });
+
+  test("Inserir valores inválidos no campo hora_consulta do modelo Historico", async () => {
+    let novoHistorico = await Historico.create({
+      hora_consulta: "12:30:60",
+      descricao: "Paciente está com febre e calafrios",
+      id_prontuario: prontuario.id,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoHistorico).toBe("Validation error: Validation is on hora_consulta failed");
+  });
+  
+  test("Inserir valores inválidos no campo id_prontuario do modelo Historico", async () => {
+    let novoHistorico = await Historico.create({
+      hora_consulta: "12:30:00",
+      descricao: "Paciente está com febre e calafrios",
+      id_prontuario: 0,
+      id_especialista: especialista.id
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoHistorico).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
+  });
+  
+  test("Inserir valores inválidos no campo id_especialista do modelo Historico", async () => {
+    let novoHistorico = await Historico.create({
+      hora_consulta: "12:30:00",
+      descricao: "Paciente está com febre e calafrios",
+      id_prontuario: prontuario.id,
+      id_especialista: 0
+    }).catch((err) => {
+      return err.message;
+    });
+    expect(novoHistorico).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
   });
 });
