@@ -9,7 +9,9 @@ class AtendimentoController {
       if(req.params.data) {
       temp = await Atendimento.findAll({where : {'data_atendimento': req.params.data}});
       }else{
-      temp = await Atendimento.findAll();
+      temp = await Atendimento.findAll({
+        include: [{ association:'paciente', attributes:['nome']},{ association:'especialista', attributes:['nome']}]
+      });
       }
 
       
