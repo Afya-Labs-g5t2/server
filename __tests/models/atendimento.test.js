@@ -5,7 +5,7 @@ const Profissao = require('../../src/app/models/Profissao');
 const Endereco = require('../../src/app/models/Endereco');
 require('../../src/database/index');
 
-describe("Testando modelo Especialista", () => {
+describe("Testando modelo Atendimento", () => {
   let paciente = {};
   let especialista = {};
 
@@ -42,7 +42,7 @@ describe("Testando modelo Especialista", () => {
     });
   });
 
-  test("Inserir valores válidos no modelo Especialista", async () => {
+  test("Inserir valores válidos no modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
@@ -60,7 +60,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento.id_especialista).not.toBe(undefined);
   });
 
-  test("Inserir valores inválidos no campo data_atendimento do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo data_atendimento do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-32",
       hora_atendimento: "15:00:00",
@@ -74,7 +74,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento).toBe("Validation error: Validation isDate on data_atendimento failed");
   });
 
-  test("Inserir valores inválidos no campo hora_atendimento do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo hora_atendimento do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "25:00:00",
@@ -88,7 +88,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento).toBe("Validation error: Validation is on hora_atendimento failed");
   });
 
-  test("Inserir valores inválidos no campo valor do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo valor do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
@@ -102,7 +102,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento).toBe("Validation error: Validation isDecimal on valor failed");
   });
 
-  test("Inserir valores inválidos no campo status do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo status do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
@@ -116,7 +116,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento).toBe("Validation error: Validation isIn on status failed");
   });
 
-  test("Inserir valores inválidos no campo id_paciente do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo id_paciente do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
@@ -130,7 +130,7 @@ describe("Testando modelo Especialista", () => {
     expect(novoAtendimento).toBe("SQLITE_CONSTRAINT: FOREIGN KEY constraint failed");
   });
 
-  test("Inserir valores inválidos no campo id_especialista do modelo Especialista", async () => {
+  test("Inserir valores inválidos no campo id_especialista do modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
