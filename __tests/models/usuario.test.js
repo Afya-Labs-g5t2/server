@@ -3,10 +3,6 @@ require('../../src/database/index');
 
 describe("Testando modelo Usuario", () => {
 
-  afterAll(async () => {
-    await Usuario.destroy({truncate: true});
-  });
-
   test("Inserir valores válidos no modelo Usuario", async () => {
     let novoUsuario = await Usuario.create({
       login: "exemplo",
@@ -70,10 +66,5 @@ describe("Testando modelo Usuario", () => {
       return err.message;
     });
     expect(novoUsuario).toBe("Validation error: Validation is on nome failed");
-  });
-
-  test("Banco de dados só aceita valores válidos", async () => {
-    let usuarios = await Usuario.findAll();
-    expect(usuarios.length).toBe(1);
   });
 });

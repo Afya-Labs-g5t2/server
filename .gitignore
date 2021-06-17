@@ -4,3 +4,4 @@ node_modules
 *.txt
 coverage
 database.sqlite
+database.sqlite-journal
