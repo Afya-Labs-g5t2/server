@@ -40,13 +40,13 @@
      inkscape:window-height="705"
      id="namedview13"
      showgrid="false"
-     inkscape:zoom="0.60288978"
-     inkscape:cx="217.22314"
-     inkscape:cy="305.10597"
+     inkscape:zoom="1.12"
+     inkscape:cx="577.77533"
+     inkscape:cy="493.5343"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="logo"
+     inkscape:current-layer="logo-52-1-8"
      inkscape:document-rotation="0"
      showguides="false" />
   <g
@@ -98,7 +98,7 @@
      id="path42-5"
      sodipodi:nodetypes="ccccccccccc" />
   <g
-     transform="matrix(1.1582798,0,0,0.79105872,-84.008859,-93.95042)"
+     transform="matrix(1.1582798,0,0,0.79105872,-61.634438,-109.03119)"
      id="logo-symbol"
      style="fill:#0b2228">
     <path
@@ -106,5 +106,27 @@
        id="path4743"
        d="m 86.763541,172.07425 h 3.118303 l 1.889881,-2.97656 c 0,0 0.17992,-0.33666 0.519718,-0.28348 0.309247,0.0484 0.4529,0.34432 0.4529,0.34432 l 3.090626,6.78998 3.685266,-10.25261 c 0,0 0.09062,-0.36741 0.502005,-0.36616 0.36621,0.001 0.49019,0.36616 0.49019,0.36616 l 3.30729,8.22098 1.5119,-1.88987 h 4.91369 c 0,0 0.52049,0.0432 0.50689,0.67654 -0.0119,0.55622 -0.50689,0.59913 -0.50689,0.59913 l -4.25465,-0.0396 -2.00453,2.3052 c 0,0 -0.17428,0.21295 -0.52201,0.19628 -0.29816,-0.0143 -0.44684,-0.32991 -0.44684,-0.32991 l -2.92445,-7.79114 -3.682365,10.3987 c 0,0 -0.13036,0.39407 -0.464942,0.39331 -0.347544,-7.9e-4 -0.512017,-0.12772 -0.578834,-0.29477 -0.06682,-0.16704 -3.219854,-7.18663 -3.219854,-7.18663 l -1.650778,2.5375 -3.732516,-0.0472 c -0.182664,-0.0663 -0.42912,-0.20011 -0.43307,-0.64124 -0.0031,-0.35096 0.05712,-0.58286 0.43307,-0.72893 z"
        style="display:inline;fill:#0b2228;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+  </g>
+  <path
+     style="fill:#0b2228;stroke:#000000;stroke-width:0.0713385px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 31.412658,36.442786 4.022989,-2e-6 -2e-6,4.022986 4.022988,5e-6 3e-6,4.022987 h -4.022987 l 3e-6,4.022991 h -4.022989 v -4.022991 h -4.022989 v -4.022987 h 4.022989 z"
+     id="path839-33"
+     sodipodi:nodetypes="ccccccccccccc" />
+  <g
+     transform="matrix(1.6849563,0,0,1.668296,-168.36065,-235.98087)"
+     id="logo-52-1-8"
+     style="fill:#0088aa">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.79372px;line-height:1.25;font-family:sans-serif;fill:#28170b;fill-opacity:1;stroke:none;stroke-width:0.119842"
+       x="142.39722"
+       y="161.09787"
+       id="text955-8"
+       transform="scale(0.97342008,1.0273057)"><tspan
+         sodipodi:role="line"
+         id="tspan953-0"
+         x="142.39722"
+         y="161.09787"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#28170b;stroke-width:0.119842">Care</tspan></text>
   </g>
 </svg>
