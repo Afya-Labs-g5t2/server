@@ -22,9 +22,14 @@ class AtendimentoController {
 
   async show(req, res) {
     try {
+      
+      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
       const temp = await Atendimento.findByPk(req.params.id,{
         include: [{ association:'paciente'},{ association:'especialista'}]
       });
+
+      if (!temp) return res.status(404).json({ error: "Não existe nenhum Atendimento com esse id" });
 
       return res.json(temp);
     } catch (err) {
