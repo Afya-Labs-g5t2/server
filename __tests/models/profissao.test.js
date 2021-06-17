@@ -17,6 +17,6 @@ describe("Testando model Profissao", () => {
     let profissaoInvalida = await Profissao.create({ profissao: 1 }).catch((err) => {
       return err.message;
     });
-    expect(profissaoInvalida).toBe("Validation error: Validation isAlpha on profissao failed");
+    expect(profissaoInvalida).toBe("Validation error: Validation is on profissao failed");
   });
 });

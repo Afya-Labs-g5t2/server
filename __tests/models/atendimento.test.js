@@ -5,7 +5,7 @@ const Profissao = require('../../src/app/models/Profissao');
 const Endereco = require('../../src/app/models/Endereco');
 require('../../src/database/index');
 
-describe("Testando modelo ", () => {
+describe("Testando modelo Especialista", () => {
   let paciente = {};
   let especialista = {};
 
@@ -15,7 +15,7 @@ describe("Testando modelo ", () => {
       logradouro: "Rua 25 de Março",
       numero: 404,
       bairro: "Bairro Alegria",
-      cidade: 555,
+      cidade: "Cidade Nova",
       uf: "sp"
     });
     let profissao = await Profissao.create({
@@ -42,7 +42,17 @@ describe("Testando modelo ", () => {
     });
   });
 
-  test("Inserir valores válidos no modelo ", () => {
-    expect("hello").toBe("hello");
+  test("Inserir valores válidos no modelo Especialista", async () => {
+    let novoAtendimento = await Atendimento.create({
+      data_atendimento: "2021-07-12",
+      hora_atendimento: "15:00:00",
+      valor: 200.50,
+      status: "AGENDADO",
+      id_paciente: paciente.id,
+      id_especialista: especialista.id
+    });
+    expect(novoAtendimento.id).not.toBe(undefined);
+    expect(novoAtendimento.id_paciente).not.toBe(undefined);
+    expect(novoAtendimento.id_especialista).not.toBe(undefined);
   });
 });

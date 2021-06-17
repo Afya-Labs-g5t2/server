@@ -6,7 +6,7 @@ class Profissao extends Model {
       profissao: {
         type: Sequelize.STRING,
         validate: {
-          isAlpha: true,
+          is: /\D+\s?/
         }
       }
     }, {

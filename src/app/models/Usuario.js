@@ -7,7 +7,7 @@ class Usuario extends Model {
       login: {
         type: Sequelize.STRING(16),
         validate: {
-          is: /^\D\S{0,15}$/
+          is: /^\D\S{3,15}$/
         }
       },
       nome: {
