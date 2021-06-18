@@ -3,15 +3,25 @@ const Especialista = require('../models/Especialista');
 class EspecialistaController {
   async index(req, res) {
     try {
-      const page = req.query.page;
-      let offset = 0 + ((page - 1) * 7);
+      if (!req.query.page) {
+        
+        const temp = await Especialista.findAll();
 
-      const total = await Especialista.count();
-      const pages = Math.ceil(total / 7);
+        return res.json(temp);
 
-      const temp = await Especialista.findAll({ limit: 7, offset: offset});
+      } else {
 
-      return res.json({pages, temp});
+        let page = req.query.page;
+        let offset = 0 + ((page - 1) * 7);
+
+        const total = await Especialista.count();
+        const pages = Math.ceil(total / 7);
+
+        const temp = await Especialista.findAll({ limit: 7, offset: offset});
+
+        return res.json({pages, temp});
+
+      }
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
