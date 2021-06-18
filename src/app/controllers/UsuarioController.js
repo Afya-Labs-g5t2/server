@@ -14,8 +14,9 @@ class UsuarioController {
   async store(req, res) {
     try {
       const temp = await Usuario.create(req.body);
-
-      return res.json(temp);
+      let {login, nome, senha, createdAt, updatedAt } = temp;
+      senha = "****************"
+      return res.json({login, nome, senha, createdAt, updatedAt });
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
