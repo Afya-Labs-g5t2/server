@@ -7,12 +7,14 @@ class Endereco extends Model {
         type: Sequelize.STRING,
         validate: {
           is: /\d{5}-?\d{3}/
+          // aceita valores nos formatos 00000-000 ou 00000000
         }
       },
       logradouro: {
         type: Sequelize.STRING,
         validate: {
-          is: /\D+\s*\d*/
+          is: /\D+\s*\d*[^_\W]/
+          // só aceita valores que começam com letra, e aceita números
         }
       },
       numero: {
@@ -24,13 +26,15 @@ class Endereco extends Model {
       bairro: {
         type: Sequelize.STRING,
         validate: {
-          is: /^\D+\s*\d*/
+          is: /^\D+\s*\d*[^_\W]/
+          // só aceita valores que começam com letra, e aceita números
         }
       },
       cidade: {
         type: Sequelize.STRING,
         validate: {
-          is: /^\D+\s*/
+          is: /^\D+\s*[^_\W]/          
+          // só aceita valores que começam com letra
         }
       },
       uf: {
