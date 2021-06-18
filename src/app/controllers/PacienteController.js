@@ -4,21 +4,25 @@ const Endereco = require('../models/Endereco');
 class PacienteController {
   async index(req, res) {
     try {
-      const page;
-      
       if (!req.query.page) {
-        page = 1;
+        
+        const temp = await Paciente.findAll();
+
+        return res.json(temp);
+
       } else {
-        page = req.query.page;
+
+        let page = req.query.page;
+        let offset = 0 + ((page - 1) * 7);
+
+        const total = await Paciente.count();
+        const pages = Math.ceil(total / 7);
+
+        const temp = await Paciente.findAll({ limit: 7, offset: offset});
+
+        return res.json({pages, temp});
+
       }
-      let offset = 0 + ((page - 1) * 7);
-      
-      const total = await Paciente.count();
-      const pages = Math.ceil(total / 7);
-
-      const temp = await Paciente.findAll({ limit: 7, offset: offset});
-
-      return res.json({pages, temp});
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
