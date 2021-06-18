@@ -11,6 +11,7 @@ const swaggerDocument = require('../swagger.json');
 
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
+const ProntuarioController      = require('./app/controllers/ProntuarioController');
 const ProfissaoController     = require('./app/controllers/ProfissaoController');
 const EspecialistaController  = require('./app/controllers/EspecialistaController');
 const AtendimentoController   = require('./app/controllers/AtendimentoController');
@@ -49,6 +50,13 @@ routes.get('/pacientes/:id', PacienteController.show);
 routes.post('/pacientes', PacienteController.store);         //quando cria um paciente associa ela a um endereço
 routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o pac, atualiza o end
 routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
+
+// rotas de prontuario
+routes.get('/prontuarios', ProntuarioController.index);        
+routes.get('/prontuarios/:id', ProntuarioController.show);
+routes.post('/prontuarios', ProntuarioController.store);        
+routes.put('/prontuarios/:id', ProntuarioController.update);  
+routes.delete('/prontuarios/:id', ProntuarioController.destroy);
 
 // rotas da profissoes
 routes.get('/profissoes', ProfissaoController.index);

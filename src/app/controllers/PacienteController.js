@@ -1,5 +1,4 @@
 const Paciente = require('../models/Paciente');
-const Endereco = require('../models/Endereco');
 
 class PacienteController {
   async index(req, res) {
@@ -34,7 +33,7 @@ class PacienteController {
       if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
 
       const temp = await Paciente.findByPk(req.params.id,{
-        include: [ { association: 'endereco'} , {association: 'consulta'} ]
+        include: [ { association: 'endereco'}  , {association: 'prontuario'} , {association: 'consultas'}]
       });
 
       if (!temp) return res.status(404).json({ error: "Não existe nenhum paciente com esse id" });
@@ -45,7 +44,7 @@ class PacienteController {
     }
   }
 
-  async store(req, res) {                      //quando cria um paciente associa ela a um endereço
+  async store(req, res) {                    
       try {
       const temp = await Paciente.create(req.body);
 
