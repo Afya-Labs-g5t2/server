@@ -4,7 +4,13 @@ const Endereco = require('../models/Endereco');
 class PacienteController {
   async index(req, res) {
     try {
-      let page = req.query.page;
+      const page;
+      
+      if (!req.query.page) {
+        page = 1;
+      } else {
+        page = req.query.page;
+      }
       let offset = 0 + ((page - 1) * 7);
       
       const total = await Paciente.count();
