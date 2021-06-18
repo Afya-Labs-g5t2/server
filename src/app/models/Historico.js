@@ -7,7 +7,8 @@ class Historico extends Model {
       hora_consulta: {
         type: Sequelize.STRING,
         validate: {
-          is: /^(([0-1]\d)|([2][0-3]))([:][0-5]\d){2}$/
+          is: /^(([0-1]\d)|([2][0-3]))([:][0-5]\d)([:][0-5]\d)?$/
+          // só aceita formatos hh:mm:ss ou hh:mm, exemplo: 23:59:59 ou 13:00. Valores como 23h são inválidos
         }
       },
       descricao: Sequelize.TEXT,
