@@ -3,7 +3,13 @@ const { Model, Sequelize } = require('sequelize');
 class Profissao extends Model {
   static init(sequelize) {
     super.init({
-      profissao: Sequelize.STRING
+      profissao: {
+        type: Sequelize.STRING,
+        validate: {
+          is: /\D+\s?/
+          // aceita letras, espaços e símbolos
+        }
+      }
     }, {
       sequelize,
       updatedAt: false,

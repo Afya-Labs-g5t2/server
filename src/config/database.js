@@ -1,12 +1,13 @@
 require("dotenv").config({
-  path:process.env.NODE_ENV === "test" ? ".env.test" : ".env"
+  path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
 });
 
-let db = {}
-if(process.env.NODE_ENV === "test"){
+let db = {};
+
+if (process.env.NODE_ENV === "test") {
   db = {
-    dialect: "sqlite",
-    storage: "./testes/database.sqlite",
+    dialect: process.env.DB_DIALECT,
+    storage: './__tests/database.sqlite',
     retry: {
       max: 10,
       match: [
@@ -14,33 +15,31 @@ if(process.env.NODE_ENV === "test"){
       ]
     },
     define: {
-      timestamps: true,
-      underscored: true,
-      underscoredAll: true
+        timestamps: true,  //
+        underscored: true,  // snake_case
+        underscoredAll: true
     }
-  };
+  }
 }
-else{
+else {
   db = {
-    dialect: "postgres",
-    dialectOptions: {
-      ssl: {              //primeiro erro - ssl:true
-        require: true,            //segundo erro
-        rejectUnauthorized: false //corrigido com essas duas linhas
-      }
-    },  
-    host: process.env.DB_HOST,
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_SCHEMA,
+    dialect: 'postgres',
+    dialectOptions: {              //necessário para rodar no heroku
+        ssl: {                        //necessário para rodar no heroku
+          require: true,              //necessário para rodar no heroku
+          rejectUnauthorized: false   //necessário para rodar no heroku
+        }                             //necessário para rodar no heroku
+    },                                //necessário para rodar no heroku*/
+    host: process.env.HOST, 
+    username: process.env.USER, 
+    password:  process.env.PASSWORD, 
+    database: process.env.DATABASE,
     define: {
-      timestamps: true,
-      underscored: true,
-      underscoredAll: true
+        timestamps: true,  //
+        underscored: true,  // snake_case
+        underscoredAll: true
     }
-  };
+  }
 }
 
-module.exports = db
-
-
+module.exports = db;

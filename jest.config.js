@@ -125,10 +125,10 @@ module.exports = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  // setupFiles: ['<rootDir>/testes/setUp.js'],
+  // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: ['<rootDir>/testes/setupAfterEnv.js'],
+  // setupFilesAfterEnv: [],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -137,7 +137,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: "node",
+  // testEnvironment: "jest-environment-node",
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -147,13 +147,13 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/testes/**/*.test.js?(x)",
-   
+    "**/__tests/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[tj]s?(x)"
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
-  //   "/node_modules/"
+  //   "\\\\node_modules\\\\"
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -176,8 +176,8 @@ module.exports = {
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   "\\\\node_modules\\\\",
+  //   "\\.pnp\\.[^\\\\]+$"
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

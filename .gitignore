@@ -3,3 +3,6 @@ node_modules
 .env.test
 .DS_Store
 *.txt
+coverage
+database.sqlite
+database.sqlite-journal

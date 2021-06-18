@@ -5,12 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "dev": "nodemon src/server.js --ignore __tests__",
+    "test": "set NODE_ENV=test&&jest",
+    "pretest": "set NODE_ENV=test&&sequelize db:migrate:undo:all&&sequelize db:migrate",
     "populate": "npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "remove": "npx sequelize-cli db:migrate:undo:all",
-    "test": "NODE_ENV=test jest",
-    "pretest": "NODE_ENV=test sequelize db:migrate",
-    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all"
+    "remove": "npx sequelize-cli db:migrate:undo:all"
   },
   "keywords": [
     "server",
@@ -37,9 +36,9 @@
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
+    "jest": "^27.0.4",
     "nodemon": "^2.0.7",
     "sequelize-cli": "^6.2.0",
-    "jest": "^27.0.4",
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.3"
   }
