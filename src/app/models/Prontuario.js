@@ -14,6 +14,10 @@ class Prontuario extends Model {
 
     return this;
   }
+
+  static associate(models) {
+    this.belongsTo(models.Paciente, { foreignKey: 'id_paciente', as: 'paciente'});
+  }
 }
 
 module.exports = Prontuario;
