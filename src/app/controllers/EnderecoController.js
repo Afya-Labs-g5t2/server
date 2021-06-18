@@ -17,9 +17,14 @@ class EnderecoController {
   
   async show(req, res) {
     try {
+      
+      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
       const temp = await Endereco.findByPk(req.params.id,{
         include: [{ association:'moradores'},{ association:'doutores'}]
       });
+
+      if (!temp) return res.status(404).json({ error: "Não existe nenhum Endereço com esse id" });
 
       return res.json(temp);
     } catch (err) {
@@ -29,7 +34,14 @@ class EnderecoController {
 
   async store(req, res) {
     try {
-      let temp = await Endereco.create(req.body);
+
+      const { cep, numero } = req.body;
+      let [temp, Created ] = await Endereco.findOrCreate({
+        where: { cep, numero }, 
+        defaults: req.body
+      });
+
+      //let temp = await Endereco.create(req.body);
       const {id} = temp;
       const id_endereco = id;
 
@@ -49,15 +61,13 @@ class EnderecoController {
     }
   }// */
 
-  /**async store(req, res) {
+  async find_or_create(req, res) {
     try {
-      const { cep } = req.body;
-
-      const [temp, Created ] = await Endereco.findOrCreate({
-        where : { cep } //[{ cep },{numero}]
-      });
-
-      
+      const { cep, numero } = req.body;
+      let [temp, Created ] = await Endereco.findOrCreate({
+        where: { cep, numero }, 
+        defaults: req.body
+      });      
       
       return res.json(temp);
     } catch (err) {

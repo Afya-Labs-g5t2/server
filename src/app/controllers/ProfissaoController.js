@@ -13,9 +13,14 @@ class ProfissaoController {
 
   async show(req, res) {
     try {
+      
+      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
       const temp = await Profissao.findByPk(req.params.id,{
         include: { association: 'profissionais'}
       });
+
+      if (!temp) return res.status(404).json({ error: "Não existe nenhuma profissão com esse id" });
 
       return res.json(temp);
     } catch (err) {
