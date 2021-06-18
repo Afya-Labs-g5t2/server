@@ -19,9 +19,14 @@ class EspecialistaController {
 
   async show(req, res) {
     try {
+      
+      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
       const temp = await Especialista.findByPk(req.params.id,{
         include: [{ association:'endereco'},{ association:'profissao'},{ association:'agenda'}]
       });
+
+      if (!temp) return res.status(404).json({ error: "Não existe nenhum especialista com esse id" });
 
       return res.json(temp);
     } catch (err) {
