@@ -7,6 +7,7 @@ class Profissao extends Model {
         type: Sequelize.STRING,
         validate: {
           is: /\D+\s?/
+          // aceita letras, espaços e símbolos
         }
       }
     }, {
