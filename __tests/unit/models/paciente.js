@@ -1,6 +1,6 @@
-const Paciente = require('../../src/app/models/Paciente');
-const Endereco = require('../../src/app/models/Endereco');
-require('../../src/database/index');
+const Paciente = require('../../../src/app/models/Paciente');
+const Endereco = require('../../../src/app/models/Endereco');
+require('../../../src/database/index');
 
 describe("Testando modelo Paciente", () => {
   let endereco = {};

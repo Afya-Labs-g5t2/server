@@ -1,5 +1,5 @@
-const Usuario = require('../../src/app/models/Usuario');
-require('../../src/database/index');
+const Usuario = require('../../../src/app/models/Usuario');
+require('../../../src/database/index');
 
 describe("Testando modelo Usuario", () => {
 

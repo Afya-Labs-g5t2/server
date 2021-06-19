@@ -1,10 +1,10 @@
-const Historico = require('../../src/app/models/Historico');
-const Especialista = require('../../src/app/models/Especialista');
-const Prontuario = require('../../src/app/models/Prontuario');
-const Endereco = require('../../src/app/models/Endereco');
-const Paciente = require('../../src/app/models/Paciente');
-const Profissao = require('../../src/app/models/Profissao');
-require('../../src/database/index');
+const Historico = require('../../../src/app/models/Historico');
+const Especialista = require('../../../src/app/models/Especialista');
+const Prontuario = require('../../../src/app/models/Prontuario');
+const Endereco = require('../../../src/app/models/Endereco');
+const Paciente = require('../../../src/app/models/Paciente');
+const Profissao = require('../../../src/app/models/Profissao');
+require('../../../src/database/index');
 
 describe("Testando modelo ", () => {
   let especialista = {};

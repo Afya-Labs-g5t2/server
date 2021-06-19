@@ -1,5 +1,5 @@
-const Profissao = require('../../src/app/models/Profissao');
-require('../../src/database/index');
+const Profissao = require('../../../src/app/models/Profissao');
+require('../../../src/database/index');
 
 describe("Testando model Profissao", () => {
 

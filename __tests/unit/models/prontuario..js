@@ -1,7 +1,7 @@
-const Prontuario = require('../../src/app/models/Prontuario');
-const Paciente = require('../../src/app/models/Paciente');
-const Endereco = require('../../src/app/models/Endereco');
-require('../../src/database/index');
+const Prontuario = require('../../../src/app/models/Prontuario');
+const Paciente = require('../../../src/app/models/Paciente');
+const Endereco = require('../../../src/app/models/Endereco');
+require('../../../src/database/index');
 
 describe("Testando modelo Prontuario", () => {
   let paciente = {};

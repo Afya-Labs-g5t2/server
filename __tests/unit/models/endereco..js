@@ -1,5 +1,5 @@
-const Endereco = require('../../src/app/models/Endereco');
-require('../../src/database/index');
+const Endereco = require('../../../src/app/models/Endereco');
+require('../../../src/database/index');
 
 describe("Testando modelo Endereco", () => {
 

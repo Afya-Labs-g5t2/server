@@ -1,7 +1,7 @@
-const Especialista = require('../../src/app/models/Especialista');
-const Profissao = require('../../src/app/models/Profissao');
-const Endereco = require('../../src/app/models/Endereco');
-require('../../src/database/index');
+const Especialista = require('../../../src/app/models/Especialista');
+const Profissao = require('../../../src/app/models/Profissao');
+const Endereco = require('../../../src/app/models/Endereco');
+require('../../../src/database/index');
 
 describe("Testando modelo Especialista", () => {
   let profissao = {};

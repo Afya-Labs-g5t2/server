@@ -29,13 +29,15 @@ routes.get('/', (req, res) => {
 }) //pagina inicial da API 
 
 // Criar usuário
-routes.get('/usuarios', UsuarioController.index);
+
 routes.post('/usuarios', UsuarioController.store);
 
 // Logar
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);		// Sem autenticação, todas as rotas abaixo são bloqueadas
+
+routes.get('/usuarios', UsuarioController.index);
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);

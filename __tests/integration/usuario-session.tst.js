@@ -3,6 +3,7 @@ const app = require("../../src/app");
 require("../../src/database");
 
 
+
 describe("Usuario", () => {
     
     it("post novo usuario", async() => {
@@ -10,11 +11,12 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/usuarios")
             .send({
-                login: "adminix",
-                senha: "adminix",
-                nome: "adminix"
+                login: "admin",
+                senha: "admini100",
+                nome: "admin"
             })
-
+        
+        // console.log(response.error)
         expect(response.ok).toBeTruthy();
         expect(response.id !== 0).toBe(true);
         
@@ -42,9 +44,9 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/session")
             .send({
-                login: "adminix",
+                login: "admin",
                 senha: "123123",
-                nome: "adminix"
+                nome: "admin"
             })
 
         // console.log(response.error)
@@ -76,9 +78,9 @@ describe("Usuario", () => {
         const response = await request(app)
             .post("/session")
             .send({
-                login: "adminix",
-                senha: "adminix",
-                nome: "adminix"
+                login: "admin",
+                senha: "admini100",
+                nome: "admin"
             })
 
         expect(response.ok).toBeTruthy();
@@ -90,9 +92,9 @@ describe("Usuario", () => {
         const user = await request(app)
             .post("/session")
             .send({
-                login: "adminix",
-                senha: "adminix",
-                nome: "adminix"
+                login: "admin",
+                senha: "admini100",
+                nome: "admin"
             })
         // console.log(user)
 
@@ -105,28 +107,61 @@ describe("Usuario", () => {
         
     })
 
-    // it("ERROR get usuarios sem token", async() => {
 
-    //     const response = await request(app)
-    //         .get("/usuarios")
+    it("ERROR get usuarios token valido", async() => {
+        const user = await request(app)
+            .post("/session")
+            .send({
+                login: "admin",
+                senha: "admini100",
+                nome: "admin"
+            })
+        // console.log(user)
+
+        const response = await request(app)
+            .get("/usurarios")
+            .set("Authorization", `Bearer ${user.body.token}`)
         
-    //     // console.log(response)
-    //     expect(response.statusCode).toEqual(401);
-    //     expect(response.body.message).toEqual("Ocorreu um problema na autenticação");
+        console.log(response.body)
+        expect(response.statusCode).toEqual(404);
+        // expect(response.body.message).toEqual("Página não encontrada");
+    })
+
+    it("ERROR get usuarios sem token", async() => {
+
+        const response = await request(app)
+            .get("/usuarios")
         
-    // })
-
-
-
-    // it("ERROR get usuarios token invalido", async() => {
-
-    //     const response = await request(app)
-    //         .get("/usuarios")
-    //         .set("Authorizations", "Bearer 123")
         
-    //     // console.log(response)
-    //     expect(response.statusCode).toEqual(401);
-    //     expect(response.body.message).toEqual("Token inválido");
+        // console.log(response)
+        expect(response.statusCode).toEqual(401);
+        expect(response.body.message).toEqual("Ocorreu um problema na autenticação");
         
-    // })
+    })
+
+
+
+    it("ERROR get usuarios token invalido", async() => {
+
+        const response = await request(app)
+            .get("/usuarios")
+            .set("Authorization", "Bearer 123")
+        
+        // console.log(response)
+        expect(response.statusCode).toEqual(401);
+        expect(response.body.message).toEqual("Token inválido");
+        
+    })
+
+   
+    it("render homepage", async() => {
+        
+        const response = await request(app)
+
+        .get("/")
+
+        // console.log(response.text)
+        expect(response.statusCode).toEqual(200);
+        
+    })
 })

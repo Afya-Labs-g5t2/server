@@ -10,7 +10,7 @@ class EnderecoController {
 
       return res.json(temp);
     } catch (err) {
-      return res.status(401).json({ error: err.message });
+      return res.status(401);
     }
   }
  
@@ -38,7 +38,7 @@ class EnderecoController {
       const { cep, numero } = req.body;
       let [temp, Created ] = await Endereco.findOrCreate({
         where: { cep, numero }, 
-        defaults: req.body
+        defaults: req.body 
       });
 
       //let temp = await Endereco.create(req.body);
@@ -61,19 +61,19 @@ class EnderecoController {
     }
   }// */
 
-  async find_or_create(req, res) {
-    try {
-      const { cep, numero } = req.body;
-      let [temp, Created ] = await Endereco.findOrCreate({
-        where: { cep, numero }, 
-        defaults: req.body
-      });      
+  // async find_or_create(req, res) {
+  //   try {
+  //     const { cep, numero } = req.body;
+  //     let [temp, Created ] = await Endereco.findOrCreate({
+  //       where: { cep, numero }, 
+  //       defaults: req.body
+  //     });      
       
-      return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
-  }// */
+  //     return res.json(temp);
+  //   } catch (err) {
+  //     return res.status(400).json({ error: err.message });
+  //   }
+  // }// */
 
   async update(req, res) {
     try {
