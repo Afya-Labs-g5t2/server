@@ -5,7 +5,7 @@
 ### Preview 
 
 ---
-[![Logo API](./src/public/assets/api-logo.png)](https://g5t2-api.herokuapp.com/)
+[![Logo API](https://user-images.githubusercontent.com/43910483/122138140-8161ab80-ce1c-11eb-8017-e23437faecb2.png)](https://g5t2-api.herokuapp.com/)
 
 Esse projeto faz parte do treinamento do [Gama Academy](https://www.gama.academy/) e [Afya](https://afya.com.br/).
 
@@ -21,10 +21,11 @@ O **client-side** pode ser encontrado [aqui](https://github.com/Afya-Labs-g5t2/c
     - [Preview](#preview)
   - [Resumo](#resumo)
   - [Projeto](#projeto)
-    - [Install](#install)
-    - [Estruturação das páginas](#estruturação-das-páginas)
-    - [Trabalhando no projeto](#trabalhando-no-projeto)
-    - [Boas práticas](#boas-práticas)
+    - [🚀 Install](#-install)
+    - [📂 Estruturação das páginas](#-estruturação-das-páginas)
+    - [🖥️ Trabalhando no projeto](#️-trabalhando-no-projeto)
+    - [🤓 Boas práticas](#-boas-práticas)
+    - [👩‍💻👨‍💻 Equipe](#-equipe)
 
 ## Projeto
 
@@ -40,7 +41,7 @@ O projeto foi feito utilizando as tecnologias:
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
 
 
-### Install
+### 🚀 Install
 
 - para iniciar a instalação, clone o repositório em sua pasta local ou faça o download 
 ```bash
@@ -75,7 +76,7 @@ cd server
   ```bash
   yarn populate
   ``` 
-- Caso queira reverter de desvazer as migrations
+- Caso queira reverter as migrations
   
   - npm  
   ```bash
@@ -89,16 +90,75 @@ cd server
 
 - Para acessar a API diretamente no seu browser, acesse https://g5t2-api.herokuapp.com/
 
-### Estruturação das páginas
-  
-### Trabalhando no projeto
+### 📂 Estruturação das páginas
+O repositório tem estas pastas:
+```
+server
+.
+├── __tests
+│   └── models
+├── src
+│   ├── app
+│   │   ├── controllers
+│   │   ├── middlewares
+│   │   └── models
+│   ├── config
+│   │   ├── auth.js
+│   │   └── database.js
+│   ├── database
+│   │   ├── migrations
+│   │   └── seeds
+│   ├── public
+│   │   ├── assets
+│   │   ├── css
+│   │   ├── js
+│   │   ├── 404-not-found.html
+│   │   └── index.html
+│   ├── app.js
+│   ├── routes.js
+│   └── server.js
+├── .env.sample
+├── .env.test
+├── .gitignore
+├── .sequelizerc
+├── jest.config.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── swagger.json
 
-- [Thais Hoshii](https://github.com/Thais-Hoshii)
-- [Renato Lobo](https://github.com/renatolobojr)
-- [Renata Kanezaki](https://github.com/RenataMie)
-- [Marcos Alves](https://github.com/mlamarques)
-- [Michele Coelho](https://github.com/micheleset7)
-- [Vinicius Carvalho](https://github.com/vinicius-carvalho)
+```
+
+### 🖥️ Trabalhando no projeto
+
+- Crie uma branch do projeto na máquina local e no repositório remoto antes de trabalhar em uma feature, para evitar que códigos sem revisão cheguem à branch principal (main).
+- Se houver alterações significativas nas migrations (que criam as tabelas), será necessário remover e rodar as migrations novamente no banco de dados da API. Pergunte antes à equipe se pode fazer essa operação, pois pode afetar o trabalho dos outros!
+- Leia o código para entender toda a estrutura do banco de dados e as rotas da API, especialmente as migrations, os models e os controllers.
+
+### 🤓 Boas práticas
+
+- Nomeie suas branchs de acordo com a funcionalidade e/ou a ação. Ex:
+```
+Feature/create-migrations
+Feature/controller-tests
+```
+- Antes de fazer um pull request (PR) para a branch main, certifique-se de fazer o pull da main na sua branch e corrigir conflitos de merge, se necessário.
+- Quando fizer um PR, peça para um colega revisar o código antes de aprovar o merge.
 
 
-### Boas práticas
+### 👩‍💻👨‍💻 Equipe
+
+Nossa equipe de desenvolvedores que construiu a aplicação.
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/mlamarques"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFvVEnCp_JluQ/profile-displayphoto-shrink_200_200/0/1542309353353?e=1629331200&v=beta&t=5L0m9gSLY6Ki1i2bcigKRxXdqcAj86uEMZOmKk2tZDE" width="100px;" alt=""/><br /><sub><b>Marcos Lamarques</b></sub></a><br/></td>
+    <td align="center"><a href="https://github.com/micheleset7"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60739164?v=4" width="100px;" alt=""/><br /><sub><b>Michele Coelho</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/vinicius-carvalho"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/8262141?v=4" width="100px;" alt=""/><br /><sub><b>Vinicius Carvalho</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/RenataMie"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/73265234?v=4" width="100px;" alt=""/><br /><sub><b>Renata Mie</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/renatolobojr"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQGo0qmjjwu9XA/profile-displayphoto-shrink_200_200/0/1587556028562?e=1629331200&v=beta&t=O7lp30Z5I8O8s49cXIOX5x6brGxnKzZeGmBIv_TmdRM" width="100px;" alt=""/><br /><sub><b>Renato Lobo</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/Thais-Hoshii"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFxBPEY563hCQ/profile-displayphoto-shrink_200_200/0/1600110281835?e=1629331200&v=beta&t=5sKUElvEMdcVaeowULMiDo7ikWVeM0Ls64dq9clFTwU" width="100px;" alt=""/><br /><sub><b>Thaís Hoshii</b></sub></a><br /></td>
+    <tr>
+ </table>
+ 
+Nosso email de contato:  g5t2.desafioafyalabs@gmail.com
