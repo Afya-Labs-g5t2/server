@@ -143,9 +143,9 @@ describe("Endereco", () => {
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
-        
-        
+         
     })
+
 
      it("ERROR get endereco", async() => {
 
@@ -177,8 +177,8 @@ describe("Endereco", () => {
             .get("/enderecos/ok")
             .set("Authorization", `Bearer ${token}`)
         
-        expect(response.statusCode).toEqual(404);
-        expect(response.body.error).toEqual("Não existe nenhum Endereço com esse id");
+        expect(response.statusCode).toEqual(400);
+        expect(response.body).toHaveProperty("error");
     })
     
     it("ERROR get endereco pelo ID negativo", async() => {

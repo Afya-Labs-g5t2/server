@@ -12,7 +12,7 @@ describe("Profissao", () => {
           .send({
             login: "renata100",
             senha: "afya1",
-            nome: "renata100"
+            nome: "renata"
         })
         
         });
@@ -23,7 +23,7 @@ describe("Profissao", () => {
           .send({
             login: "renata100",
             senha: "afya1",
-            nome: "renata100"
+            nome: "renata"
         })
           .end((err, response) => {
             token = response.body.token; // save the token!
@@ -39,7 +39,7 @@ describe("Profissao", () => {
             .post("/profissoes")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:1,
+                id:2,
                 profissao: 'dentista'
             });
 
@@ -54,7 +54,8 @@ describe("Profissao", () => {
             .post("/profissoes")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                profissao: null
+                id:2,
+                profissao: 'denti10'
             });
 
             expect(response.statusCode).toEqual(400);
@@ -70,7 +71,7 @@ describe("Profissao", () => {
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
-        // expect(response.body[0].profissao).toEqual('dentista');
+        
     
     })
 
@@ -78,27 +79,39 @@ describe("Profissao", () => {
     it("get profissao pelo ID", async() => {
 
         const response = await request(app)
-            .get("/profissoes/1")
+            .get("/profissoes/2")
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('profissionais')
     })
 
-    // it(" ERROR get profissao pelo ID", async() => {
+    it(" ERROR get profissao pelo ID", async() => {
 
-    //     const response = await request(app)
-    //         .get("/profissoes/1")
+        const response = await request(app)
+            .get("/profissoes/ok")
+            .set("Authorization", `Bearer ${token}`)
                
-    //         expect(response.statusCode).toEqual(400);
-    //         expect(response.body).toHaveProperty("error");
-    // })
+            expect(response.statusCode).toEqual(400);
+    
+    })
+
+    it(" ERROR get profissao pelo ID invalido", async() => {
+
+        const response = await request(app)
+            .get("/profissoes/-1")
+            .set("Authorization", `Bearer ${token}`)
+               
+            expect(response.statusCode).toEqual(418);
+            expect(response.body.error).toEqual("São aceitos somente valores de Id maiores do que zero" );
+    })
+
 
 
     it("update profissao", async() => {
 
         const response = await request(app)
-            .put("/profissoes/1")
+            .put("/profissoes/2")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 profissao: "cardiologista"
@@ -114,7 +127,7 @@ describe("Profissao", () => {
     it("ERROR update profissao", async() => {
 
         const response = await request(app)
-            .put("/profissoes/1")
+            .put("/profissoes/2")
             .set("Authorization", `Bearer ${token}`)
             .send({
                  profissao: null,
@@ -130,7 +143,7 @@ describe("Profissao", () => {
     it("delete profissao", async() => {
 
         const response = await request(app)
-            .del("/profissoes/1")
+            .del("/profissoes/2")
             .set("Authorization", `Bearer ${token}`)
                
             console.log(response.error)

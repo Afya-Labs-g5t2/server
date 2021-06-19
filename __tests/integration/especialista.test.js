@@ -10,7 +10,7 @@ beforeAll(async() => {
       .send({
         login: "Afya30",
         senha: "afyasenha30",
-        nome: "afya30"
+        nome: "joao"
     })
     
     });
@@ -21,7 +21,7 @@ beforeAll(async() => {
       .send({
         login: "Afya30",
         senha: "afyasenha30",
-        nome: "afya30"
+        nome: "joao"
     })
       .end((err, response) => {
         token = response.body.token; // save the token!
@@ -48,7 +48,7 @@ describe("Especialista", () => {
          .post("/profissoes")
          .set("Authorization", `Bearer ${token}`)
          .send({
-             id: 2,
+             id: 3,
              profissao: 'clinico geral'
          });
        });
@@ -56,7 +56,7 @@ describe("Especialista", () => {
       
     afterAll(async() => {
         await request(app)
-         .del("/profissoes/2")
+         .del("/profissoes/3")
          .set("Authorization", `Bearer ${token}`)
     });
    
@@ -68,13 +68,13 @@ describe("Especialista", () => {
             .post('/especialistas')
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:1,
+                id:2,
                 registro: '194527-SP',
                 nome: 'Aarao Andrade Napoleao Lima',
                 celular: '11922334458',
-                telefone: '11922234567',
+                telefone: '1122234567',
                 email: 'araoo@example.com',
-                id_profissao: 2   
+                id_profissao: 3   
             });
         console.log(response.error)
         expect(response.ok).toBeTruthy();
@@ -99,24 +99,65 @@ describe("Especialista", () => {
         
     })
 
+
+
+ it("get paciente paginas", async() => {
+
+    const response = await request(app)
+        .get("/especialistas?page=1")
+        .set("Authorization", `Bearer ${token}`)
+       
+    expect(response.statusCode).toEqual(200);
+    
+})
+
+
+it("ERRO get paciente paginas", async() => {
+
+    const response = await request(app)
+        .get("/especialistas?page=page")
+        .set("Authorization", `Bearer ${token}`)
+       
+    expect(response.statusCode).toEqual(400);
+    
+})
+
+
+
     it("get especialista pelo ID", async() => {
 
         const response = await request(app)
-            .get("/especialistas/1")
+            .get("/especialistas/2")
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
-        })
+        expect(response.body).toHaveProperty('endereco');
+        expect(response.body).toHaveProperty('profissao');
+        expect(response.body).toHaveProperty('agenda');
+    })
 
 
-    // it(" ERROR get profissao pelo ID", async() => {
 
-    //         const response = await request(app)
-    //             .get("/profissoes/1")
-               
-    //             expect(response.statusCode).toEqual(400);
-    //             expect(response.body).toHaveProperty("error");
-    //     })
+    it("ERROR get paciente pelo ID", async() => {
+
+        const response = await request(app)
+            .get("/especialistas/ok")
+            .set("Authorization", `Bearer ${token}`)
+           
+            expect(response.statusCode).toEqual(400);
+            expect(response.body).toHaveProperty("error");
+     })
+
+
+     it("ERROR get paciente pelo ID invalido", async() => {
+
+        const response = await request(app)
+            .get("/especialistas/-1")
+            .set("Authorization", `Bearer ${token}`)
+           
+            expect(response.statusCode).toEqual(418);
+            expect(response.body.error).toEqual("São aceitos somente valores de Id maiores do que zero" );
+     })
 
 
 
@@ -124,15 +165,16 @@ describe("Especialista", () => {
     it("update especialista", async() => {
 
             const response = await request(app)
-                .put("/especialistas/1")
+                .put("/especialistas/2")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
+                    id:2,
                     registro: '194527-SP',
                     nome: 'Aarao Andrade Napoleao Lima',
-                    celular: '11922335555',
-                    telefone: '11922234567',
-                    email: 'araoo@example.com',
-                    id_profissao: 2
+                    celular: '11922334458',
+                    telefone: '1122234567',
+                    email: 'araooook@example.com',
+                    id_profissao: 3  
                 });
     
             expect(response.ok).toBeTruthy();
@@ -144,7 +186,7 @@ describe("Especialista", () => {
         it("ERROR update especialista", async() => {
 
             const response = await request(app)
-                .put("/especialistas/1")
+                .put("/especialistas/2")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
                     registro: null,
@@ -165,7 +207,7 @@ describe("Especialista", () => {
         it("delete especialista", async() => {
 
             const response = await request(app)
-                .del("/especialistas/1")
+                .del("/especialistas/2")
                 .set("Authorization", `Bearer ${token}`)
                
                 expect(response.statusCode).toEqual(200);

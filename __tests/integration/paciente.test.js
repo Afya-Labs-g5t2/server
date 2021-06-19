@@ -85,6 +85,27 @@ describe("Paciente", () => {
         
     })
 
+    it("get paciente paginas", async() => {
+
+        const response = await request(app)
+            .get("/pacientes?page=1")
+            .set("Authorization", `Bearer ${token}`)
+           
+        expect(response.statusCode).toEqual(200);
+        
+    })
+
+
+    it("ERRO get paciente paginas", async() => {
+
+        const response = await request(app)
+            .get("/pacientes?page=page")
+            .set("Authorization", `Bearer ${token}`)
+           
+        expect(response.statusCode).toEqual(400);
+        
+    })
+
 
     it("get paciente pelo ID", async() => {
 
@@ -94,17 +115,31 @@ describe("Paciente", () => {
            
         expect(response.statusCode).toEqual(200);
         expect(response.body).toHaveProperty('endereco');
+        expect(response.body).toHaveProperty('prontuario');
+        expect(response.body).toHaveProperty('consultas');
     
     })
 
-    // //  it("ERROR get paciente pelo ID", async() => {
+     it("ERROR get paciente pelo ID", async() => {
 
-    // //         const response = await request(app)
-    // //             .get("/pacientes/id")
+            const response = await request(app)
+                .get("/pacientes/ok")
+                .set("Authorization", `Bearer ${token}`)
                
-    // //             expect(response.statusCode).toEqual(400);
-    // //             expect(response.body).toHaveProperty("error");
-    // //      })
+                expect(response.statusCode).toEqual(400);
+                expect(response.body).toHaveProperty("error");
+         })
+
+    
+         it("ERROR get paciente pelo ID invalido", async() => {
+
+            const response = await request(app)
+                .get("/pacientes/-1")
+                .set("Authorization", `Bearer ${token}`)
+               
+                expect(response.statusCode).toEqual(418);
+                expect(response.body.error).toEqual("São aceitos somente valores de Id maiores do que zero" );
+         })
 
 
 

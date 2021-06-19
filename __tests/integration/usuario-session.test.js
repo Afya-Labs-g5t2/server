@@ -12,7 +12,7 @@ describe("Usuario", () => {
             .post("/usuarios")
             .send({
                 login: "admin",
-                senha: "admini100",
+                senha: "admin100",
                 nome: "admin"
             })
         
@@ -79,7 +79,7 @@ describe("Usuario", () => {
             .post("/session")
             .send({
                 login: "admin",
-                senha: "admini100",
+                senha: "admin100",
                 nome: "admin"
             })
 
@@ -93,10 +93,9 @@ describe("Usuario", () => {
             .post("/session")
             .send({
                 login: "admin",
-                senha: "admini100",
+                senha: "admin100",
                 nome: "admin"
             })
-        // console.log(user)
 
         const response = await request(app)
             .get("/usuarios")
@@ -113,7 +112,7 @@ describe("Usuario", () => {
             .post("/session")
             .send({
                 login: "admin",
-                senha: "admini100",
+                senha: "admin100",
                 nome: "admin"
             })
         // console.log(user)
