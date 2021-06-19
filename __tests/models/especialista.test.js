@@ -1,17 +1,19 @@
-const Especialista = require('../../../src/app/models/Especialista');
-const Profissao = require('../../../src/app/models/Profissao');
-const Endereco = require('../../../src/app/models/Endereco');
-require('../../../src/database/index');
+const Especialista = require('../../src/app/models/Especialista');
+const Profissao = require('../../src/app/models/Profissao');
+const Endereco = require('../../src/app/models/Endereco');
+require('../../src/database/index');
 
 describe("Testando modelo Especialista", () => {
   let profissao = {};
   let endereco = {};
 
   beforeAll(async () => {
-    profissao = await Profissao.create({      
+    profissao = await Profissao.create({   
+      id: 4,   
       profissao: "Pediatria"
     });
     endereco = await Endereco.create({
+      id: 4,
       cep: "22222-222",
       logradouro: "Rua 25 de Março",
       numero: 404,
@@ -23,6 +25,7 @@ describe("Testando modelo Especialista", () => {
 
   test("Inserir valores válidos no modelo Especialista", async () => {
     let novoEspecialista = await Especialista.create({
+      id: 2,
       registro: "22222-SP",
       nome: "João Carlos",
       telefone: "(23)2222-2222",

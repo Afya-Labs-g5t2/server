@@ -1,12 +1,13 @@
-const Paciente = require('../../../src/app/models/Paciente');
-const Endereco = require('../../../src/app/models/Endereco');
-require('../../../src/database/index');
+const Paciente = require('../../src/app/models/Paciente');
+const Endereco = require('../../src/app/models/Endereco');
+require('../../src/database/index');
 
 describe("Testando modelo Paciente", () => {
   let endereco = {};
 
   beforeAll(async () => {
     endereco = await Endereco.create({
+      id: 3,
       cep: "11111-111",
       logradouro: "Rua 25 de Março",
       numero: 404,
@@ -18,6 +19,7 @@ describe("Testando modelo Paciente", () => {
 
   test("Inserir valores válidos no modelo Paciente", async () => {
     let novoPaciente = await Paciente.create({
+      id: 2,
       cpf: "111.111.111-11",
       nome: "Ana Roberta",
       data_nascimento: "2021-06-15",

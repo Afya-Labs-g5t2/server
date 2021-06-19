@@ -1,7 +1,5 @@
 const request = require('supertest');
 const app = require("../../src/app");
-const Paciente = require('../../src/app/models/Paciente');
-const Especialista = require('../../src/app/models/Especialista');
 require('../../src/database/index');
 
 let token;
@@ -61,9 +59,9 @@ describe("Endereco", () => {
         celular: '(19)94496-8907',
         email: 'ViniciusPereiraRibeiro@armyspy.com',
         tipo_sangue: 'A+',
-        cep: '58076-140',
+        cep: '58070-145',
         logradouro: 'Vila Nossa Senhora das Neves',
-        numero: 158,
+        numero: 1584,
         bairro: 'Bairro Estrela',
         cidade: 'João Pessoa',
         uf: 'PB'
@@ -78,12 +76,12 @@ describe("Endereco", () => {
     telefone: '1122234567',
     email: 'bdalla@example.com',
     id_profissao: 1,
-    cep: '58076-140',
+    cep: '58070-145',
     logradouro: 'Vila Nossa Senhora das Neves',
-    numero: 158,
+    numero: 1584,
     bairro: 'Bairro Estrela',
     cidade: 'João Pessoa',
-    uf: 'PB'
+     uf: 'PB'
 }
 
     it("post novo endereco com paciente", async() => {

@@ -39,7 +39,7 @@ describe("Profissao", () => {
             .post("/profissoes")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:2,
+                id:3,
                 profissao: 'dentista'
             });
 
@@ -54,7 +54,7 @@ describe("Profissao", () => {
             .post("/profissoes")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:2,
+                id:3,
                 profissao: 'denti10'
             });
 
@@ -79,7 +79,7 @@ describe("Profissao", () => {
     it("get profissao pelo ID", async() => {
 
         const response = await request(app)
-            .get("/profissoes/2")
+            .get("/profissoes/3")
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
@@ -111,10 +111,10 @@ describe("Profissao", () => {
     it("update profissao", async() => {
 
         const response = await request(app)
-            .put("/profissoes/2")
+            .put("/profissoes/3")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                profissao: "cardiologista"
+                profissao: "massagista"
             });
             
         console.log(response.body)
@@ -127,7 +127,7 @@ describe("Profissao", () => {
     it("ERROR update profissao", async() => {
 
         const response = await request(app)
-            .put("/profissoes/2")
+            .put("/profissoes/3")
             .set("Authorization", `Bearer ${token}`)
             .send({
                  profissao: null,
@@ -143,7 +143,7 @@ describe("Profissao", () => {
     it("delete profissao", async() => {
 
         const response = await request(app)
-            .del("/profissoes/2")
+            .del("/profissoes/3")
             .set("Authorization", `Bearer ${token}`)
                
             console.log(response.error)

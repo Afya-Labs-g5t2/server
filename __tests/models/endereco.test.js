@@ -1,10 +1,11 @@
-const Endereco = require('../../../src/app/models/Endereco');
-require('../../../src/database/index');
+const Endereco = require('../../src/app/models/Endereco');
+require('../../src/database/index');
 
 describe("Testando modelo Endereco", () => {
 
   test("Inserir valores válidos no modelo Endereco", async () => {
     let novoEndereco = await Endereco.create({
+      id:2,
       cep: "00000-000",
       logradouro: "Rua 25 de Março",
       numero: 404,

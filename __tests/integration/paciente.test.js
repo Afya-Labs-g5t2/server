@@ -38,7 +38,7 @@ describe("Paciente", () => {
             .post("/pacientes")
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:2,
+                id:3,
                 cpf: '101.111.111-12',
                 nome: 'Roberto da Silva',
                 data_nascimento: '1999-02-02',
@@ -110,7 +110,7 @@ describe("Paciente", () => {
     it("get paciente pelo ID", async() => {
 
         const response = await request(app)
-            .get("/pacientes/2")
+            .get("/pacientes/3")
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
@@ -146,7 +146,7 @@ describe("Paciente", () => {
     it("update paciente", async() => {
 
         const response = await request(app)
-            .put("/pacientes/2")
+            .put("/pacientes/3")
             .set("Authorization", `Bearer ${token}`)
             .send({
                 cpf: '101.111.111-12',
@@ -188,7 +188,7 @@ describe("Paciente", () => {
     it("delete paciente", async() => {
 
         const response = await request(app)
-            .del("/pacientes/2")
+            .del("/pacientes/3")
             .set("Authorization", `Bearer ${token}`)
                
             expect(response.statusCode).toEqual(200);

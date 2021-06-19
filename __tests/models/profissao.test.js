@@ -1,10 +1,11 @@
-const Profissao = require('../../../src/app/models/Profissao');
-require('../../../src/database/index');
+const Profissao = require('../../src/app/models/Profissao');
+require('../../src/database/index');
 
 describe("Testando model Profissao", () => {
 
   test("Inserir valores válidos no modelo Profissao", async () => {
     let novaProfissao = await Profissao.create({
+      id: 2,
       profissao: "Cardiologia"
     });
     expect(novaProfissao.id).not.toBe(undefined);

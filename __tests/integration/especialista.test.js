@@ -48,15 +48,15 @@ describe("Especialista", () => {
          .post("/profissoes")
          .set("Authorization", `Bearer ${token}`)
          .send({
-             id: 3,
-             profissao: 'clinico geral'
+             id: 5,
+             profissao: 'otorrino'
          });
        });
     
       
     afterAll(async() => {
         await request(app)
-         .del("/profissoes/3")
+         .del("/profissoes/5")
          .set("Authorization", `Bearer ${token}`)
     });
    
@@ -68,13 +68,13 @@ describe("Especialista", () => {
             .post('/especialistas')
             .set("Authorization", `Bearer ${token}`)
             .send({
-                id:2,
+                id:3,
                 registro: '194527-SP',
                 nome: 'Aarao Andrade Napoleao Lima',
                 celular: '11922334458',
                 telefone: '1122234567',
                 email: 'araoo@example.com',
-                id_profissao: 3   
+                id_profissao: 5  
             });
         console.log(response.error)
         expect(response.ok).toBeTruthy();
@@ -127,7 +127,7 @@ it("ERRO get paciente paginas", async() => {
     it("get especialista pelo ID", async() => {
 
         const response = await request(app)
-            .get("/especialistas/2")
+            .get("/especialistas/3")
             .set("Authorization", `Bearer ${token}`)
            
         expect(response.statusCode).toEqual(200);
@@ -165,16 +165,16 @@ it("ERRO get paciente paginas", async() => {
     it("update especialista", async() => {
 
             const response = await request(app)
-                .put("/especialistas/2")
+                .put("/especialistas/3")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
-                    id:2,
+                    id:3,
                     registro: '194527-SP',
                     nome: 'Aarao Andrade Napoleao Lima',
                     celular: '11922334458',
                     telefone: '1122234567',
                     email: 'araooook@example.com',
-                    id_profissao: 3  
+                    id_profissao: 5 
                 });
     
             expect(response.ok).toBeTruthy();
@@ -186,7 +186,7 @@ it("ERRO get paciente paginas", async() => {
         it("ERROR update especialista", async() => {
 
             const response = await request(app)
-                .put("/especialistas/2")
+                .put("/especialistas/3")
                 .set("Authorization", `Bearer ${token}`)
                 .send({
                     registro: null,
@@ -207,7 +207,7 @@ it("ERRO get paciente paginas", async() => {
         it("delete especialista", async() => {
 
             const response = await request(app)
-                .del("/especialistas/2")
+                .del("/especialistas/3")
                 .set("Authorization", `Bearer ${token}`)
                
                 expect(response.statusCode).toEqual(200);

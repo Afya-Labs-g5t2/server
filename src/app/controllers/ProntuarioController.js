@@ -2,21 +2,27 @@ const Prontuario = require('../models/Prontuario');
 
 class ProntuarioController {
   async index(req, res) {
-    try {
+    // try {
       const temp = await Prontuario.findAll();
 
       return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
+    // } catch (err) {
+    //   return res.status(400).json({ error: err.message });
+    // }
   }
 
   async show(req, res) {
     try {
 
-        if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+      const id = parseInt(req.params.id);
+    
 
-        const temp = await Prontuario.findByPk(req.params.id,{
+      if(typeof id !=  "number") return res.status(400).json({ error: "Esse id não é válido" });
+
+
+        if (id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
+        const temp = await Prontuario.findByPk(id,{
         include: [{ association:'paciente'},{ association:'paciente'}]
       });
 

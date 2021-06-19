@@ -11,7 +11,8 @@ describe("Testando modelo Atendimento", () => {
 
   beforeAll(async () => {
     let endereco = await Endereco.create({
-      cep: "00000-000",
+      id: 5,
+      cep: "10000-001",
       logradouro: "Rua 25 de Março",
       numero: 404,
       bairro: "Bairro Alegria",
@@ -19,9 +20,11 @@ describe("Testando modelo Atendimento", () => {
       uf: "sp"
     });
     let profissao = await Profissao.create({
+      id: 6,
       profissao: "Ortopedia"
     });
     paciente = await Paciente.create({
+      id: 4, 
       cpf: "999.999.999-11",
       nome: "Larissa Luiza",
       data_nascimento: "2021-06-15",
@@ -32,6 +35,7 @@ describe("Testando modelo Atendimento", () => {
       id_endereco: endereco.id
     });
     especialista = await Especialista.create({      
+      id: 4,
       registro: "1111-SP",
       nome: "Nicolas Cage",
       telefone: "(23)7777-7777",
@@ -44,6 +48,7 @@ describe("Testando modelo Atendimento", () => {
 
   test("Inserir valores válidos no modelo Atendimento", async () => {
     let novoAtendimento = await Atendimento.create({
+      id: 1,
       data_atendimento: "2021-07-12",
       hora_atendimento: "15:00:00",
       valor: 200.50,
