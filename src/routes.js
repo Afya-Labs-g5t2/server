@@ -77,7 +77,7 @@ routes.get('/atendimentos', AtendimentoController.index);
 routes.get('/atendimentos/:id', AtendimentoController.show);
 routes.get('/atendimentos/data/:data', AtendimentoController.index); //consulta por data
 routes.post('/atendimentos', AtendimentoController.store);
-routes.put('/atendimentos:id', AtendimentoController.update);
+routes.put('/atendimentos/:id', AtendimentoController.update);
 routes.patch('/atendimentos/:id', AtendimentoController.status); //modificar o status
 //routes.delete atendimentos não possuem delete, deve se mudar o status para cancelado
 
