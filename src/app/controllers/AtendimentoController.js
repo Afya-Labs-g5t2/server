@@ -48,6 +48,18 @@ class AtendimentoController {
       return res.status(400).json({ error: err.message });
     }
   }
+
+  async update(req, res) {
+    try {
+      const temp = await Atendimento.findByPk(req.params.id);
+
+      await temp.update(req.body);
+
+      return res.json({ temp });
+    } catch (err) {
+      return res.status(400).json({ error: err.message });
+    }
+  }
   
   async status(req, res) {
     try {
