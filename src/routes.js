@@ -11,7 +11,7 @@ const swaggerDocument = require('../swagger.json');
 
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
-const ProntuarioController      = require('./app/controllers/ProntuarioController');
+const ProntuarioController    = require('./app/controllers/ProntuarioController');
 const ProfissaoController     = require('./app/controllers/ProfissaoController');
 const EspecialistaController  = require('./app/controllers/EspecialistaController');
 const AtendimentoController   = require('./app/controllers/AtendimentoController');
@@ -28,16 +28,19 @@ routes.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'./public/','index.html'))         
 }) //pagina inicial da API 
 
-// Criar usuário
-
-routes.post('/usuarios', UsuarioController.store);
+// Cadastrar usuário
+routes.post('/cadastrar', UsuarioController.store);
 
 // Logar
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);		// Sem autenticação, todas as rotas abaixo são bloqueadas
 
+// rotas de usuários
 routes.get('/usuarios', UsuarioController.index);
+routes.get('/usuarios/:id', UsuarioController.show);
+routes.put('/usuarios/:id', UsuarioController.update);
+routes.delete('/usuarios/:id', UsuarioController.destroy);
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
@@ -52,6 +55,13 @@ routes.get('/pacientes/:id', PacienteController.show);
 routes.post('/pacientes', PacienteController.store);         //quando cria um paciente associa ela a um endereço
 routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o pac, atualiza o end
 routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
+
+//rotas de historicos de prontuarios
+routes.get('/pacientes/:id/prontuario', ProntuarioController.history);
+
+routes.post('/especialistas/:id/prontuario',);
+routes.put('/especialistas/:id/prontuario',);
+routes.delete('/especialistas/:id/prontuario',);
 
 // rotas de prontuario
 routes.get('/prontuarios', ProntuarioController.index);        
