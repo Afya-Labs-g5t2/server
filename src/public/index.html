@@ -19,11 +19,10 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">  
-                        <li class="nav-item"><a class="nav-link" href="#rotas">Rotas</a></li>                        
-                        <li class="nav-item"><a class="nav-link" href="#post">Autenticação</a></li>                      
-                        <li class="nav-item"><a class="nav-link" href="#get">Crie uma conta</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#put">Baixe o App</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./docs">Documentação</a></li>                        
+                        <!--li class="nav-item"><a class="nav-link" href="#rotas">Rotas</a></li-->                        
+                        <li class="nav-item"><a class="nav-link" href="#firststep">Primeiros Passos</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="./docs">Documentação</a></li>     
+                        <li class="nav-item"><a class="nav-link" href="https://client-mu-cyan.vercel.app/login">Acesse o App</a></li>
                         <li class="nav-item"><a class="nav-link" href="https://github.com/Afya-Labs-g5t2/server">Repositório</a></li>
                     </ul>
                 </div>
@@ -42,25 +41,26 @@
         </header>
 
         <!-- CRUD section-->
-        <section id="rotas">
+        <section id="firststep">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
                     <div class="col-lg-8">
-                        <h2>Rotas</h2>
-                        <p class="lead">    As rotas da Api são:</p>
+                        <h2>Primerios Passos</h2>
+                        <p class="lead">    Esta é uma API do tipo CRUD para o web App i52. Todas as rotas só podem ser acessadas
+                                            através de autenticação. Exceto as rotas abaixo:</p>
                                             <ul>
-                                                <li><a href="/enderecos">/enderecos</a></li>
-                                                <li><a href="/pacientes">/pacientes</a></li>
-                                                <li><a href="/profissoes">/profissoes</a></li>
-                                                <li><a href="/especialistas">/especialistas</a></li>                                                
-                                                <li><a href="/atendimentos">/atendimentos</a></li>
+                                                
+                                                <li>Para se cadastrar na nossa API:</li> Envie um POST para <strong>g5t2-api.herokuapp.com/cadastrar</strong> com um objeto do tipo json informando nome, login e senha.
+                                            </ul>
+                                            <ul>
+                                                <li>Para acessar a nossa API através de um app web:</li> Envie um POST para <strong>g5t2-api.herokuapp.com//session</strong> com um objeto do tipo json informando login e senha. a requisição te retornará um token para acessar nossa API.</br>
                                             </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-         <!-- Services section-->
+         <!-- Services section--
          <section class="bg-light" id="get">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
@@ -95,7 +95,7 @@
             </div>
         </section>
 
-        <!-- About section-->
+        -- About section--
         <section id="post">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
@@ -165,7 +165,7 @@
             </div>
         </section>
 
-        <!-- Services section-->
+        -- Services section--
         <section class="bg-light" id="put">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
@@ -231,7 +231,7 @@
             </div>
         </section>
 
-        <!-- Contact section-->
+        -- Contact section--
         <section id="delete">
             <div class="container px-4">
                 <div class="row gx-4 justify-content-center">
@@ -252,7 +252,7 @@
             </div>
         </section>
 
-        <!-- Footer-->
+        -- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; G5T2-Team 2021</p></div>
         </footer>

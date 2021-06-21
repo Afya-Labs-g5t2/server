@@ -61,20 +61,6 @@ class EnderecoController {
     }
   }// */
 
-  async find_or_create(req, res) {
-    try {
-      const { cep, numero } = req.body;
-      let [temp, Created ] = await Endereco.findOrCreate({
-        where: { cep, numero }, 
-        defaults: req.body
-      });      
-      
-      return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
-  }// */
-
   async update(req, res) {
     try {
       const temp = await Endereco.findByPk(req.params.id);
