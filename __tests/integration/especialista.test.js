@@ -6,8 +6,9 @@ let token;
 
 beforeAll(async() => {
     await request(app)
-      .post('/usuarios')
+      .post('/cadastrar')
       .send({
+        id: 4,
         login: "Afya30",
         senha: "afyasenha30",
         nome: "joao"

@@ -8,8 +8,9 @@ describe("Endereco", () => {
 
     beforeAll(async() => {
         await request(app)
-          .post('/usuarios')
+          .post('/cadastrar')
           .send({
+            id:10,
             login: "testesAfya",
             senha: "123testes",
             nome: "testes"

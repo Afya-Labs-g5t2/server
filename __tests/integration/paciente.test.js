@@ -8,8 +8,9 @@ describe("Paciente", () => {
 
     beforeAll(async() => {
         await request(app)
-          .post('/usuarios')
+          .post('/cadastrar')
           .send({
+            id : 5,
             login: "Afya1",
             senha: "afyasenha1",
             nome: "maria"

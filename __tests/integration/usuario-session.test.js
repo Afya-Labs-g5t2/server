@@ -9,8 +9,9 @@ describe("Usuario", () => {
     it("post novo usuario", async() => {
 
         const response = await request(app)
-            .post("/usuarios")
+            .post("/cadastrar")
             .send({
+                id:1,
                 login: "admin",
                 senha: "admin100",
                 nome: "admin"
@@ -26,7 +27,7 @@ describe("Usuario", () => {
     it("ERROR post novo usuario", async() => {
 
         const response = await request(app)
-            .post("/usuarios")
+            .post("/cadastrar")
             .send({
                 login: null,
                 senha: "123teste",
@@ -150,6 +151,155 @@ describe("Usuario", () => {
         expect(response.statusCode).toEqual(401);
         expect(response.body.message).toEqual("Token inválido");
         
+    })
+
+    it("get paciente pelo ID", async() => {
+
+        const user = await request(app)
+        .post("/session")
+        .send({
+            login: "admin",
+            senha: "admin100",
+            nome: "admin"
+        })
+
+        const response = await request(app)
+            .get("/usuarios/1")
+            .set("Authorization", `Bearer ${user.body.token}`)
+           
+        expect(response.statusCode).toEqual(200);
+      
+    
+    })
+
+     it("ERROR get paciente pelo ID", async() => {
+
+        const user = await request(app)
+        .post("/session")
+        .send({
+            login: "admin",
+            senha: "admin100",
+            nome: "admin"
+        })
+
+            const response = await request(app)
+                .get("/usuarios/ok")
+                .set("Authorization", `Bearer ${user.body.token}`)
+               
+                expect(response.statusCode).toEqual(400);
+                expect(response.body).toHaveProperty("error");
+         })
+
+    
+         it("ERROR get usuario pelo ID invalido", async() => {
+
+            const user = await request(app)
+                .post("/session")
+                .send({
+                    login: "admin",
+                    senha: "admin100",
+                    nome: "admin"
+                })
+
+            const response = await request(app)
+                .get("/usuarios/-1")
+                .set("Authorization", `Bearer ${user.body.token}`)
+               
+                expect(response.statusCode).toEqual(418);
+                expect(response.body.error).toEqual("São aceitos somente valores de Id maiores do que zero" );
+         })
+
+
+
+
+    it("update usuario", async() => {
+
+        const user = await request(app)
+        .post("/session")
+        .send({
+            login: "admin",
+            senha: "admin100",
+            nome: "admin"
+        })
+
+        const response = await request(app)
+            .put("/usuarios/1")
+            .set("Authorization", `Bearer ${user.body.token}`)
+            .send({
+                login: "admin",
+                senha: "admin100",
+                nome: "gama"
+            });
+    
+        // console.log(response.error)
+        expect(response.ok).toBeTruthy();
+        expect(response.statusCode).toEqual(200);
+            
+    })
+
+    it("ERROR update usuario", async() => {
+
+        const user = await request(app)
+        .post("/session")
+        .send({
+            login: "admin",
+            senha: "admin100",
+            nome: "admin"
+        })
+
+
+        const response = await request(app)
+            .put("/usuarios/1")
+            .set("Authorization", `Bearer ${user.body.token}`)
+            .send({
+                login: null,
+                senha: "gama100",
+                nome: "gama"
+            });
+    
+            expect(response.statusCode).toEqual(400);
+            expect(response.body).toHaveProperty("error");
+            
+    })
+
+
+    it("delete usuario", async() => {
+
+        const user = await request(app)
+        .post("/session")
+        .send({
+            login: "admin",
+            senha: "admin100",
+            nome: "admin"
+        })
+
+        const response = await request(app)
+            .del("/usuarios/1")
+            .set("Authorization", `Bearer ${user.body.token}`)
+               
+            expect(response.statusCode).toEqual(200);
+
+            
+    })
+
+    it("ERROR delete usuario", async() => {
+
+            const user = await request(app)
+            .post("/session")
+            .send({
+                login: "admin",
+                senha: "admin100",
+                nome: "admin"
+            })
+
+            const response = await request(app)
+            .del("/usuarios/0")
+            .set("Authorization", `Bearer ${user.body.token}`)
+               
+            // console.log(response.error)
+            expect(response.statusCode).toEqual(401);
+            // expect(response.body).toHaveProperty("error");
+            
     })
 
    
