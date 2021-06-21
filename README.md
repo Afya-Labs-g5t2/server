@@ -1,6 +1,13 @@
-![imagem link ](https://img.shields.io/badge/g5t2-server-green)
-![imagem link ](https://img.shields.io/github/repo-size/Afya-Labs-g5t2/server)
-![imagem link ]("https://img.shields.io/github/deployments/Afya-Labs-g5t2/server/production)
+<p align="start">
+  <img alt="GitHub client side" src="https://img.shields.io/badge/g5t2-server-red">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Afya-Labs-g5t2/server">
+  
+  <a href="https://i52-afyalabs.herokuapp.com/">
+    <img alt="Landing page" src="https://img.shields.io/badge/Landing_page-white">
+  </a>
+</p>
+
 
 # Desafio Afya labs
 
