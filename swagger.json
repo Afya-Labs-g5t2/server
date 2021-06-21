@@ -1,752 +1,531 @@
 {
-	"swagger": "2.0",
-	"info": {
-	  "description": "Api AfyaDos",
-	  "version": "0.0.1",
-	  "title": "API AfyaDos",
-	  "contact": {
-		"email": "afyados@gmail.com"
-	  }
-	},
-	"host": "localhost:5000",
-	"schemes": ["http"],
-	"paths": {
-	  "/users": {
-		"get": {
-		  "tags": ["Users"],
-		  "summary": "Retorna os usuários da base",
-		  "description": "Você deve estar autenticado para usar esta rota",
-		  "operationId": "addPet",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation",
-			  "schema": {
-				"type": "array",
-				"items": {
-				  "$ref": "#/definitions/Users"
-				}
-			  }
-			},
-			"401": {
-			  "description": "Usuário não autenticado"
-			}
-		  }
-		},
-		"post": {
-		  "tags": ["Users"],
-		  "parameters": [
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Você deve passar o email e password no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/CreateUserBody"
-			  }
-			}
-		  ],
-		  "summary": "Cadastra um usuário na base",
-		  "description": "",
-		  "operationId": "add",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation",
-			  "schema": {
-				"type": "array",
-				"items": {
-				  "$ref": "#/definitions/CreateUser"
-				}
-			  }
-			},
-			"409": {
-			  "description": "Usuário já cadastrado"
-			}
-		  }
-		}
-	  },
-	  "users/{id}": {
-		"put": {
-		  "tags": ["Users"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "Usuário a ser atualizado"
-			},
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Os dados para serem atualizados devem ser passados no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/CreateUser"
-			  }
-			}
-		  ],
-		  "summary": "Atualiza o usuário",
-		  "description": "",
-		  "operationId": "updateClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar cadastrar p usuário"
-			}
-		  }
-		},
-		"delete": {
-		  "tags": ["Users"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "usuário a ser deletado",
-			  "required": true
-			}
-		  ],
-		  "summary": "Deleta um usuário",
-		  "description": "",
-		  "operationId": "deleteClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar deletar especialista"
-			}
-		  }
-		}
-	  },
-	  "/clients": {
-		"get": {
-		  "tags": ["Clientes"],
-		  "summary": "Retorna os clientes cadastrados",
-		  "description": "Você deve estar autenticado para usar esta rota",
-		  "operationId": "getClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "Sucesso na operação",
-			  "schema": {
-				"type": "array",
-				"items": {
-				  "$ref": "#/definitions/Clients"
-				}
-			  }
-			},
-			"401": {
-			  "description": "Usuário não autenticado"
-			}
-		  }
-		},
-		"post": {
-		  "tags": ["Clientes"],
-		  "parameters": [
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Os dados cadastrais devem ser passados no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/CreateClient"
-			  }
-			}
-		  ],
-		  "summary": "Cadastra um usuário na base",
-		  "description": "",
-		  "operationId": "addClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar cadastrar paciente"
-			}
-		  }
-		}
-	  },
-	  "clients/{id}": {
-		"put": {
-		  "tags": ["Clientes"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "do usuario a ser atualizado"
-			},
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Os dados para serem atualizados devem ser passados no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/CreateClient"
-			  }
-			}
-		  ],
-		  "summary": "Atualiza clientes existentes",
-		  "description": "",
-		  "operationId": "updateClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar cadastrar cliente"
-			}
-		  }
-		},
-		"delete": {
-		  "tags": ["Clientes"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "do cliente a ser deletado",
-			  "required": true
-			}
-		  ],
-		  "summary": "Deleta um usuario",
-		  "description": "",
-		  "operationId": "deleteClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar deletar cliente"
-			}
-		  }
-		}
-	  },
-	   "/specialist": {
-		"get": {
-		  "tags": ["Especialistas"],
-		  "summary": "Retorna os especialistas e suas especialidades cadastradas",
-		  "description": "Você deve estar autenticado para usar esta rota",
-		  "operationId": "getClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "Sucesso na operação",
-			  "schema": {
-				"type": "array",
-				"items": {
-				  "$ref": "#/definitions/Specialist"
-				}
-			  }
-			},
-			"401": {
-			  "description": "Usuário não autenticado"
-			}
-		  }
-		},
-		"post": {
-		  "tags": ["Especialistas"],
-		  "parameters": [
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Os dados cadastrais devem ser passados no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/SpecialistBody"
-			  }
-			}
-		  ],
-		  "summary": "Cadastra o especialista na base",
-		  "description": "",
-		  "operationId": "addClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar cadastrar paciente"
-			}
-		  }
-		}
-	  },
-	  "specialist/{id}": {
-		"put": {
-		  "tags": ["Especialistas"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "especialista a ser atualizado"
-			},
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Os dados para serem atualizados devem ser passados no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/SpecialistBody"
-			  }
-			}
-		  ],
-		  "summary": "Atualiza o especialista",
-		  "description": "",
-		  "operationId": "updateClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar cadastrar p Especialista"
-			}
-		  }
-		},
-		"delete": {
-		  "tags": ["Especialistas"],
-		  "parameters": [
-			{
-			  "in": "header",
-			  "name": "id",
-			  "description": "Especialista a ser deletado",
-			  "required": true
-			}
-		  ],
-		  "summary": "Deleta um especialista",
-		  "description": "",
-		  "operationId": "deleteClients",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation"
-			},
-			"400": {
-			  "description": "Algo deu errado ao tentar deletar especialista"
-			}
-		  }
-		}
-	  },
-	  
-	  "/login": {
-		"post": {
-		  "tags": ["Login"],
-		  "parameters": [
-			{
-			  "in": "body",
-			  "name": "body",
-			  "description": "Você deve passar o email e password no body",
-			  "required": true,
-			  "schema": {
-				"$ref": "#/definitions/LoginBody"
-			  }
-			}
-		  ],
-		  "summary": "Realiza o login da aplicação",
-		  "description": "",
-		  "operationId": "login",
-		  "consumes": ["application/json"],
-		  "produces": ["application/json"],
-		  "responses": {
-			"200": {
-			  "description": "successful operation",
-			  "schema": {
-				"type": "array",
-				"items": {
-				  "$ref": "#/definitions/Login"
-				}
-			  }
-			},
-			"401": {
-			  "description": "Usuário não autorizado"
-			}
-		  }
-		}
-	  }
-	},
-	"securityDefinitions": {
-	  "api_key": {
-		"type": "apiKey",
-		"name": "api_key",
-		"in": "header"
-	  }
-	},
-	"definitions": {
-	  "Users": {
-		"type": "object",
-		"required": ["name", "email", "password"],
-		"properties": {
-		  "id": {
-			"type": "integr",
-			"format": "uuid"
-		  },
-		  "name": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "password": {
-			"type": "string"
-		  }
-		},
-		"xml": {
-		  "name": "Usuario"
-		}
-	  },
-	  "Clients": {
-		"type": "object",
-		"properties": {
-		  "id": {
-			"type": "string",
-			"format": "uuid"
-		  },
-		  "cpf": {
-			"type": "string"
-		  },
-		  "name": {
-			"type": "string"
-		  },
-		  "phone": {
-			"type": "string"
-		  },
-		  "cellphone": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "gender": {
-			"type": "string"
-		  },
-		  "bloodtype": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "typeOf": {
-				"type": "string"
-			  }
-			}
-		  },
-		  "address": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "city": {
-				"type": "string"
-			  },
-			  "state": {
-				"type": "string"
-			  },
-			  "street": {
-				"type": "string"
-			  },
-			  "district": {
-				"type": "string"
-			  },
-			  "numberOf": {
-				"type": "string"
-			  },
-			  "postcode": {
-				"type": "string"
-			  }
-			}
-		  }
-		},
-		"xml": {
-		  "name": "Clients"
-		}
-	  },
-	  "CreateClient": {
-		"type": "object",
-		"properties": {
-		  "id": {
-			"type": "string",
-			"format": "uuid"
-		  },
-		  "cpf": {
-			"type": "string"
-		  },
-		  "name": {
-			"type": "string"
-		  },
-		  "phone": {
-			"type": "string"
-		  },
-		  "cellphone": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "gender": {
-			"type": "string"
-		  },
-		  "bloodtype": {
-			"type": "string",
-			"format": "uuid"
-		  },
-		  "address": {
-			"type": "object",
-			"properties": {
-			  "city": {
-				"type": "string"
-			  },
-			  "state": {
-				"type": "string"
-			  },
-			  "street": {
-				"type": "string"
-			  },
-			  "district": {
-				"type": "string"
-			  },
-			  "numberOf": {
-				"type": "string"
-			  },
-			  "postcode": {
-				"type": "string"
-			  }
-			}
-		  }
-		},
-		"xml": {
-		  "name": "Clients"
-		}
-	  },
-	  "Login": {
-		"type": "object",
-		"required": ["email", "password"],
-		"properties": {
-		  "user": {
-			"type": "object",
-			"id": {
-			  "type": "integr",
-			  "format": "uuid"
-			},
-			"name": {
-			  "type": "string"
-			},
-			"email": {
-			  "type": "string"
-			},
-			"password": {
-			  "type": "string"
-			}
-		  },
-		  "token": {
-			"type": "oauth2"
-		  }
-		},
-		"xml": {
-		  "name": "Usuario"
-		}
-	  },
-	  "LoginBody": {
-		"type": "object",
-		"required": ["email", "password"],
-		"properties": {
-		  "email": {
-			"type": "string"
-		  },
-		  "password": {
-			"type": "string"
-		  }
-		},
-		"xml": {
-		  "name": "Usuario"
-		}
-	  },
-	  "CreateUser": {
-		"type": "object",
-		"required": ["email", "password"],
-		"properties": {
-		  "name": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "password": {
-			"type": "string"
-		  }
-		},
-		"xml": {
-		  "name": "Usuario"
-		}
-	  },
-	  "CreateUserBody": {
-		"type": "object",
-		"required": ["email", "password"],
-		"properties": {
-		  "name": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "password": {
-			"type": "string"
-		  }
-		},
-		"xml": {
-		  "name": "Usuario"
-		}
-	  },
-	  "Specialist": {
-		"type": "object",
-		"properties": {
-		  "id": {
-			"type": "string",
-			"format": "uuid"
-		  },
-		  "registry": {
-			"type": "string"
-		  },
-		  "name": {
-			"type": "string"
-		  },
-		  "phone": {
-			"type": "string"
-		  },
-		  "cell": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "specialties": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "specialty": {
-				"type": "string"
-			  }
-			}
-		  },
-		  "address": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "city": {
-				"type": "string"
-			  },
-			  "state": {
-				"type": "string"
-			  },
-			  "street": {
-				"type": "string"
-			  },
-			  "district": {
-				"type": "string"
-			  },
-			  "numberOf": {
-				"type": "string"
-			  },
-			  "postcode": {
-				"type": "string"
-			  }
-			}
-		  }
-		},
-		"xml": {
-		  "name": "Specialist"
-		}
-	  },
-	  "SpecialistBody": {
-		"type": "object",
-		"properties": {
-		  "registry": {
-			"type": "string"
-		  },
-		  "name": {
-			"type": "string"
-		  },
-		  "phone": {
-			"type": "string"
-		  },
-		  "cell": {
-			"type": "string"
-		  },
-		  "email": {
-			"type": "string"
-		  },
-		  "specialties": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "specialty": {
-				"type": "string"
-			  }
-			}
-		  },
-		  "address": {
-			"type": "object",
-			"properties": {
-			  "id": {
-				"type": "string",
-				"format": "uuid"
-			  },
-			  "city": {
-				"type": "string"
-			  },
-			  "state": {
-				"type": "string"
-			  },
-			  "street": {
-				"type": "string"
-			  },
-			  "district": {
-				"type": "string"
-			  },
-			  "numberOf": {
-				"type": "string"
-			  },
-			  "postcode": {
-				"type": "string"
-			  }
-			}
-		  }
-		},
-		"xml": {
-		  "name": "SpecialistBody"
-		}
-	  }
-	},
-	"externalDocs": {
-	  "description": "Find out more about Swagger",
-	  "url": "http://swagger.io"
-	}
-  }
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "API desenvolvida para o desafio da Gama Academy em conjunto com a Afya Labs",
+    "version" : "1.0.0",
+    "title" : "i52- API",
+    "contact" : {
+      "email" : "g5t2.desafioafyalabs@gmail.com"
+    },
+    "license" : {
+      "name" : "MIT",
+      "url" : "https://mit-license.org/"
+    }
+  },
+  "tags" : [ {
+    "name" : "Login",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "Usuários",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "Endereços",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "Pacientes",
+    "description" : "Lista com todos os pacientes"
+  }, {
+    "name" : "Profissões",
+    "description" : "Especialidades relacionados a saúde"
+  }, {
+    "name" : "Especialistas",
+    "description" : "Profissionais da saúde"
+  }, {
+    "name" : "Atendimentos",
+    "description" : "Marcação de consultas e Agentamentos"
+  }, {
+    "name" : "Prontuários",
+    "description" : "Prontuário dos Clientes"
+  } ],
+  "paths" : {
+    "/cadastrar" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "adds an inventory item",
+        "operationId" : "addInventory",
+        "description" : "Adds an item to the system",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "inventoryItem",
+          "description" : "Inventory item to add",
+          "schema" : {
+            "$ref" : "#/definitions/Endereco"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/session" : {
+      "post" : {
+        "tags" : [ "Login" ],
+        "summary" : "para logar-se na API",
+        "operationId" : "login",
+        "description" : "retorna um token",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "inventoryItem",
+          "description" : "Inventory item to add",
+          "schema" : {
+            "$ref" : "#/definitions/Session"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/usuarios" : {
+      "get" : {
+        "tags" : [ "Usuários" ],
+        "summary" : "searches inventory",
+        "operationId" : "searchInventory",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0,
+          "maximum" : 50
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Endereco"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/enderecos" : {
+      "get" : {
+        "tags" : [ "Endereços" ],
+        "summary" : "searches inventory",
+        "operationId" : "searchInventorysss",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0,
+          "maximum" : 50
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Endereco"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Endereços" ],
+        "summary" : "adds an inventory item",
+        "operationId" : "addInventoryaaa",
+        "description" : "Adds an item to the system",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "inventoryItem",
+          "description" : "Inventory item to add",
+          "schema" : {
+            "$ref" : "#/definitions/Endereco"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      }
+    },
+    "/enderecos/{id}" : {
+      "get" : {
+        "tags" : [ "Endereços" ],
+        "summary" : "searches inventory",
+        "operationId" : "searchInvent",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "query",
+          "name" : "skip",
+          "description" : "number of records to skip for pagination",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0
+        }, {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0,
+          "maximum" : 50
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Endereco"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Endereços" ],
+        "summary" : "adds an inventory item",
+        "operationId" : "addInve",
+        "description" : "Adds an item to the system",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "inventoryItem",
+          "description" : "Inventory item to add",
+          "schema" : {
+            "$ref" : "#/definitions/Endereco"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "item created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing item already exists"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Endereços" ],
+        "summary" : "retorna Endereco",
+        "operationId" : "retornEndereco",
+        "description" : "By passing in the appropriate options, you can search for\navailable inventory in the system\n",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "query",
+          "name" : "searchString",
+          "description" : "pass an optional search string for looking up inventory",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "in" : "query",
+          "name" : "skip",
+          "description" : "number of records to skip for pagination",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0
+        }, {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "type" : "integer",
+          "format" : "int32",
+          "minimum" : 0,
+          "maximum" : 50
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Endereco"
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "api_key",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "Session" : {
+      "type" : "object",
+      "required" : [ "id", "login", "senha" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "login" : {
+          "type" : "string",
+          "example" : "admin"
+        },
+        "senha" : {
+          "type" : "string",
+          "example" : "admin"
+        }
+      }
+    },
+    "Usuario" : {
+      "type" : "object",
+      "required" : [ "id", "login", "nome", "senha" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "login" : {
+          "type" : "string",
+          "example" : "luizluz"
+        },
+        "nome" : {
+          "type" : "string",
+          "example" : "Luiz da Luz"
+        },
+        "senha" : {
+          "type" : "string",
+          "example" : "!@#$%(senha)&-*=+"
+        }
+      }
+    },
+    "Endereco" : {
+      "type" : "object",
+      "required" : [ "id", "cep", "logradouro", "numero", "bairro", "cidade", "uf" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "cep" : {
+          "type" : "string",
+          "example" : "01310-200"
+        },
+        "logradouro" : {
+          "type" : "string",
+          "example" : "Avenida Paulista"
+        },
+        "numero" : {
+          "type" : "integer",
+          "example" : 1578
+        },
+        "bairro" : {
+          "type" : "string",
+          "example" : "Bela Vista"
+        },
+        "cidade" : {
+          "type" : "string",
+          "example" : "São Paulo"
+        },
+        "uf" : {
+          "type" : "string",
+          "example" : "SP"
+        }
+      }
+    },
+    "Paciente" : {
+      "type" : "object",
+      "required" : [ "id", "cpf", "nome", "data_nascimento", "celular", "email", "id_endereco" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "cpf" : {
+          "type" : "string",
+          "example" : "123.456.789-00"
+        },
+        "nome" : {
+          "type" : "string",
+          "example" : "João da Silva"
+        },
+        "data_nascimento" : {
+          "type" : "string",
+          "format" : "date-time",
+          "example" : "2021-06-19"
+        },
+        "telefone" : {
+          "type" : "string",
+          "example" : "(32)1234-3210"
+        },
+        "celular" : {
+          "type" : "string",
+          "example" : "(32)98834-3210"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "joaosilva@email.com"
+        },
+        "tipo_sangue" : {
+          "type" : "string",
+          "example" : "O+"
+        },
+        "id_endereco" : {
+          "$ref" : "#/definitions/Endereco"
+        }
+      }
+    },
+    "Profissao" : {
+      "type" : "object",
+      "required" : [ "id", "profissao" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "profisao" : {
+          "type" : "string",
+          "example" : "Otorrinolaringologista"
+        }
+      }
+    },
+    "Especialista" : {
+      "type" : "object",
+      "required" : [ "id", "registro", "nome", "celular", "email", "id_profissao", "id_endereco" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "registro" : {
+          "type" : "string",
+          "example" : "321.654.987-00"
+        },
+        "nome" : {
+          "type" : "string",
+          "example" : "Maria José"
+        },
+        "telefone" : {
+          "type" : "string",
+          "example" : "(32)1234-3210"
+        },
+        "celular" : {
+          "type" : "string",
+          "example" : "(32)98834-3210"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "joaosilva@email.com"
+        },
+        "id_profissao" : {
+          "$ref" : "#/definitions/Profissao"
+        },
+        "id_endereco" : {
+          "$ref" : "#/definitions/Endereco"
+        }
+      }
+    },
+    "Atendimento" : {
+      "type" : "object",
+      "required" : [ "id", "registro", "nome", "celular", "email", "id_profissao", "id_endereco" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 1
+        },
+        "registro" : {
+          "type" : "string",
+          "example" : "321.654.987-00"
+        },
+        "nome" : {
+          "type" : "string",
+          "example" : "Maria José"
+        },
+        "telefone" : {
+          "type" : "string",
+          "example" : "(32)1234-3210"
+        },
+        "celular" : {
+          "type" : "string",
+          "example" : "(32)98834-3210"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "joaosilva@email.com"
+        },
+        "id_profissao" : {
+          "$ref" : "#/definitions/Profissao"
+        },
+        "id_endereco" : {
+          "$ref" : "#/definitions/Endereco"
+        }
+      }
+    }
+  },
+  "schemes" : [ "https" ],
+  "host" : "g5t2-api.herokuapp.com"
+}
