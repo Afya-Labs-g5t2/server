@@ -3,13 +3,8 @@ const Usuario = require('../models/Usuario');
 class UsuarioController {
 
   async index(req, res) {
-<<<<<<< HEAD
     // try {
-      const temp = await Usuario.findAll({attributes:['id','nome', 'createdAt', "updatedAt"]});
-=======
-    try {
       const temp = await Usuario.findAll();
->>>>>>> 7229e4e82f63db28f3f1288758c1afab3a0fbac3
 
       return res.json(temp);
     // } catch (err) {
