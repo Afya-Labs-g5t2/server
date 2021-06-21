@@ -11,28 +11,32 @@ describe("Testando modelo ", () => {
   let prontuario = {};
 
   beforeAll(async () => {
-    let profissao = await Profissao.create({      
-      profissao: "Clínica Geral"
+    let profissao = await Profissao.create({  
+      id: 10,    
+      profissao: "Obstetra"
     });
     let endereco = await Endereco.create({
+      id: 10,
       cep: "33333-333",
       logradouro: "Rua 25 de Março",
-      numero: 404,
+      numero: 400,
       bairro: "Bairro Alegria",
       cidade: "São Paulo",
       uf: "sp"
     });
     let paciente = await Paciente.create({
-      cpf: "000.000.000-00",
+      id: 10,
+      cpf: "888.000.000-00",
       nome: "Paciente Teste",
       data_nascimento: "2021-06-15",
-      telefone: "(11)1111-1111",
-      celular: "(11)91111-1111",      
+      telefone: "(11)1118-1000",
+      celular: "(11)91111-1000",      
       email: "pacienteteste@email.com",
       tipo_sangue: "A-",
       id_endereco: endereco.id
     });
-    especialista = await Especialista.create({      
+    especialista = await Especialista.create({  
+      id: 10,    
       registro: "77777-SP",
       nome: "Especialista Teste",
       telefone: "(23)9999-9999",
@@ -42,6 +46,7 @@ describe("Testando modelo ", () => {
       id_endereco: endereco.id
     });
     prontuario = await Prontuario.create({
+      id: 10,
       id_paciente: paciente.id,
     });
   });

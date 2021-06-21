@@ -11,7 +11,7 @@ const swaggerDocument = require('../swagger.json');
 
 const EnderecoController      = require('./app/controllers/EnderecoController');
 const PacienteController      = require('./app/controllers/PacienteController');
-const ProntuarioController      = require('./app/controllers/ProntuarioController');
+const ProntuarioController    = require('./app/controllers/ProntuarioController');
 const ProfissaoController     = require('./app/controllers/ProfissaoController');
 const EspecialistaController  = require('./app/controllers/EspecialistaController');
 const AtendimentoController   = require('./app/controllers/AtendimentoController');

@@ -5,6 +5,7 @@ describe("Testando modelo Usuario", () => {
 
   test("Inserir valores válidos no modelo Usuario", async () => {
     let novoUsuario = await Usuario.create({
+      id: 8,
       login: "exemplo",
       nome: "Fulano de Tal",
       senha: "12345"

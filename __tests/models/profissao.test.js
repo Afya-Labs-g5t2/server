@@ -5,6 +5,7 @@ describe("Testando model Profissao", () => {
 
   test("Inserir valores válidos no modelo Profissao", async () => {
     let novaProfissao = await Profissao.create({
+      id: 2,
       profissao: "Cardiologia"
     });
     expect(novaProfissao.id).not.toBe(undefined);

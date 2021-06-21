@@ -1,4 +1,6 @@
 ![imagem link ](https://img.shields.io/badge/g5t2-server-green)
+![imagem link ](https://img.shields.io/github/repo-size/Afya-Labs-g5t2/server)
+![imagem link ]("https://img.shields.io/github/deployments/Afya-Labs-g5t2/server/production)
 
 # Desafio Afya labs
 
@@ -39,6 +41,9 @@ O projeto foi feito utilizando as tecnologias:
 - [Nodemon](https://nodemon.io/)
 - [JWT](https://jwt.io/)
 - [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [Jest](https://jestjs.io/)
+- [Supertest](https://www.npmjs.com/package/supertest)
+- [SQLite](https://www.sqlite.org/index.html)
 
 
 ### 🚀 Install
@@ -86,6 +91,16 @@ cd server
   ```bash
   yarn remove
   ``` 
+- Caso queira rodar os testes
+  
+  - npm  
+  ```bash
+  npm test
+  ``` 
+  - yarn 
+  ```bash
+  yarn test
+  ``` 
 
 
 - Para acessar a API diretamente no seu browser, acesse https://g5t2-api.herokuapp.com/
@@ -96,6 +111,7 @@ O repositório tem estas pastas:
 server
 .
 ├── __tests
+|   └── integration
 │   └── models
 ├── src
 │   ├── app
@@ -171,4 +187,6 @@ Nossa equipe de desenvolvedores que construiu a aplicação.
     <tr>
  </table>
  
-Nosso email de contato:  g5t2.desafioafyalabs@gmail.com
+Nosso email de contato: 
+
+[![Gmail Badge](https://img.shields.io/badge/-g5t2.desafioafyalabs@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:g5t2.desafioafyalabs@gmail.com)](mailto:g5t2.desafioafyalabs@gmail.com)

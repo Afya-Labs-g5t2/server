@@ -5,28 +5,37 @@ const Paciente = require('../models/Paciente');
 
 class EnderecoController {
   async index(req, res) {
-    try {
+    // try {
       const temp = await Endereco.findAll();
 
       return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
+    // } catch (err) {
+    //   return res.status(401);
+    // }
   }
  
   
   async show(req, res) {
     try {
       
-      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+      const id = parseInt(req.params.id);
+    
 
-      const temp = await Endereco.findByPk(req.params.id,{
+      if(typeof id !=  "number") return res.status(400).json({ error: "Esse id não é válido" });
+
+
+      if (id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
+      const temp = await Endereco.findByPk(id,{
         include: [{ association:'moradores'},{ association:'doutores'}]
       });
 
       if (!temp) return res.status(404).json({ error: "Não existe nenhum Endereço com esse id" });
 
+
       return res.json(temp);
+
+
     } catch (err) {
       return res.status(400).json({ error: err.message });
     }
@@ -38,7 +47,7 @@ class EnderecoController {
       const { cep, numero } = req.body;
       let [temp, Created ] = await Endereco.findOrCreate({
         where: { cep, numero }, 
-        defaults: req.body
+        defaults: req.body 
       });
 
       //let temp = await Endereco.create(req.body);

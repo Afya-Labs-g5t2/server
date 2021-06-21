@@ -1,22 +1,27 @@
 const Usuario = require('../models/Usuario');
 
 class UsuarioController {
+
   async index(req, res) {
-    try {
+    // try {
       const temp = await Usuario.findAll({attributes:['id','nome', 'createdAt', "updatedAt"]});
 
       return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
-  }
+    // } catch (err) {
+    //   return res.status(400).json({ error: err.message });
+    // }
+  
+}
 
   async show(req, res) {
     try {
+      const id = parseInt(req.params.id);
+    
+      if(typeof id !=  "number") return res.status(400).json({ error: "Esse id não é válido" });
       
-      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+      if (id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
 
-      const temp = await Usuario.findByPk(req.params.id,{attributes:['id','login','nome', 'createdAt', "updatedAt"]});
+      const temp = await Usuario.findByPk(id,{attributes:['id','login','nome', 'createdAt', "updatedAt"]});
 
       if (!temp) return res.status(404).json({ error: "Não existe nenhum Usuario com esse id" });      
 

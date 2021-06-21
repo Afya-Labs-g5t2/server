@@ -2,21 +2,25 @@ const Profissao = require('../models/Profissao');
 
 class ProfissaoController {
   async index(req, res) {
-    try {
+    // try {
       const temp = await Profissao.findAll();
 
       return res.json(temp);
-    } catch (err) {
-      return res.status(400).json({ error: err.message });
-    }
+    // } catch (err) {
+    //   return res.status(400).json({ error: err.message });
+    // }
   }
 
   async show(req, res) {
     try {
-      
-      if (req.params.id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
 
-      const temp = await Profissao.findByPk(req.params.id,{
+      const id = parseInt(req.params.id);
+    
+      if(typeof id !=  "number") return res.status(400).json({ error: "Esse id não é válido" });
+      
+      if (id<=0) return res.status(418).json({ error: "São aceitos somente valores de Id maiores do que zero" });
+
+      const temp = await Profissao.findByPk(id,{
         include: { association: 'profissionais'}
       });
 

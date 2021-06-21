@@ -8,7 +8,8 @@ describe("Testando modelo Prontuario", () => {
 
   beforeAll(async () => {
     let endereco = await Endereco.create({
-      cep: "22222-222",
+      id:6,
+      cep: "20202-222",
       logradouro: "Rua 25 de Março",
       numero: 404,
       bairro: "Bairro Alegria",
@@ -16,12 +17,13 @@ describe("Testando modelo Prontuario", () => {
       uf: "sp"
     });
     paciente = await Paciente.create({
-      cpf: "123.456.789-01",
-      nome: "Ana Roberta",
+      id:6,
+      cpf: "123.406.789-01",
+      nome: "Ana Leticia",
       data_nascimento: "2021-06-15",
-      telefone: "(11)1111-1111",
-      celular: "(11)91111-1111",      
-      email: "anaroberta@email.com",
+      telefone: "(11)1111-1122",
+      celular: "(11)91111-1122",      
+      email: "analeticia@email.com",
       tipo_sangue: "AB+",
       id_endereco: endereco.id
     });
@@ -29,6 +31,8 @@ describe("Testando modelo Prontuario", () => {
 
   test("Inserir valores válidos no modelo Prontuario", async () => {
     let novoProntuario = await Prontuario.create({
+      id:1,
+      data_abertura: "2021-06-02",
       id_paciente: paciente.id,
     });
     expect(novoProntuario.id).not.toBe(undefined);
