@@ -28,14 +28,19 @@ routes.get('/', (req, res) => {
   res.sendFile(path.join(__dirname,'./public/','index.html'))         
 }) //pagina inicial da API 
 
-// Criar usuário
-routes.get('/usuarios', UsuarioController.index);
-routes.post('/usuarios', UsuarioController.store);
+// Cadastrar usuário
+routes.post('/cadastrar', UsuarioController.store);
 
 // Logar
 routes.post('/session', SessionController.store);
 
 routes.use(authMiddleware);		// Sem autenticação, todas as rotas abaixo são bloqueadas
+
+// rotas de usuários
+routes.get('/usuarios', UsuarioController.index);
+routes.get('/usuarios/:id', UsuarioController.show);
+routes.put('/usuarios/:id', UsuarioController.update);
+routes.delete('/usuarios/:id', UsuarioController.destroy);
 
 // rotas de endereços
 routes.get('/enderecos', EnderecoController.index);
@@ -51,10 +56,16 @@ routes.post('/pacientes', PacienteController.store);         //quando cria um pa
 routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o pac, atualiza o end
 routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
 
+//rotas de historicos de prontuarios
+//routes.get('/pacientes/:id/historico', ProntuarioController.history);
+
+//rota para especialista preencher prontuario
+//routes.post('/especialistas/:id/consulta/',ProntuarioController.record);
+
 // rotas de prontuario
 routes.get('/prontuarios', ProntuarioController.index);        
 routes.get('/prontuarios/:id', ProntuarioController.show);
-routes.post('/prontuarios', ProntuarioController.store);        
+routes.post('/prontuarios', ProntuarioController.store);	
 routes.put('/prontuarios/:id', ProntuarioController.update);  
 routes.delete('/prontuarios/:id', ProntuarioController.destroy);
 
