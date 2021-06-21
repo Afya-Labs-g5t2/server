@@ -57,10 +57,10 @@ routes.put('/pacientes/:id', PacienteController.update);     //quando atualiza o
 routes.delete('/pacientes/:id', PacienteController.destroy); //quando deleta o pac, NÂO deleta o end
 
 //rotas de historicos de prontuarios
-routes.get('/pacientes/:id/historico', ProntuarioController.history);
+//routes.get('/pacientes/:id/historico', ProntuarioController.history);
 
 //rota para especialista preencher prontuario
-routes.post('/especialistas/:id/consulta/',ProntuarioController.record);
+//routes.post('/especialistas/:id/consulta/',ProntuarioController.record);
 
 // rotas de prontuario
 routes.get('/prontuarios', ProntuarioController.index);        
