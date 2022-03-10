@@ -175,21 +175,21 @@ Nossa equipe de desenvolvedores que construiu a aplicação.
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/mlamarques"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFvVEnCp_JluQ/profile-displayphoto-shrink_200_200/0/1542309353353?e=1629331200&v=beta&t=5L0m9gSLY6Ki1i2bcigKRxXdqcAj86uEMZOmKk2tZDE" width="100px;" alt=""/><br /><sub><b>Marcos Lamarques</b></sub></a><br/>
-    <a href="https://www.linkedin.com/in/mlamarques/"><img src="https://img.shields.io/badge/-Marcos-blue?style=flat-square&logo=Linkedin&logoColor=white"></a>
+    <td align="center"><a href="https://github.com/mlamarques"><img style="border-radius: 50%;" src="https://user-images.githubusercontent.com/43910483/157730005-e6c58249-4074-47a1-a258-ecbc7176b071.jpg" width="100px;" alt=""/><br/><sub><b>Marcos Lamarques</b></sub></a><br/><br/>
+     <a href="https://www.linkedin.com/in/mlamarques/"><img src="https://img.shields.io/badge/-Marcos-blue?style=flat-square&logo=Linkedin&logoColor=white"></a>
     </td>
-    <td align="center"><a href="https://github.com/micheleset7"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60739164?v=4" width="100px;" alt=""/><br /><sub><b>Michele Coelho</b></sub></a><br/>
+    <td align="center"><a href="https://github.com/micheleset7"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/60739164?v=4" width="100px;" alt=""/><br/><sub><b>Michele Coelho</b></sub></a><br/><br/>
     <a href="https://www.linkedin.com/in/michele-coelho-5017aa79/"><img src="https://img.shields.io/badge/-Michele-blue?style=flat-square&logo=Linkedin&logoColor=white"></a></td>
-    <td align="center"><a href="https://github.com/vinicius-carvalho"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/8262141?v=4" width="100px;" alt=""/><br /><sub><b>Vinicius Carvalho</b></sub></a><br />
+    <td align="center"><a href="https://github.com/vinicius-carvalho"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/8262141?v=4" width="100px;" alt=""/><br /><sub><b>Vinicius Carvalho</b></sub></a><br/><br/>
     <a href="https://www.linkedin.com/in/viniciuscostacarvalho/"><img src="https://img.shields.io/badge/-Vinicius-blue?style=flat-square&logo=Linkedin&logoColor=white"></a>
     </td>
-    <td align="center"><a href="https://github.com/RenataMie"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/73265234?v=4" width="100px;" alt=""/><br /><sub><b>Renata Mie</b></sub></a><br />
+    <td align="center"><a href="https://github.com/RenataMie"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/73265234?v=4" width="100px;" alt=""/><br /><sub><b>Renata Mie</b></sub></a><br/><br/>
     <a href="https://www.linkedin.com/in/renatakanezaki/"><img src="https://img.shields.io/badge/-Renata-blue?style=flat-square&logo=Linkedin&logoColor=white"></a>
     </td>
-    <td align="center"><a href="https://github.com/renatolobojr"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4E03AQGo0qmjjwu9XA/profile-displayphoto-shrink_200_200/0/1587556028562?e=1629331200&v=beta&t=O7lp30Z5I8O8s49cXIOX5x6brGxnKzZeGmBIv_TmdRM" width="100px;" alt=""/><br /><sub><b>Renato Lobo</b></sub></a><br />
+    <td align="center"><a href="https://github.com/renatolobojr"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/6940290?v=4" width="100px;" alt=""/><br /><sub><b>Renato Lobo</b></sub></a><br/><br/>
     <a href="https://www.linkedin.com/in/renatolobo-engenheiro/"><img src="https://img.shields.io/badge/-Renato-blue?style=flat-square&logo=Linkedin&logoColor=white"></a>
     </td>
-    <td align="center"><a href="https://github.com/Thais-Hoshii"><img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFxBPEY563hCQ/profile-displayphoto-shrink_200_200/0/1600110281835?e=1629331200&v=beta&t=5sKUElvEMdcVaeowULMiDo7ikWVeM0Ls64dq9clFTwU" width="100px;" alt=""/><br /><sub><b>Thaís Hoshii</b></sub></a><br />
+    <td align="center"><a href="https://github.com/Thais-Hoshii"><img style="border-radius: 50%;" src="https://user-images.githubusercontent.com/43910483/157729932-d3f2a39f-0325-41d0-bbff-0c7d08091373.jpg" width="100px;" alt=""/><br /><sub><b>Thaís Hoshii</b></sub></a><br/><br/>
     <a href="https://www.linkedin.com/in/thais-hoshii/"><img src="https://img.shields.io/badge/-Thais-blue?style=flat-square&logo=Linkedin&logoColor=white"></a></td>
     <tr>
  </table>
